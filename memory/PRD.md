@@ -27,6 +27,14 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
+## Implemented (2026-08-15, round 11 — hero video)
+- Home hero image replaced with the client's uploaded 35s teaser video (public/media/):
+  re-encoded to web-friendly H.264 High (hero-video-web.mp4) + VP9 WebM fallback
+  (hero-video.webm) since the original used an unsupported profile; portrait video presented
+  with a blurred self-fill landscape frame (gblur pillarbox) so nothing is cropped or zoomed;
+  first frame extracted as poster for instant paint; keeps the curtain-synced entry animation,
+  scroll parallax and ember drift; muted autoplay loop playsInline
+
 ## Implemented (2026-08-15, round 10 — curtain sound)
 - Optional curtain audio, muted by default: a "Sound Off/On" pill toggle on the preloader
   (persists via localStorage 'daali-sound'). When on, the curtain parting triggers a synthesized
