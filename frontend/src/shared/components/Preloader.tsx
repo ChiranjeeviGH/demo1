@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 
 import { MOTION_EASE } from '@/shared/motion'
 import { useIntro } from '@/shared/motion/IntroContext'
+import { isSoundEnabled, playCurtainSound, setSoundEnabled } from '@/shared/audio/curtainSound'
 
 const LETTERS = ['D', 'A', 'A', 'L', 'I']
 
@@ -14,6 +15,7 @@ export function Preloader() {
   const { setIntroComplete } = useIntro()
   const [parting, setParting] = useState(false)
   const [gone, setGone] = useState(false)
+  const [soundOn, setSoundOn] = useState(() => isSoundEnabled())
 
   useEffect(() => {
     if (reduceMotion) {
@@ -28,6 +30,7 @@ export function Preloader() {
       setTimeout(() => {
         setParting(true)
         setIntroComplete()
+        playCurtainSound()
       }, 1500),
       setTimeout(() => {
         setGone(true)
@@ -42,6 +45,12 @@ export function Preloader() {
   }, [reduceMotion, setIntroComplete])
 
   if (gone) return null
+
+  const toggleSound = () => {
+    const next = !soundOn
+    setSoundOn(next)
+    setSoundEnabled(next)
+  }
 
   return (
     <div className="preloader" data-testid="preloader">
@@ -87,6 +96,16 @@ export function Preloader() {
           </motion.span>
         </span>
       </motion.div>
+
+      <button
+        type="button"
+        className="preloader__sound-btn"
+        onClick={toggleSound}
+        aria-pressed={soundOn}
+        data-testid="curtain-sound-toggle"
+      >
+        {soundOn ? 'Sound On' : 'Sound Off'}
+      </button>
     </div>
   )
 }

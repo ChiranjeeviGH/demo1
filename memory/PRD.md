@@ -27,6 +27,12 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
+## Implemented (2026-08-15, round 10 — curtain sound)
+- Optional curtain audio, muted by default: a "Sound Off/On" pill toggle on the preloader
+  (persists via localStorage 'daali-sound'). When on, the curtain parting triggers a synthesized
+  Web Audio score — low 52Hz stage rumble + swept band-passed noise fabric whoosh — no audio
+  files needed (src/shared/audio/curtainSound.ts). Silent fallback if audio is blocked/unavailable
+
 ## Implemented (2026-08-15, round 9 — theatre curtain preloader)
 - Preloader reworked into a village-drama curtain opening: two pleated maroon fabric panels
   (repeating vertical pleat shading, red inner-edge glow, hem shadow) hold closed behind the

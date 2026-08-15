@@ -373,6 +373,37 @@ html {
   color: var(--color-accent);
 }
 
+.preloader__sound-btn {
+  position: absolute;
+  bottom: clamp(22px, 5vh, 46px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  background: none;
+  border: 1px solid rgb(245 245 245 / 22%);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition:
+    color 220ms var(--motion-ease),
+    border-color 220ms var(--motion-ease);
+}
+
+.preloader__sound-btn:hover {
+  color: var(--color-ink);
+  border-color: var(--color-accent);
+}
+
+.preloader__sound-btn[aria-pressed='true'] {
+  color: var(--color-ink);
+  border-color: var(--color-accent);
+}
+
 /* ---------- Page transition panels ---------- */
 .page-transition {
   position: fixed;
