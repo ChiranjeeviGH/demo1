@@ -27,6 +27,16 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
+## Implemented (2026-08-15, round 4 — reference-style reactive About portrait)
+- About page hero portrait now mirrors lukebaffait.fr's hero treatment: the portrait frame tilts
+  in 3D toward the cursor (spring-smoothed rotateX/rotateY, perspective 1000) while the inner
+  image counter-translates at 1.08 scale for a depth-parallax feel, and a soft-light highlight
+  blob follows the mouse across the photo
+- Frame gained the reference's corner "+" registration marks and a blurred red glow halo behind
+  it; the hero veil gained one extra red radial at top for the same crimson ambience
+- Tilt auto-disables on touch devices (hover:none) and under prefers-reduced-motion;
+  entry animation, red edge bar, name/roles/bio and all original layout unchanged
+
 ## Implemented (2026-08-15, round 3 — orbital poster gallery)
 - Home "Our Productions" rebuilt as a scroll-driven 3D poster orbit inspired by lukebaffait.fr's
   circle-gallery: the section is tall (~416vh) with a sticky full-viewport stage; 6 posters travel

@@ -13,6 +13,7 @@ type ContactSectionProps = {
   nameLabel?: string
   showPhone?: boolean
   showSubject?: boolean
+  titleAccent?: string
 }
 
 const SOCIAL_LINKS = [

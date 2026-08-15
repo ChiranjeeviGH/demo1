@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 import { PRODUCTIONS } from '@/features/productions/constants/productions.data'
-import { MOTION_EASE, VIEWPORT_ONCE } from '@/shared/motion'
+import { MOTION_EASE } from '@/shared/motion'
 import { useIntro } from '@/shared/motion/IntroContext'
 import { SplitChars } from '@/shared/motion/SplitChars'
 

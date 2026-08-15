@@ -8,6 +8,7 @@ export type Production = {
   description: string
   poster: string
   banner: string
+  video: string
 }
 
 export const PRODUCTIONS: Production[] = [
