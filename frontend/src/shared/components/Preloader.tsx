@@ -59,13 +59,17 @@ export function Preloader() {
         initial={false}
         animate={parting ? { x: '-101%' } : { x: '0%' }}
         transition={{ duration: 1.15, ease: CURTAIN_EASE }}
-      />
+      >
+        <img src="/media/curtain.jpg" alt="" draggable={false} />
+      </motion.div>
       <motion.div
         className="preloader__curtain preloader__curtain--right"
         initial={false}
         animate={parting ? { x: '101%' } : { x: '0%' }}
         transition={{ duration: 1.15, ease: CURTAIN_EASE }}
-      />
+      >
+        <img src="/media/curtain.jpg" alt="" draggable={false} />
+      </motion.div>
 
       <motion.div
         className="preloader__logo"

@@ -312,22 +312,26 @@ html {
   justify-content: center;
 }
 
-/* pleated fabric: layered vertical repeats + inner-edge glow + hem shadow */
+/* real theatre curtain artwork, split into two seamless halves */
 .preloader__curtain {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 51%;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgb(0 0 0 / 34%) 0px,
-      rgb(0 0 0 / 0%) 26px,
-      rgb(66 12 14 / 22%) 52px,
-      rgb(0 0 0 / 0%) 78px
-    ),
-    linear-gradient(180deg, #160708 0%, #1f090b 55%, #120506 100%);
+  overflow: hidden;
   will-change: transform;
+}
+
+.preloader__curtain img {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  pointer-events: none;
 }
 
 .preloader__curtain--left {
@@ -337,11 +341,19 @@ html {
     inset 0 -70px 60px -40px rgb(0 0 0 / 80%);
 }
 
+.preloader__curtain--left img {
+  left: 0;
+}
+
 .preloader__curtain--right {
   right: 0;
   box-shadow:
     inset 28px 0 42px -18px rgb(225 29 46 / 30%),
     inset 0 -70px 60px -40px rgb(0 0 0 / 80%);
+}
+
+.preloader__curtain--right img {
+  right: 0;
 }
 
 .preloader__logo {
@@ -400,6 +412,43 @@ html {
 }
 
 .preloader__sound-btn[aria-pressed='true'] {
+  color: var(--color-ink);
+  border-color: var(--color-accent);
+}
+
+/* Hero film sound toggle */
+.hero-sound-toggle {
+  position: absolute;
+  right: clamp(20px, 4vw, 56px);
+  bottom: clamp(20px, 5vh, 44px);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgb(5 5 5 / 55%);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgb(245 245 245 / 22%);
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition:
+    color 220ms var(--motion-ease),
+    border-color 220ms var(--motion-ease),
+    transform 200ms var(--motion-ease);
+}
+
+.hero-sound-toggle:hover {
+  color: var(--color-ink);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.hero-sound-toggle[aria-pressed='true'] {
   color: var(--color-ink);
   border-color: var(--color-accent);
 }

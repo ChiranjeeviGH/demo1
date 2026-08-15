@@ -27,6 +27,16 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
+## Implemented (2026-08-15, round 12 — landscape hero cut + hero sound toggle + real curtain art)
+- Hero video re-cut as true full-bleed 16:9 (center-crop of the portrait source with vertical
+  bias toward faces, lanczos upscale + unsharp, H.264 + VP9 WebM) — no more blurred pillarbox
+- Hero sound toggle: glass pill bottom-right of the hero, unmute/mute the teaser audio
+  (user-gesture safe), styled to match the curtain sound pill
+- Preloader curtain now uses the client's uploaded grand theatre curtain photo
+  (public/media/curtain.jpg, watermark cropped): split seamlessly into two viewport-sized halves
+  (img object-fit cover per half — background-attachment:fixed breaks under transforms, and
+  global img max-width:100% had to be overridden with max-width:none)
+
 ## Implemented (2026-08-15, round 11 — hero video)
 - Home hero image replaced with the client's uploaded 35s teaser video (public/media/):
   re-encoded to web-friendly H.264 High (hero-video-web.mp4) + VP9 WebM fallback
