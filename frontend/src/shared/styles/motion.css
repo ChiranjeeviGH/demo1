@@ -1,0 +1,346 @@
+/* ============================================================
+   Daali Pictures — cinematic motion layer (additive only)
+   ============================================================ */
+
+:root {
+  --motion-fast: 200ms;
+  --motion-normal: 600ms;
+  --motion-slow: 900ms;
+  --motion-cinematic: 1400ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+/* ---------- Page load: header entry ---------- */
+.site-header {
+  animation: site-header-enter 850ms var(--motion-ease) both;
+}
+
+@keyframes site-header-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Nav underline indicators ---------- */
+.site-header__nav a {
+  position: relative;
+  transition: color 240ms var(--motion-ease);
+}
+
+.site-header__nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms var(--motion-ease);
+  pointer-events: none;
+}
+
+.site-header__nav a:hover::after,
+.site-header__nav a.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Mobile menu link stagger ---------- */
+@media (max-width: 1100px) {
+  .site-header__nav a {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      opacity 280ms var(--motion-ease),
+      transform 280ms var(--motion-ease),
+      color 200ms var(--motion-ease);
+  }
+
+  .site-header__nav a::after {
+    bottom: 6px;
+  }
+
+  .site-header__nav.is-open a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .site-header__nav.is-open a:nth-child(1) { transition-delay: 70ms; }
+  .site-header__nav.is-open a:nth-child(2) { transition-delay: 140ms; }
+  .site-header__nav.is-open a:nth-child(3) { transition-delay: 210ms; }
+  .site-header__nav.is-open a:nth-child(4) { transition-delay: 280ms; }
+}
+
+/* ---------- Film strip: slow continuous reel ---------- */
+.film-strip {
+  overflow: hidden;
+}
+
+.film-strip__track {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-size: var(--film-strip-w) auto;
+  will-change: transform;
+}
+
+/* ---------- Home hero: cinematic entry ---------- */
+.home-hero-block .hero-media {
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+/* ---------- Button interaction standard ---------- */
+.btn {
+  transition:
+    background-color 220ms var(--motion-ease),
+    color 220ms var(--motion-ease),
+    border-color 220ms var(--motion-ease),
+    filter 220ms var(--motion-ease),
+    transform 200ms var(--motion-ease);
+}
+
+.btn:hover {
+  transform: translateY(-1px) scale(1.01);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.sangha-cta .btn span[aria-hidden],
+.about-sangha__btn span[aria-hidden] {
+  display: inline-block;
+  transition: transform 220ms var(--motion-ease);
+}
+
+.sangha-cta .btn:hover span[aria-hidden],
+.about-sangha__btn:hover span[aria-hidden] {
+  transform: translateX(5px);
+}
+
+/* ---------- Form fields ---------- */
+.field input,
+.field textarea,
+.field select {
+  transition:
+    border-color 220ms var(--motion-ease),
+    box-shadow 220ms var(--motion-ease),
+    background-color 220ms var(--motion-ease);
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px rgb(225 29 46 / 30%);
+}
+
+.modal-form input {
+  transition:
+    border-color 220ms var(--motion-ease),
+    box-shadow 220ms var(--motion-ease);
+}
+
+.modal-form input:focus {
+  outline: none;
+  border-color: #e4253f;
+  box-shadow: 0 0 0 1px rgb(228 37 63 / 32%);
+}
+
+/* ---------- Profile spotlight ---------- */
+.profile-spotlight__media {
+  overflow: hidden;
+}
+
+.profile-spotlight__image {
+  transition: transform 900ms var(--motion-ease);
+}
+
+.profile-spotlight__media:hover .profile-spotlight__image {
+  transform: scale(1.02);
+}
+
+/* ---------- Beyond Filmmaking micro-interactions ---------- */
+.beyond-card__icon {
+  transition: transform 300ms var(--motion-ease), background-color 300ms var(--motion-ease);
+}
+
+.beyond-card h3 {
+  transition: transform 300ms var(--motion-ease);
+}
+
+.beyond-card:hover .beyond-card__icon {
+  transform: translateY(-3px);
+}
+
+.beyond-card:hover h3 {
+  transform: translateY(-2px);
+}
+
+/* ---------- Awards wall ---------- */
+.award-item__icon {
+  transition: transform 340ms var(--motion-ease);
+}
+
+.award-item__image {
+  transition: transform 340ms var(--motion-ease);
+}
+
+.award-item:hover .award-item__icon {
+  transform: translateY(-4px);
+}
+
+.award-item:hover .award-item__image {
+  transform: scale(1.04);
+}
+
+/* ---------- Beyond cinema (about) title nudge ---------- */
+.beyond-cinema__card h3 {
+  transition: transform 300ms var(--motion-ease);
+}
+
+.beyond-cinema__card:hover h3,
+.beyond-cinema__card:focus-within h3 {
+  transform: translateY(-2px);
+}
+
+/* ---------- Productions page: cinematic modal entry ---------- */
+.modal {
+  animation: modal-fade-in 280ms ease both;
+}
+
+.modal-content {
+  animation: modal-pop-in 360ms var(--motion-ease) both;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ---------- Sangha event modal: refined entry ---------- */
+.event-modal {
+  animation: modal-fade-in 300ms ease both;
+}
+
+.event-modal-card {
+  animation: modal-pop-in 380ms var(--motion-ease) both;
+}
+
+/* ---------- Footer ---------- */
+.site-footer__links a {
+  display: inline-block;
+  position: relative;
+  transition:
+    color 240ms var(--motion-ease),
+    transform 240ms var(--motion-ease);
+}
+
+.site-footer__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms var(--motion-ease);
+}
+
+.site-footer__links a:hover {
+  color: var(--color-ink);
+  transform: translateY(-2px);
+}
+
+.site-footer__links a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Socials ---------- */
+.socials a {
+  transition:
+    background-color 240ms var(--motion-ease),
+    transform 240ms var(--motion-ease);
+}
+
+.socials a:hover {
+  transform: translateY(-2px);
+}
+
+/* ---------- Sangha gallery / event images keep cinematic ease ---------- */
+.event-card .btn {
+  transition:
+    transform 200ms var(--motion-ease),
+    filter 200ms var(--motion-ease),
+    background-color 200ms var(--motion-ease);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    animation: none;
+  }
+
+  .film-strip__track {
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .home-hero-block .hero-media {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .site-header__nav a,
+  .site-header__nav a::after,
+  .btn,
+  .field input,
+  .field textarea,
+  .field select,
+  .modal-form input,
+  .profile-spotlight__image,
+  .beyond-card__icon,
+  .beyond-card h3,
+  .beyond-cinema__card h3,
+  .award-item__icon,
+  .award-item__image,
+  .site-footer__links a,
+  .site-footer__links a::after,
+  .socials a {
+    transition: none;
+  }
+
+  .modal,
+  .modal-content,
+  .event-modal,
+  .event-modal-card {
+    animation-duration: 1ms;
+  }
+}

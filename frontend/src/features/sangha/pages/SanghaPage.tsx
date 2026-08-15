@@ -1,0 +1,271 @@
+import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import '@/features/sangha/styles/sangha.css'
+import '@/features/sangha/styles/sangha.overrides.css'
+
+import { MOTION_EASE, fadeUp } from '@/shared/motion'
+
+const stats = [
+  { value: '850+', label: 'Volunteers' },
+  { value: '43', label: 'Events Conducted' },
+  { value: '12', label: 'Cities' },
+  { value: '4200+', label: 'Lives Impacted' },
+]
+
+const events = [
+  {
+    title: 'BLOOD DONATION CAMP',
+    date: '15 August 2026',
+    place: 'Bangalore',
+    description:
+      'A community-led blood donation drive that brings citizens, youth volunteers and local partners together to support urgent medical needs and strengthen public health awareness.',
+    image: '/media/event-1.png',
+  },
+  {
+    title: 'SWACHH KARNATAKA DRIVE',
+    date: '15 August 2026',
+    place: 'Mysore',
+    description:
+      'A city-wide cleaning and awareness campaign focused on cleaner streets, greener public spaces and a stronger sense of civic responsibility across neighborhoods.',
+    image: '/media/event-2.png',
+  },
+  {
+    title: 'SCHOOL RENOVATION',
+    date: '20 April 2026',
+    place: 'Hubli',
+    description:
+      'Working with educators, volunteers and donors to restore classrooms, libraries and playgrounds so children can learn in safe, inspiring environments.',
+    image: '/media/event-3.png',
+  },
+]
+
+const galleryItems = [
+  { image: '/media/gallery-1.png' },
+  { image: '/media/gallery-2.png' },
+  { image: '/media/gallery-3.png' },
+  { image: '/media/gallery-1.png' },
+  { image: '/media/gallery-2.png' },
+  { image: '/media/gallery-3.png' },
+  { image: '/media/gallery-1.png' },
+  { image: '/media/gallery-2.png' },
+  { image: '/media/gallery-3.png' },
+]
+
+export function SanghaPage() {
+  const [selectedEvent, setSelectedEvent] = useState<any>(null)
+  const [registeredEvent, setRegisteredEvent] = useState<any>(null)
+
+  useEffect(() => {
+    setRegisteredEvent(null)
+  }, [selectedEvent])
+
+  const handleRegister = (event: React.FormEvent) => {
+    event.preventDefault()
+    if (selectedEvent) {
+      setRegisteredEvent(selectedEvent.title)
+    }
+  }
+
+  return (
+    <div className="sangha-page">
+      <main className="sangha-main">
+        <section
+          className="sangha-hero"
+          style={{ backgroundImage: "url('/media/sangha-hero.png')" }}
+        >
+          <div className="hero-inner">
+            <motion.h1
+              initial={{ opacity: 0, y: 26 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: MOTION_EASE }}
+            >
+              DAALI'S ABHIMANI{' '}
+              <span className="hero-accent" style={{ color: '#e4253f' }}>
+                SANGHA
+              </span>
+            </motion.h1>
+            <motion.p
+              className="hero-caption"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.38, ease: MOTION_EASE }}
+            >
+              Stories don't end when the credits roll.
+            </motion.p>
+            <motion.p
+              className="hero-subtext"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.5, ease: MOTION_EASE }}
+            >
+              Join us in creating meaningful civic impact through community service,
+              environmental initiatives, education, and health care.
+            </motion.p>
+          </div>
+        </section>
+
+        <section className="stats" aria-label="Sangha stats">
+          <div className="stats-grid" data-testid="sangha-stats">
+            {stats.map((stat, index) => (
+              <motion.div
+                className="stat"
+                key={stat.label}
+                {...fadeUp(index * 0.08, 22, 0.7)}
+                data-testid={`sangha-stat-${index}`}
+              >
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="upcoming">
+          <motion.h2 {...fadeUp(0, 22, 0.7)}>
+            UPCOMING <span>EVENTS</span>
+          </motion.h2>
+
+          <div className="event-list">
+            {events.map((event, index) => (
+              <motion.article
+                className={`event-card ${index % 2 === 1 ? 'reverse' : ''}`}
+                key={event.title}
+                {...fadeUp(0.05, 28, 0.8)}
+                data-testid={`event-card-${index}`}
+              >
+                <div className="event-image-wrap">
+                  <img src={event.image} alt={event.title} />
+                </div>
+
+                <div className="event-copy">
+                  <h3>{event.title}</h3>
+                  <div className="meta-row">
+                    <span className="meta-icon">◌</span>
+                    <span>{event.date}</span>
+                    <span className="meta-separator">•</span>
+                    <span>{event.place}</span>
+                  </div>
+                  <p>{event.description}</p>
+                  <button
+                    type="button"
+                    className="btn"
+                    onClick={() => setSelectedEvent(event)}
+                    data-testid={`event-register-btn-${index}`}
+                  >
+                    REGISTER NOW
+                  </button>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section className="cta-block" aria-label="Sangha message">
+          <motion.h2 {...fadeUp(0, 24, 0.8)}>
+            CINEMA <span>INSPIRES.</span>
+            <br />
+            ACTION CHANGES <span>LIVES.</span>
+          </motion.h2>
+          <motion.p {...fadeUp(0.12, 18, 0.75)}>
+            Daali's Abhimani Sangha believes that stories have the power to inspire change,
+            but real change happens when people come together. Through health camps, environmental drives, education initiatives, and social service activities, we aim to build stronger communities across Karnataka.
+          </motion.p>
+        </section>
+
+        <section className="gallery-section" aria-label="Sangha gallery">
+          <div className="gallery-grid" data-testid="sangha-gallery">
+            {galleryItems.map((item, index) => (
+              <motion.div
+                className={`gallery-tile tile-${index % 3 + 1}`}
+                key={`${item.image}-${index}`}
+                initial={{ opacity: 0, y: 22, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.65, delay: (index % 3) * 0.09, ease: MOTION_EASE }}
+                data-testid={`gallery-tile-${index}`}
+              >
+                <img src={item.image} alt="Community activity" />
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      {selectedEvent && (
+        <div
+          className="event-modal"
+          onClick={() => setSelectedEvent(null)}
+          data-testid="event-modal"
+        >
+          <div
+            className="event-modal-card"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="modal-back"
+              onClick={() => setSelectedEvent(null)}
+              data-testid="event-modal-back"
+            >
+              ← Back
+            </button>
+
+            <div className="modal-layout">
+              <div className="modal-info">
+                <h3>{selectedEvent.title}</h3>
+                <div className="modal-meta-row">
+                  <span className="meta-icon">◌</span>
+                  <span>{selectedEvent.date}</span>
+                  <span className="meta-separator">•</span>
+                  <span>{selectedEvent.place}</span>
+                </div>
+                <p>{selectedEvent.description}</p>
+                <div className="modal-photo-wrap">
+                  <img src={selectedEvent.image} alt={selectedEvent.title} />
+                </div>
+              </div>
+
+              <div className="modal-form-wrap">
+                <p className="form-title">Fill the form to register for the event</p>
+
+                {registeredEvent === selectedEvent.title ? (
+                  <div className="success-state" aria-live="polite" data-testid="event-register-success">
+                    <div className="success-badge">✓</div>
+                    <h4>Successfully Registered</h4>
+                    <p>
+                      Thank you for registering for <strong>{selectedEvent.title}</strong>.
+                    </p>
+                  </div>
+                ) : (
+                  <form className="modal-form" onSubmit={handleRegister} data-testid="event-register-form">
+                    <div className="input-row two-col">
+                      <label>
+                        <span>Your Name</span>
+                        <input type="text" placeholder="Full name" data-testid="event-register-name" />
+                      </label>
+                      <label>
+                        <span>Email Address</span>
+                        <input type="email" placeholder="you@email.com" data-testid="event-register-email" />
+                      </label>
+                    </div>
+
+                    <div className="input-row">
+                      <label>
+                        <span>Subject</span>
+                        <input type="text" placeholder="Select a topic" data-testid="event-register-subject" />
+                      </label>
+                    </div>
+
+                    <button type="submit" className="register-btn" data-testid="event-register-submit">
+                      Register
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
