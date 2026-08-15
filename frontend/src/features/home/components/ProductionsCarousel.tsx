@@ -12,7 +12,7 @@ import { HOME_PRODUCTIONS } from '@/features/home/constants/home.data'
 import { ROUTES } from '@/shared/constants/routes'
 import { useMediaQuery } from '@/shared/hooks'
 import { fadeUp, MotionLink } from '@/shared/motion'
-import { scrollToY } from '@/shared/motion/useSmoothScroll'
+import { scrollToY, scrollToYImmediate } from '@/shared/motion/useSmoothScroll'
 import { SplitChars } from '@/shared/motion/SplitChars'
 
 function getCircularOffset(index: number, activeIndex: number, length: number) {
@@ -89,6 +89,16 @@ function OrbitPoster({ item, index, count, progress, radiusX, radiusZ, onSelect 
 
 function OrbitCarousel() {
   const sectionRef = useRef<HTMLElement>(null)
+  const dragRef = useRef<{
+    pointerId: number
+    startX: number
+    startScroll: number
+    lastX: number
+    velocity: number
+    moved: boolean
+  } | null>(null)
+  const suppressClickRef = useRef(false)
+  const [dragging, setDragging] = useState(false)
   const count = HOME_PRODUCTIONS.length
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -120,6 +130,61 @@ function OrbitCarousel() {
     [count],
   )
 
+  const onDragStart = (event: PointerEvent<HTMLDivElement>) => {
+    dragRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startScroll: window.scrollY,
+      lastX: event.clientX,
+      velocity: 0,
+      moved: false,
+    }
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const onDragMove = (event: PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current
+    const el = sectionRef.current
+    if (!drag || !el || event.pointerId !== drag.pointerId) return
+
+    drag.velocity = event.clientX - drag.lastX
+    drag.lastX = event.clientX
+
+    const dx = event.clientX - drag.startX
+    if (!drag.moved && Math.abs(dx) > 8) {
+      drag.moved = true
+      setDragging(true)
+    }
+    if (!drag.moved) return
+
+    // Drag left -> ring spins forward (scroll down), clamped to the section
+    const sectionTop = el.getBoundingClientRect().top + window.scrollY
+    const span = el.offsetHeight - window.innerHeight
+    const target = Math.min(Math.max(drag.startScroll - dx * 2.4, sectionTop), sectionTop + span)
+    scrollToYImmediate(target)
+  }
+
+  const onDragEnd = (event: PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current
+    const el = sectionRef.current
+    if (!drag || !el || event.pointerId !== drag.pointerId) return
+    dragRef.current = null
+    setDragging(false)
+
+    if (drag.moved) {
+      suppressClickRef.current = true
+      setTimeout(() => {
+        suppressClickRef.current = false
+      }, 80)
+      // Gentle momentum flick, clamped inside the section
+      const sectionTop = el.getBoundingClientRect().top + window.scrollY
+      const span = el.offsetHeight - window.innerHeight
+      const flick = -drag.velocity * 2.4 * 5
+      const target = Math.min(Math.max(window.scrollY + flick, sectionTop), sectionTop + span)
+      scrollToY(target)
+    }
+  }
+
   const radiusX = Math.min(vw * 0.32, 640)
   const radiusZ = Math.min(vw * 0.26, 470)
   const activeItem = HOME_PRODUCTIONS[active]
@@ -136,7 +201,14 @@ function OrbitCarousel() {
           <SectionHeader />
         </div>
 
-        <div className="productions-orbit__stage" data-testid="productions-orbit">
+        <div
+          className={`productions-orbit__stage${dragging ? ' is-dragging' : ''}`}
+          data-testid="productions-orbit"
+          onPointerDown={onDragStart}
+          onPointerMove={onDragMove}
+          onPointerUp={onDragEnd}
+          onPointerCancel={onDragEnd}
+        >
           {HOME_PRODUCTIONS.map((item, index) => (
             <OrbitPoster
               key={item.id}
@@ -146,7 +218,10 @@ function OrbitCarousel() {
               progress={scrollYProgress}
               radiusX={radiusX}
               radiusZ={radiusZ}
-              onSelect={() => scrollToIndex(index)}
+              onSelect={() => {
+                if (suppressClickRef.current) return
+                scrollToIndex(index)
+              }}
             />
           ))}
         </div>

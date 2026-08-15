@@ -27,6 +27,7 @@ export function HomeHero() {
         style={reduceMotion ? undefined : { y: parallaxY }}
         data-testid="home-hero-media"
       />
+      <div className="hero-ember" aria-hidden="true" />
     </section>
   )
 }

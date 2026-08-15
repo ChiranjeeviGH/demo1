@@ -19,18 +19,48 @@ const SUBJECT_OPTIONS = [
   'Other',
 ] as const
 
+type SubmitStatus = 'idle' | 'sending' | 'sent' | 'error'
+
 export function ContactForm({
   submitLabel = 'Send Message',
   nameLabel = 'Your Name',
   showPhone = false,
   showSubject = true,
 }: ContactFormProps) {
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<SubmitStatus>('idle')
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setSent(true)
+    const data = new FormData(event.currentTarget)
+    setStatus('sending')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.get('name'),
+          email: data.get('email'),
+          phone: data.get('phone') || null,
+          subject: data.get('subject') || null,
+          message: data.get('message'),
+        }),
+      })
+      if (!response.ok) throw new Error('Request failed')
+      setStatus('sent')
+    } catch {
+      setStatus('error')
+    }
   }
+
+  const label =
+    status === 'sending'
+      ? 'Sending…'
+      : status === 'sent'
+        ? 'Message Sent ✓'
+        : status === 'error'
+          ? 'Something went wrong — try again'
+          : submitLabel
 
   return (
     <motion.form
@@ -99,8 +129,8 @@ export function ContactForm({
           data-testid="contact-message-input"
         />
       </label>
-      <Button type="submit" data-testid="contact-submit-btn">
-        {sent ? 'Message Sent ✓' : submitLabel}
+      <Button type="submit" disabled={status === 'sending'} data-testid="contact-submit-btn">
+        {label}
       </Button>
     </motion.form>
   )

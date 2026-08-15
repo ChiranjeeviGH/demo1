@@ -512,8 +512,122 @@ html {
     linear-gradient(180deg, rgb(66 28 16 / 18%) 0%, transparent 26%),
     linear-gradient(180deg, transparent 52%, rgb(54 20 14 / 55%) 78%, rgb(21 9 8 / 92%) 100%);
   pointer-events: none;
+  z-index: 2;
+}
+
+/* Hero ember: slow drifting warm light so the sunset feels alive */
+.hero-ember {
+  position: absolute;
+  inset: -12%;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 30% 12%, rgb(255 170 90 / 20%), transparent 65%),
+    radial-gradient(ellipse 45% 40% at 72% 20%, rgb(225 90 40 / 14%), transparent 60%);
+  animation: hero-ember-drift 34s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes hero-ember-drift {
+  from {
+    transform: translate3d(-2.5%, -1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(2.5%, 1.5%, 0) scale(1.06);
+  }
+}
+
+/* Mission: deep maroon glow carrying the hero's warmth downward */
+.home-mission {
+  background:
+    radial-gradient(ellipse 95% 72% at 50% 0%, #2b1114 0%, #190b0d 44%, transparent 76%);
+}
+
+/* Profile spotlight: faint ember glow behind the portrait side */
+.profile-spotlight {
+  background:
+    radial-gradient(ellipse 46% 62% at 16% 34%, rgb(62 23 16 / 42%), transparent 70%);
+}
+
+/* Beyond Filmmaking: maroon bloom entering from the top-left */
+.beyond-filmmaking {
+  background:
+    radial-gradient(ellipse 58% 55% at 10% 0%, rgb(58 17 20 / 55%), transparent 72%);
+}
+
+/* Sangha CTA: matching maroon bloom from the left */
+.sangha-cta {
+  background:
+    radial-gradient(ellipse 52% 58% at 8% 18%, rgb(54 16 18 / 55%), transparent 72%);
+}
+
+/* Contact: subtle warmth at the top, settling into pure black */
+.contact-section {
+  background:
+    radial-gradient(ellipse 70% 42% at 50% 0%, rgb(42 13 15 / 55%), transparent 72%);
+}
+
+/* Productions page: maroon ambience behind the heading + ember mid-page */
+.productions-section {
+  background:
+    radial-gradient(ellipse 80% 26% at 50% 0%, #2b1114 0%, transparent 70%),
+    radial-gradient(ellipse 40% 20% at 88% 46%, rgb(62 23 16 / 35%), transparent 70%);
+}
+
+/* Sangha page: same warm grade as home */
+.sangha-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(66 28 16 / 16%) 0%, transparent 28%),
+    linear-gradient(180deg, transparent 50%, rgb(54 20 14 / 50%) 80%, rgb(21 9 8 / 90%) 100%);
+  pointer-events: none;
+}
+
+.sangha-hero .hero-inner {
+  position: relative;
   z-index: 1;
 }
+
+.sangha-page .stats {
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 0%, rgb(43 17 20 / 55%), transparent 75%);
+}
+
+.sangha-page .upcoming {
+  background:
+    radial-gradient(ellipse 50% 36% at 90% 6%, rgb(58 17 20 / 45%), transparent 70%);
+}
+
+.sangha-page .cta-block {
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 100%, rgb(62 23 16 / 45%), transparent 75%);
+}
+
+.sangha-page .gallery-section {
+  background:
+    radial-gradient(ellipse 45% 45% at 8% 26%, rgb(54 16 18 / 40%), transparent 72%);
+}
+
+/* Form error note */
+.form-error {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  color: #e4253f;
+}
+
+/* Orbit drag cursor */
+.productions-orbit__stage {
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.productions-orbit__stage.is-dragging {
+  cursor: grabbing;
+}
+
+/* ---------- About hero: reference-style reactive portrait ---------- */
 
 /* Mission: deep maroon glow carrying the hero's warmth downward */
 .home-mission {
@@ -665,6 +779,10 @@ html {
   .productions-orbit__hint {
     animation: none;
     opacity: 0.6;
+  }
+
+  .hero-ember {
+    animation: none;
   }
 
   .home-hero-block .hero-media {

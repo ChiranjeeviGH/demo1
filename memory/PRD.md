@@ -27,6 +27,19 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
+## Implemented (2026-08-15, round 6 — glow spread, ember motion, real forms, ring drag)
+- Warm ember grade extended to Productions (maroon ambience behind heading + mid-page ember) and
+  Sangha (hero warm melt, stats/upcoming/cta/gallery blooms) — all additive CSS in motion.css
+- Hero ember: two warm radial lights drift slowly (34s alternate, GPU transform only), disabled
+  under reduced motion
+- Forms are now REAL: POST /api/contact and POST /api/sangha/register (FastAPI + MongoDB,
+  contact_messages / sangha_registrations collections, GET list endpoints for reads).
+  ContactForm shows Sending…/Message Sent ✓/error states; Sangha modal registration posts with
+  event title and shows success only on 2xx
+- Orbit ring is draggable with momentum: pointer drag maps to clamped scroll progress
+  (2.4x ratio, immediate lenis scroll), release applies a gentle clamped flick, clicks after a
+  drag are suppressed; touch keeps vertical scrolling via touch-action: pan-y; cursor grab/grabbing
+
 ## Implemented (2026-08-15, round 5 — PDF landing-page warm color grade)
 - Applied the client's Landing Page.pdf color grading: hero gets an amber-to-maroon melt overlay
   (warm tint at top, deep sienna #36140e→#150908 fade at bottom), mission section carries a deep

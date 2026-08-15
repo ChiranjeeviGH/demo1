@@ -66,6 +66,66 @@ async def get_status_checks():
     
     return status_checks
 
+class ContactMessage(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    email: str
+    phone: str | None = None
+    subject: str | None = None
+    message: str
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class ContactMessageCreate(BaseModel):
+    name: str
+    email: str
+    phone: str | None = None
+    subject: str | None = None
+    message: str
+
+class SanghaRegistration(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    event: str
+    name: str
+    email: str
+    subject: str | None = None
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class SanghaRegistrationCreate(BaseModel):
+    event: str
+    name: str
+    email: str
+    subject: str | None = None
+
+@api_router.post("/contact", response_model=ContactMessage)
+async def create_contact_message(input: ContactMessageCreate):
+    obj = ContactMessage(**input.model_dump())
+    doc = obj.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    await db.contact_messages.insert_one(doc)
+    return obj
+
+@api_router.get("/contact", response_model=List[ContactMessage])
+async def get_contact_messages():
+    docs = await db.contact_messages.find({}, {"_id": 0}).to_list(1000)
+    return docs
+
+@api_router.post("/sangha/register", response_model=SanghaRegistration)
+async def create_sangha_registration(input: SanghaRegistrationCreate):
+    obj = SanghaRegistration(**input.model_dump())
+    doc = obj.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    await db.sangha_registrations.insert_one(doc)
+    return obj
+
+@api_router.get("/sangha/register", response_model=List[SanghaRegistration])
+async def get_sangha_registrations():
+    docs = await db.sangha_registrations.find({}, {"_id": 0}).to_list(1000)
+    return docs
+
 # Include the router in the main app
 app.include_router(api_router)
 

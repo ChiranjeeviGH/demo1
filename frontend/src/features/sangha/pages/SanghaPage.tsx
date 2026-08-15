@@ -57,15 +57,35 @@ export function SanghaPage() {
   const { introComplete } = useIntro()
   const [selectedEvent, setSelectedEvent] = useState<any>(null)
   const [registeredEvent, setRegisteredEvent] = useState<any>(null)
+  const [registerError, setRegisterError] = useState(false)
 
   useEffect(() => {
     setRegisteredEvent(null)
+    setRegisterError(false)
   }, [selectedEvent])
 
-  const handleRegister = (event: React.FormEvent) => {
+  const handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (selectedEvent) {
+    if (!selectedEvent) return
+
+    const data = new FormData(event.currentTarget)
+    setRegisterError(false)
+
+    try {
+      const response = await fetch('/api/sangha/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event: selectedEvent.title,
+          name: data.get('name'),
+          email: data.get('email'),
+          subject: data.get('subject'),
+        }),
+      })
+      if (!response.ok) throw new Error('Request failed')
       setRegisteredEvent(selectedEvent.title)
+    } catch {
+      setRegisterError(true)
     }
   }
 
@@ -252,20 +272,26 @@ export function SanghaPage() {
                     <div className="input-row two-col">
                       <label>
                         <span>Your Name</span>
-                        <input type="text" placeholder="Full name" data-testid="event-register-name" />
+                        <input type="text" name="name" placeholder="Full name" required data-testid="event-register-name" />
                       </label>
                       <label>
                         <span>Email Address</span>
-                        <input type="email" placeholder="you@email.com" data-testid="event-register-email" />
+                        <input type="email" name="email" placeholder="you@email.com" required data-testid="event-register-email" />
                       </label>
                     </div>
 
                     <div className="input-row">
                       <label>
                         <span>Subject</span>
-                        <input type="text" placeholder="Select a topic" data-testid="event-register-subject" />
+                        <input type="text" name="subject" placeholder="Select a topic" data-testid="event-register-subject" />
                       </label>
                     </div>
+
+                    {registerError ? (
+                      <p className="form-error" data-testid="event-register-error">
+                        Something went wrong. Please try again.
+                      </p>
+                    ) : null}
 
                     <button type="submit" className="register-btn" data-testid="event-register-submit">
                       Register

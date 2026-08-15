@@ -12,6 +12,14 @@ export function scrollToY(y: number) {
   }
 }
 
+export function scrollToYImmediate(y: number) {
+  if (lenisInstance) {
+    lenisInstance.scrollTo(y, { immediate: true })
+  } else {
+    window.scrollTo(0, y)
+  }
+}
+
 export function useSmoothScroll() {
   const { pathname } = useLocation()
 
