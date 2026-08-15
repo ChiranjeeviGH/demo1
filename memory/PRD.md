@@ -27,6 +27,12 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
+## Implemented (2026-08-15, round 13 — trimmed HD hero loop)
+- Hero teaser trimmed to the strongest 9s (16.5s-25.5s of the source: hero reveal wide → smile
+  closeup → machete carry), re-encoded at max quality: 1920x1080, CRF 18 (~6.3 Mbps), lanczos
+  upscale + unsharp from the 576x1024 phone source, crop window raised to keep faces in frame;
+  poster refreshed to the new first frame; loops cleanly (verified 0-9s cycle)
+
 ## Implemented (2026-08-15, round 12 — landscape hero cut + hero sound toggle + real curtain art)
 - Hero video re-cut as true full-bleed 16:9 (center-crop of the portrait source with vertical
   bias toward faces, lanczos upscale + unsharp, H.264 + VP9 WebM) — no more blurred pillarbox
