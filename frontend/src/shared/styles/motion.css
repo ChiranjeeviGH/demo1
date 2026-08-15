@@ -690,6 +690,20 @@ html {
   will-change: transform;
 }
 
+.portrait-depth {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.about-intro__portrait--gl {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .portrait-highlight {
   position: absolute;
   inset: 0;

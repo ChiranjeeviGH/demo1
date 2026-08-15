@@ -211,7 +211,7 @@ export function SanghaPage() {
                 key={`${item.image}-${index}`}
                 initial={{ opacity: 0, y: 22, scale: 0.98 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.65, delay: (index % 3) * 0.09, ease: MOTION_EASE }}
                 data-testid={`gallery-tile-${index}`}
               >

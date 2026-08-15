@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const MOTION_EASE = [0.22, 1, 0.36, 1] as const
 
-export const VIEWPORT_ONCE = { once: true, amount: 0.2 } as const
+export const VIEWPORT_ONCE = { once: false, amount: 0.2 } as const
 
 export const fadeUp = (delay = 0, y = 26, duration = 0.8) =>
   ({

@@ -45,7 +45,7 @@ export function ProductionsContainer() {
             key={`${item.title}-${index}`}
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.75, delay: 0.08, ease: MOTION_EASE }}
             data-testid={`production-card-${item.id}`}
           >

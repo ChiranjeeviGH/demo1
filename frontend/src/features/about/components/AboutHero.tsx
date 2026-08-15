@@ -8,6 +8,7 @@ import {
 } from 'framer-motion'
 
 import { ABOUT_DATA } from '@/features/about/constants/about.data'
+import { DepthPortrait } from '@/features/about/components/DepthPortrait'
 import { MOTION_EASE } from '@/shared/motion'
 import { useIntro } from '@/shared/motion/IntroContext'
 import { SplitChars } from '@/shared/motion/SplitChars'
@@ -18,6 +19,7 @@ export function AboutHero() {
   const { introComplete } = useIntro()
   const reduceMotion = useReducedMotion()
   const frameRef = useRef<HTMLDivElement>(null)
+  const mouseRef = useRef({ x: 0.5, y: 0.5 })
   const fullName = `${ABOUT_DATA.name.first} ${ABOUT_DATA.name.last}`
 
   const tiltEnabled =
@@ -40,13 +42,17 @@ export function AboutHero() {
     const frame = frameRef.current
     if (!frame) return
     const rect = frame.getBoundingClientRect()
-    mx.set((event.clientX - rect.left) / rect.width - 0.5)
-    my.set((event.clientY - rect.top) / rect.height - 0.5)
+    const nx = (event.clientX - rect.left) / rect.width - 0.5
+    const ny = (event.clientY - rect.top) / rect.height - 0.5
+    mx.set(nx)
+    my.set(ny)
+    mouseRef.current = { x: nx + 0.5, y: ny + 0.5 }
   }
 
   const onMouseLeave = () => {
     mx.set(0)
     my.set(0)
+    mouseRef.current = { x: 0.5, y: 0.5 }
   }
 
   return (
@@ -73,12 +79,17 @@ export function AboutHero() {
               className="portrait-tilt"
               style={tiltEnabled ? { rotateX, rotateY, transformPerspective: 1000 } : undefined}
             >
-              <motion.img
-                className="about-intro__portrait"
-                src={ABOUT_DATA.portrait}
-                alt={fullName}
+              <motion.div
+                className="portrait-depth"
                 style={tiltEnabled ? { x: imgX, y: imgY, scale: 1.08 } : undefined}
-              />
+              >
+                <DepthPortrait
+                  src={ABOUT_DATA.portrait}
+                  alt={fullName}
+                  mouseRef={mouseRef}
+                  active={tiltEnabled}
+                />
+              </motion.div>
               <div className="portrait-highlight" aria-hidden="true">
                 <motion.div style={tiltEnabled ? { x: lightX, y: lightY } : undefined} />
               </div>

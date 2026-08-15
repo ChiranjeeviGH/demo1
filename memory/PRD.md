@@ -27,6 +27,17 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
+## Implemented (2026-08-15, round 8 — replay everywhere + WebGL depth portrait)
+- All scroll reveals now replay on every pass (framer whileInView once:false across fadeUp/
+  fadeSide consumers, awards, productions cards, sangha stats/events/gallery, profile media,
+  footer): elements reset when they leave the viewport and re-animate on return — verified on
+  desktop (cards) and tablet (gallery tiles); same code path covers mobile
+- About portrait upgraded to a real WebGL depth-bulge shader (DepthPortrait.tsx): custom GLSL
+  with cover-fit UVs, pseudo depth map generated at runtime (blurred luminance + center bias),
+  cursor-driven foreground bulge with smoothed mouse + subtle idle breathing; composes with the
+  existing 3D tilt and light sweep; falls back to the plain img under reduced-motion/no-WebGL.
+  Verified via pixel-diff (68% of pixels shift between cursor positions)
+
 ## Implemented (2026-08-15, round 7 — heading replays)
 - SplitChars view-mode headings now REPLAY their letter-by-letter transition on every scroll pass:
   IntersectionObserver toggles inView both directions (chars reset when the heading fully leaves,

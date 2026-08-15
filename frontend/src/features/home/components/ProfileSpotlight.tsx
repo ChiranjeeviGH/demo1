@@ -15,7 +15,7 @@ export function ProfileSpotlight() {
           className="profile-spotlight__media"
           initial={{ opacity: 0, scale: 1.03 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{ once: false, amount: 0.25 }}
           transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
         >
           <img
