@@ -27,6 +27,15 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
+## Implemented (2026-08-15, round 5 — PDF landing-page warm color grade)
+- Applied the client's Landing Page.pdf color grading: hero gets an amber-to-maroon melt overlay
+  (warm tint at top, deep sienna #36140e→#150908 fade at bottom), mission section carries a deep
+  maroon radial glow (#2b1114→#190b0d) bleeding out of the hero, ember glow behind the profile
+  portrait, maroon blooms into Beyond Filmmaking (top-left) and Sangha CTA (left), subtle warmth
+  at contact top settling into pure black #050505 (base bg was already exact)
+- Colors pixel-sampled from the PDF render for fidelity; all additive CSS in motion.css, zero
+  layout/asset changes
+
 ## Implemented (2026-08-15, round 4 — reference-style reactive About portrait)
 - About page hero portrait now mirrors lukebaffait.fr's hero treatment: the portrait frame tilts
   in 3D toward the cursor (spring-smoothed rotateX/rotateY, perspective 1000) while the inner

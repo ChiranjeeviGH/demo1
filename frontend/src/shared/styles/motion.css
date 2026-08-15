@@ -501,6 +501,50 @@ html {
   }
 }
 
+/* ---------- Landing-page warm color grade (from client PDF) ---------- */
+
+/* Hero: amber sunset melts into deep maroon at the bottom edge */
+.home-hero-block::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(66 28 16 / 18%) 0%, transparent 26%),
+    linear-gradient(180deg, transparent 52%, rgb(54 20 14 / 55%) 78%, rgb(21 9 8 / 92%) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Mission: deep maroon glow carrying the hero's warmth downward */
+.home-mission {
+  background:
+    radial-gradient(ellipse 95% 72% at 50% 0%, #2b1114 0%, #190b0d 44%, transparent 76%);
+}
+
+/* Profile spotlight: faint ember glow behind the portrait side */
+.profile-spotlight {
+  background:
+    radial-gradient(ellipse 46% 62% at 16% 34%, rgb(62 23 16 / 42%), transparent 70%);
+}
+
+/* Beyond Filmmaking: maroon bloom entering from the top-left */
+.beyond-filmmaking {
+  background:
+    radial-gradient(ellipse 58% 55% at 10% 0%, rgb(58 17 20 / 55%), transparent 72%);
+}
+
+/* Sangha CTA: matching maroon bloom from the left */
+.sangha-cta {
+  background:
+    radial-gradient(ellipse 52% 58% at 8% 18%, rgb(54 16 18 / 55%), transparent 72%);
+}
+
+/* Contact: subtle warmth at the top, settling into pure black */
+.contact-section {
+  background:
+    radial-gradient(ellipse 70% 42% at 50% 0%, rgb(42 13 15 / 55%), transparent 72%);
+}
+
 /* ---------- About hero: reference-style reactive portrait ---------- */
 .about-intro__portrait-wrap {
   position: relative;
