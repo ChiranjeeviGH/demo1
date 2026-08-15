@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { HOME_COPY, HOME_IMAGES } from '@/features/home/constants/home.data'
 import { Tag } from '@/shared/components/ui'
 import { fadeUp } from '@/shared/motion'
+import { SplitChars } from '@/shared/motion/SplitChars'
 
 export function ProfileSpotlight() {
   const { profile } = HOME_COPY
@@ -24,14 +25,16 @@ export function ProfileSpotlight() {
           />
         </motion.div>
         <div className="profile-spotlight__copy">
-          <motion.h2 className="profile-spotlight__name" {...fadeUp(0, 24, 0.75)}>
-            <span className="accent">{profile.firstName}</span>
-            <span className="profile-spotlight__lastname">{profile.lastName}</span>
-          </motion.h2>
-          <motion.p className="profile-spotlight__roles" {...fadeUp(0.1, 20, 0.7)}>
+          <h2 className="profile-spotlight__name">
+            <SplitChars text={profile.firstName} className="accent" />
+            <span className="profile-spotlight__lastname">
+              <SplitChars text={profile.lastName} delay={0.12} />
+            </span>
+          </h2>
+          <motion.p className="profile-spotlight__roles" {...fadeUp(0.15, 20, 0.7)}>
             {profile.roles}
           </motion.p>
-          <motion.div className="profile-spotlight__tags" {...fadeUp(0.2, 20, 0.7)}>
+          <motion.div className="profile-spotlight__tags" {...fadeUp(0.25, 20, 0.7)}>
             {profile.tags.map((tag) => (
               <Tag key={tag}>{tag}</Tag>
             ))}
@@ -40,7 +43,7 @@ export function ProfileSpotlight() {
             <motion.p
               key={paragraph}
               className="profile-spotlight__bio"
-              {...fadeUp(0.3 + index * 0.1, 20, 0.7)}
+              {...fadeUp(0.35 + index * 0.1, 20, 0.7)}
             >
               {paragraph}
             </motion.p>

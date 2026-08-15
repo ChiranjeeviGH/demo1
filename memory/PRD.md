@@ -27,7 +27,23 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
-## Implemented (2026-08-15)
+## Implemented (2026-08-15, round 2 — lukebaffait.fr-inspired motion package)
+- Cinematic preloader: black screen, "DAALI." logo revealed letter-by-letter (Bebas, red dot),
+  then red + black panels rise from the bottom and wipe upward to unveil the page (~2.9s total);
+  locks scroll during intro, unmounts after; IntroContext gates hero entrances until panels lift;
+  skipped entirely under prefers-reduced-motion
+- Page transitions: red-then-black panel wipe on every route change (cover 0.42s, reveal 0.55s,
+  red leads in / trails out), via useAnimationControls keyed on pathname; skipped under reduced motion
+- Kinetic split-letter headings (SplitChars component): every major heading animates char-by-char
+  through overflow masks (32ms stagger, 0.65s, cinematic ease) — SectionHeading (all usages),
+  home productions title, profile name, Sangha CTA, contact title lines, productions page h1,
+  about hero name, sangha hero/upcoming/cta headings. Word-level wrapping preserved for
+  responsive; accent/red coloring preserved via outer class spans + split-plain overrides.
+  Reveal is driven by a deterministic passive-scroll check (fires at 88% viewport) instead of
+  IntersectionObserver so instant scroll jumps can never leave text hidden
+- Fixed: IntroContext setter instability re-running preloader timers; missing imports after edits
+
+## Implemented (2026-08-15, round 1)
 - Page load: header fade + -10px settle (850ms); home/about hero image 0.85→1 opacity + 1.03→1 scale
   (1.5s) + subtle scroll parallax (56px over hero scroll distance)
 - Header: red underline indicators (scaleX 0→1, hover + active page); mobile menu link stagger (70ms steps)

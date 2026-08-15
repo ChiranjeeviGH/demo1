@@ -21,4 +21,4 @@ export const fadeSide = (x: number, delay = 0, duration = 0.8) =>
     transition: { duration, delay, ease: MOTION_EASE },
   }) as const
 
-export const MotionLink = motion(Link)
+export const MotionLink = motion.create(Link)

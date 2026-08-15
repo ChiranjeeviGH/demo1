@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { HOME_COPY, HOME_IMAGES, SANGHA_MOVIE_TICKER } from '@/features/home/constants/home.data'
 import { ROUTES } from '@/shared/constants/routes'
 import { fadeUp, MotionLink } from '@/shared/motion'
+import { SplitChars } from '@/shared/motion/SplitChars'
 
 function MovieTickerTrack() {
   return (
@@ -24,14 +25,15 @@ export function SanghaCta() {
   return (
     <section className="section sangha-cta" aria-labelledby="sangha-cta-heading">
       <div className="section__inner sangha-cta__content">
-        <motion.h2 id="sangha-cta-heading" {...fadeUp(0, 24, 0.75)}>
-          {sangha.titleBefore} <span className="accent">{sangha.titleAccent}</span>
-        </motion.h2>
-        <motion.p {...fadeUp(0.12, 18, 0.7)}>{sangha.body}</motion.p>
+        <h2 id="sangha-cta-heading">
+          <SplitChars text={sangha.titleBefore} />{' '}
+          <SplitChars text={sangha.titleAccent} className="accent" delay={0.12} />
+        </h2>
+        <motion.p {...fadeUp(0.2, 18, 0.7)}>{sangha.body}</motion.p>
         <MotionLink
           to={ROUTES.SANGHA}
           className="btn btn-primary"
-          {...fadeUp(0.24, 16, 0.7)}
+          {...fadeUp(0.32, 16, 0.7)}
           data-testid="sangha-cta-btn"
         >
           {sangha.cta} <span aria-hidden="true">→</span>

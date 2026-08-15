@@ -302,6 +302,119 @@ html {
     background-color 200ms var(--motion-ease);
 }
 
+/* ---------- Cinematic preloader ---------- */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader__logo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 11vw, 9rem);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--color-ink, #f2f0ea);
+  transition: opacity 150ms ease;
+}
+
+.preloader__char-mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.preloader__char {
+  display: inline-block;
+  will-change: transform;
+}
+
+.preloader__dot {
+  color: var(--color-accent);
+}
+
+.preloader__panel {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.preloader__panel--red {
+  background: var(--color-accent);
+  z-index: 2;
+}
+
+.preloader__panel--dark {
+  background: #0a0a0a;
+  z-index: 3;
+}
+
+/* ---------- Page transition panels ---------- */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9900;
+  pointer-events: none;
+}
+
+.page-transition__panel {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.page-transition__panel--red {
+  background: var(--color-accent);
+  z-index: 1;
+}
+
+.page-transition__panel--dark {
+  background: #0a0a0a;
+  z-index: 2;
+}
+
+/* ---------- Split-letter headings ---------- */
+.split-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.split-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.split-char {
+  display: inline-block;
+  will-change: transform;
+}
+
+.page-heading h1 .split-plain,
+.page-heading h1 .split-plain span {
+  color: var(--grey-light);
+}
+
+.upcoming h2 .split-plain,
+.upcoming h2 .split-plain span {
+  color: inherit;
+}
+
+.cta-block h2 .split-plain,
+.cta-block h2 .split-plain span {
+  color: inherit;
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .site-header {

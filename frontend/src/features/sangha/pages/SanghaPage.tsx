@@ -4,6 +4,8 @@ import '@/features/sangha/styles/sangha.css'
 import '@/features/sangha/styles/sangha.overrides.css'
 
 import { MOTION_EASE, fadeUp } from '@/shared/motion'
+import { useIntro } from '@/shared/motion/IntroContext'
+import { SplitChars } from '@/shared/motion/SplitChars'
 
 const stats = [
   { value: '850+', label: 'Volunteers' },
@@ -52,6 +54,7 @@ const galleryItems = [
 ]
 
 export function SanghaPage() {
+  const { introComplete } = useIntro()
   const [selectedEvent, setSelectedEvent] = useState<any>(null)
   const [registeredEvent, setRegisteredEvent] = useState<any>(null)
 
@@ -74,29 +77,34 @@ export function SanghaPage() {
           style={{ backgroundImage: "url('/media/sangha-hero.png')" }}
         >
           <div className="hero-inner">
-            <motion.h1
-              initial={{ opacity: 0, y: 26 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: MOTION_EASE }}
-            >
-              DAALI'S ABHIMANI{' '}
-              <span className="hero-accent" style={{ color: '#e4253f' }}>
-                SANGHA
-              </span>
-            </motion.h1>
+            <h1>
+              <SplitChars
+                text="DAALI'S ABHIMANI"
+                mode="load"
+                play={introComplete}
+                delay={0.4}
+              />{' '}
+              <SplitChars
+                text="SANGHA"
+                className="hero-accent"
+                mode="load"
+                play={introComplete}
+                delay={0.62}
+              />
+            </h1>
             <motion.p
               className="hero-caption"
               initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.38, ease: MOTION_EASE }}
+              animate={introComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+              transition={{ duration: 0.75, delay: 0.78, ease: MOTION_EASE }}
             >
               Stories don't end when the credits roll.
             </motion.p>
             <motion.p
               className="hero-subtext"
               initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.5, ease: MOTION_EASE }}
+              animate={introComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+              transition={{ duration: 0.75, delay: 0.9, ease: MOTION_EASE }}
             >
               Join us in creating meaningful civic impact through community service,
               environmental initiatives, education, and health care.
@@ -121,9 +129,10 @@ export function SanghaPage() {
         </section>
 
         <section className="upcoming">
-          <motion.h2 {...fadeUp(0, 22, 0.7)}>
-            UPCOMING <span>EVENTS</span>
-          </motion.h2>
+          <h2>
+            <SplitChars text="UPCOMING" className="split-plain" />{' '}
+            <SplitChars text="EVENTS" delay={0.14} />
+          </h2>
 
           <div className="event-list">
             {events.map((event, index) => (
@@ -161,12 +170,14 @@ export function SanghaPage() {
         </section>
 
         <section className="cta-block" aria-label="Sangha message">
-          <motion.h2 {...fadeUp(0, 24, 0.8)}>
-            CINEMA <span>INSPIRES.</span>
+          <h2>
+            <SplitChars text="CINEMA" className="split-plain" />{' '}
+            <SplitChars text="INSPIRES." delay={0.1} />
             <br />
-            ACTION CHANGES <span>LIVES.</span>
-          </motion.h2>
-          <motion.p {...fadeUp(0.12, 18, 0.75)}>
+            <SplitChars text="ACTION CHANGES" className="split-plain" delay={0.2} />{' '}
+            <SplitChars text="LIVES." delay={0.36} />
+          </h2>
+          <motion.p {...fadeUp(0.3, 18, 0.75)}>
             Daali's Abhimani Sangha believes that stories have the power to inspire change,
             but real change happens when people come together. Through health camps, environmental drives, education initiatives, and social service activities, we aim to build stronger communities across Karnataka.
           </motion.p>

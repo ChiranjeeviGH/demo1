@@ -3,8 +3,11 @@ import { motion } from 'framer-motion'
 
 import { PRODUCTIONS } from '@/features/productions/constants/productions.data'
 import { MOTION_EASE, VIEWPORT_ONCE } from '@/shared/motion'
+import { useIntro } from '@/shared/motion/IntroContext'
+import { SplitChars } from '@/shared/motion/SplitChars'
 
 export function ProductionsContainer() {
+  const { introComplete } = useIntro()
   const [playing, setPlaying] = useState<number | null>(null)
   const videoRef = useRef<HTMLVideoElement | null>(null)
 
@@ -13,7 +16,7 @@ export function ProductionsContainer() {
       try {
         videoRef.current.pause()
         videoRef.current.currentTime = 0
-      } catch (e) {
+      } catch {
         /* ignore */
       }
     }
@@ -22,17 +25,18 @@ export function ProductionsContainer() {
 
   return (
     <section className="productions-section">
-      <motion.div
-        className="page-heading"
-        id="home"
-        initial={{ opacity: 0, y: 22 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.15, ease: MOTION_EASE }}
-      >
+      <div className="page-heading" id="home">
         <h1>
-          <span>OUR</span> PRODUCTIONS
+          <SplitChars text="OUR" mode="load" play={introComplete} delay={0.4} />{' '}
+          <SplitChars
+            text="PRODUCTIONS"
+            className="split-plain"
+            mode="load"
+            play={introComplete}
+            delay={0.52}
+          />
         </h1>
-      </motion.div>
+      </div>
 
       <div className="productions-list">
         {PRODUCTIONS.map((item, index) => (

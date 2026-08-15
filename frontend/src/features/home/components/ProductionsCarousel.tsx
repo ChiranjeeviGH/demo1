@@ -1,11 +1,11 @@
 import { useCallback, useRef, useState, type CSSProperties, type PointerEvent } from 'react'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-import { HOME_PRODUCTIONS } from '@/features/home/constants/home.data'
 import { ROUTES } from '@/shared/constants/routes'
 import { useMediaQuery } from '@/shared/hooks'
-import { fadeUp } from '@/shared/motion'
+import { fadeUp, MotionLink } from '@/shared/motion'
+import { SplitChars } from '@/shared/motion/SplitChars'
+import { HOME_PRODUCTIONS } from '@/features/home/constants/home.data'
 
 function getCircularOffset(index: number, activeIndex: number, length: number) {
   let offset = index - activeIndex
@@ -73,18 +73,19 @@ export function ProductionsCarousel() {
   return (
     <section className="section home-productions" aria-labelledby="home-productions-heading">
       <div className="section__inner">
-        <motion.div className="home-productions__header" {...fadeUp(0, 24, 0.7)}>
+        <div className="home-productions__header">
           <h2 id="home-productions-heading" className="home-productions__title">
-            <span className="accent">Our</span> Productions
+            <SplitChars text="Our" className="accent" /> <SplitChars text="Productions" delay={0.08} />
           </h2>
-          <Link
+          <MotionLink
             to={ROUTES.PRODUCTIONS}
             className="btn btn-outline home-productions__view-all-btn"
+            {...fadeUp(0.2, 16, 0.6)}
             data-testid="productions-view-all-btn"
           >
             View All
-          </Link>
-        </motion.div>
+          </MotionLink>
+        </div>
 
         <motion.div className="productions-carousel-shell" {...fadeUp(0.12, 30, 0.85)}>
           <div

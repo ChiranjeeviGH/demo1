@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react'
-import { motion } from 'framer-motion'
 
 import { cn } from '@/shared/utils/cn'
-import { MOTION_EASE, VIEWPORT_ONCE } from '@/shared/motion'
+import { SplitChars } from '@/shared/motion/SplitChars'
 
 type SectionHeadingProps = {
   before?: string
@@ -13,25 +12,20 @@ type SectionHeadingProps = {
 
 export function SectionHeading({ before, accent, after, className }: SectionHeadingProps) {
   return (
-    <motion.h2
-      className={cn('section-heading', className)}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={VIEWPORT_ONCE}
-      transition={{ duration: 0.7, ease: MOTION_EASE }}
-    >
-      {before ? <span>{before} </span> : null}
-      <motion.span
-        className="accent"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={VIEWPORT_ONCE}
-        transition={{ duration: 0.6, delay: 0.12, ease: MOTION_EASE }}
-      >
-        {accent}
-      </motion.span>
-      {after ? <span> {after}</span> : null}
-    </motion.h2>
+    <h2 className={cn('section-heading', className)}>
+      {before ? (
+        <>
+          <SplitChars text={before} />{' '}
+        </>
+      ) : null}
+      <SplitChars text={accent} className="accent" delay={0.1} />
+      {after ? (
+        <>
+          {' '}
+          <SplitChars text={after} delay={0.18} />
+        </>
+      ) : null}
+    </h2>
   )
 }
 
