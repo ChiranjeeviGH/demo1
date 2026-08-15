@@ -27,6 +27,19 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
+## Implemented (2026-08-15, round 3 — orbital poster gallery)
+- Home "Our Productions" rebuilt as a scroll-driven 3D poster orbit inspired by lukebaffait.fr's
+  circle-gallery: the section is tall (~416vh) with a sticky full-viewport stage; 6 posters travel
+  an elliptical ring (translate3d x/z + rotateY tangent-facing, perspective 1500px) driven by
+  framer-motion useScroll; depth controls opacity (0.16-1), scale (0.8-1) and
+  brightness/saturate so the front poster is full-color and the backs fade to mono
+- Active film meta (status/title/year/genre) crossfades below the stage; prev/next arrows and
+  poster clicks smooth-scroll (via lenis scrollToY helper) to the matching snap point;
+  "Scroll to explore" hint pulses subtly
+- Fallback: original flat swipe carousel kept intact for ≤960px viewports and reduced-motion users
+- Fixed: `.home-productions` overflow:hidden silently broke the sticky pin — orbit variant now
+  uses overflow:clip (still no horizontal scrollbars)
+
 ## Implemented (2026-08-15, round 2 — lukebaffait.fr-inspired motion package)
 - Cinematic preloader: black screen, "DAALI." logo revealed letter-by-letter (Bebas, red dot),
   then red + black panels rise from the bottom and wipe upward to unveil the page (~2.9s total);

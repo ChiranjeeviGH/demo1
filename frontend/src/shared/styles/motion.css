@@ -415,6 +415,92 @@ html {
   color: inherit;
 }
 
+/* ---------- Home productions: 3D orbital poster gallery ---------- */
+.home-productions--orbit {
+  padding: 0;
+  overflow: clip;
+}
+
+.productions-orbit {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(96px, 13vh, 150px) 0 clamp(20px, 4vh, 44px);
+}
+
+.productions-orbit__header {
+  position: relative;
+  z-index: 120;
+}
+
+.productions-orbit__stage {
+  position: absolute;
+  inset: 0;
+  perspective: 1500px;
+  z-index: 1;
+}
+
+.orbit-poster {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: clamp(180px, 17vw, 255px);
+  aspect-ratio: 2 / 3;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #0e0d0c;
+  cursor: pointer;
+  will-change: transform, opacity, filter;
+}
+
+.orbit-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.productions-orbit__footer {
+  position: relative;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.productions-orbit__footer .productions-carousel__nav,
+.productions-orbit__footer .btn {
+  pointer-events: auto;
+}
+
+.productions-orbit__hint {
+  font-size: 0.6rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  animation: orbit-hint-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes orbit-hint-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .site-header {
@@ -424,6 +510,11 @@ html {
   .film-strip__track {
     transform: none !important;
     will-change: auto;
+  }
+
+  .productions-orbit__hint {
+    animation: none;
+    opacity: 0.6;
   }
 
   .home-hero-block .hero-media {
