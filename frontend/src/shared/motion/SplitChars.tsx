@@ -25,33 +25,21 @@ export function SplitChars({
   const rootRef = useRef<HTMLSpanElement>(null)
   const [inView, setInView] = useState(false)
 
-  // Deterministic reveal: a passive scroll check that fires once the
-  // heading nears the viewport (or was jumped past). Works with Lenis
-  // and never leaves text hidden behind an IntersectionObserver miss.
+  // Replay on every pass: chars rise when the heading enters the viewport
+  // and reset once it fully leaves, so scrolling up and down replays
+  // the transition each time.
   useEffect(() => {
-    if (mode !== 'view' || inView) return
+    if (mode !== 'view') return
     const el = rootRef.current
     if (!el) return
 
-    let raf = 0
-    const check = () => {
-      const rect = el.getBoundingClientRect()
-      if (rect.top < window.innerHeight * 0.88) {
-        setInView(true)
-      }
-    }
-    const onScroll = () => {
-      cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(check)
-    }
-
-    check()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      cancelAnimationFrame(raf)
-    }
-  }, [mode, inView])
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0, rootMargin: '0px 0px -10% 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [mode])
 
   const words = text.split(' ')
   let charIndex = 0

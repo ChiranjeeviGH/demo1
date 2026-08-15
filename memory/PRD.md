@@ -27,6 +27,12 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
+## Implemented (2026-08-15, round 7 — heading replays)
+- SplitChars view-mode headings now REPLAY their letter-by-letter transition on every scroll pass:
+  IntersectionObserver toggles inView both directions (chars reset when the heading fully leaves,
+  rise again on re-entry). Applies to all section headings site-wide. Load-gated hero headings
+  still replay per page visit via the panel transition
+
 ## Implemented (2026-08-15, round 6 — glow spread, ember motion, real forms, ring drag)
 - Warm ember grade extended to Productions (maroon ambience behind heading + mid-page ember) and
   Sangha (hero warm melt, stats/upcoming/cta/gallery blooms) — all additive CSS in motion.css
