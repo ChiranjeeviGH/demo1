@@ -6,11 +6,13 @@ import { useIntro } from '@/shared/motion/IntroContext'
 
 const LETTERS = ['D', 'A', 'A', 'L', 'I']
 
+// Theatrical ease: curtains hesitate, sweep open, settle
+const CURTAIN_EASE = [0.76, 0, 0.24, 1] as const
+
 export function Preloader() {
   const reduceMotion = useReducedMotion()
   const { setIntroComplete } = useIntro()
-  const [covered, setCovered] = useState(false)
-  const [leaving, setLeaving] = useState(false)
+  const [parting, setParting] = useState(false)
   const [gone, setGone] = useState(false)
 
   useEffect(() => {
@@ -23,15 +25,14 @@ export function Preloader() {
     document.documentElement.style.overflow = 'hidden'
 
     const timers = [
-      setTimeout(() => setCovered(true), 2000),
       setTimeout(() => {
-        setLeaving(true)
+        setParting(true)
         setIntroComplete()
-      }, 2150),
+      }, 1500),
       setTimeout(() => {
         setGone(true)
         document.documentElement.style.overflow = ''
-      }, 2950),
+      }, 2750),
     ]
 
     return () => {
@@ -43,12 +44,26 @@ export function Preloader() {
   if (gone) return null
 
   return (
-    <div
-      className="preloader"
-      style={{ background: covered ? 'transparent' : '#0a0a0a' }}
-      data-testid="preloader"
-    >
-      <div className="preloader__logo" style={{ opacity: covered ? 0 : 1 }} aria-hidden="true">
+    <div className="preloader" data-testid="preloader">
+      <motion.div
+        className="preloader__curtain preloader__curtain--left"
+        initial={false}
+        animate={parting ? { x: '-101%' } : { x: '0%' }}
+        transition={{ duration: 1.15, ease: CURTAIN_EASE }}
+      />
+      <motion.div
+        className="preloader__curtain preloader__curtain--right"
+        initial={false}
+        animate={parting ? { x: '101%' } : { x: '0%' }}
+        transition={{ duration: 1.15, ease: CURTAIN_EASE }}
+      />
+
+      <motion.div
+        className="preloader__logo"
+        aria-hidden="true"
+        animate={parting ? { opacity: 0, y: -18 } : { opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, ease: MOTION_EASE }}
+      >
         {LETTERS.map((char, index) => (
           <span key={index} className="preloader__char-mask">
             <motion.span
@@ -71,28 +86,7 @@ export function Preloader() {
             .
           </motion.span>
         </span>
-      </div>
-
-      <motion.div
-        className="preloader__panel preloader__panel--red"
-        initial={{ y: '100%' }}
-        animate={{ y: leaving ? '-100%' : '0%' }}
-        transition={
-          leaving
-            ? { duration: 0.7, delay: 0.09, ease: MOTION_EASE }
-            : { duration: 0.5, delay: 1.35, ease: [0.65, 0, 0.35, 1] }
-        }
-      />
-      <motion.div
-        className="preloader__panel preloader__panel--dark"
-        initial={{ y: '100%' }}
-        animate={{ y: leaving ? '-100%' : '0%' }}
-        transition={
-          leaving
-            ? { duration: 0.7, delay: 0, ease: MOTION_EASE }
-            : { duration: 0.5, delay: 1.47, ease: [0.65, 0, 0.35, 1] }
-        }
-      />
+      </motion.div>
     </div>
   )
 }

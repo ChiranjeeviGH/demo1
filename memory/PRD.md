@@ -27,6 +27,13 @@ scroll reveals and lenis smooth momentum scrolling.
     reduced-motion block (imported LAST after global.css)
   - `MotionConfig reducedMotion="user"` in providers.tsx
 
+## Implemented (2026-08-15, round 9 — theatre curtain preloader)
+- Preloader reworked into a village-drama curtain opening: two pleated maroon fabric panels
+  (repeating vertical pleat shading, red inner-edge glow, hem shadow) hold closed behind the
+  DAALI. logo, then part from the center with a theatrical cubic-bezier(0.76,0,0.24,1) sweep,
+  logo fading up as they open; hero entrance still syncs via IntroContext as the curtains part;
+  reduced-motion users skip it entirely
+
 ## Implemented (2026-08-15, round 8 — replay everywhere + WebGL depth portrait)
 - All scroll reveals now replay on every pass (framer whileInView once:false across fadeUp/
   fadeSide consumers, awards, productions cards, sangha stats/events/gallery, profile media,
