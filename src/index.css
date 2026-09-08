@@ -1,0 +1,88 @@
+:root {
+  --cream: #ffeee2;
+  --light-cream: #fff6ef;
+  --tan: #f6cfb0;
+  --dark-brown: #65250e;
+  --deep-brown: #39170d;
+  --orange: #e26d1d;
+  --orange-deep: #b06129;
+  --muted: #000000cc;
+  --ink: #262626;
+  --content-width: 1600px;
+  --page-gutter: clamp(24px, 8.333vw, 160px);
+  --radius: 24px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-accent: 'Newsreader', Georgia, serif;
+  --font-ui: 'Manrope', system-ui, sans-serif;
+  --font-pagination: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--light-cream);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+a {
+  font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+}
+
+.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

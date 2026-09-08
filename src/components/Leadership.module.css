@@ -1,0 +1,1046 @@
+/* =========================================================
+   LEADERSHIP
+   REFERENCE MATCH
+========================================================= */
+
+.section {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 1305px;
+
+  overflow: hidden;
+
+  padding: 235px 0 145px;
+
+  background: var(--cream);
+
+  color: var(--ink);
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.grid {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(
+    calc(100% - 350px),
+    1570px
+  );
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    657px
+    minmax(0, 1fr);
+
+  column-gap: 115px;
+
+  align-items: start;
+}
+
+
+/* =========================================================
+   FOUNDER PORTRAIT
+========================================================= */
+
+.portrait {
+  position: relative;
+
+  width: 657px;
+
+  height: 936px;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  border-radius: 34px;
+
+  border: 1px solid rgba(
+    170,
+    104,
+    54,
+    0.55
+  );
+
+  background: #c59b6c;
+}
+
+
+/* =========================================================
+   FOUNDER IMAGE
+========================================================= */
+
+.portrait img {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center top;
+}
+
+
+/* =========================================================
+   FOUNDER CAPTION
+========================================================= */
+
+.portrait figcaption {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 42px;
+
+  transform: translateX(-50%);
+
+  width: calc(100% - 128px);
+
+  min-height: 80px;
+
+  padding: 12px 25px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  border-radius: 50px;
+
+  background: rgba(
+    225,
+    225,
+    225,
+    0.68
+  );
+
+  backdrop-filter: blur(7px);
+
+  -webkit-backdrop-filter: blur(7px);
+
+  color: #211c19;
+}
+
+
+.portrait strong {
+  display: block;
+
+  font-family: var(--font-display);
+
+  font-size: 18px;
+
+  font-style: italic;
+
+  font-weight: 600;
+
+  line-height: 1.25;
+}
+
+
+.portrait span {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 13px;
+
+  line-height: 1.2;
+
+  color: rgba(
+    33,
+    28,
+    25,
+    0.8
+  );
+}
+
+
+/* =========================================================
+   RIGHT CONTENT
+========================================================= */
+
+.copy {
+  min-width: 0;
+
+  padding-top: 5px;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.copy h2 {
+  width: 100%;
+
+  max-width: 700px;
+
+  margin: 0;
+
+  color: var(--ink);
+
+  font-family: var(--font-display);
+
+  font-size: 58px;
+
+  font-weight: 500;
+
+  line-height: 1.02;
+
+  letter-spacing: -0.025em;
+}
+
+
+.copy h2 em {
+  color: var(--orange);
+
+  font-style: italic;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.body {
+  width: 100%;
+
+  max-width: 770px;
+
+  margin: 30px 0 25px;
+
+  color: var(--ink);
+
+  font-size: 17px;
+
+  font-weight: 400;
+
+  line-height: 1.48;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.copy > a {
+  display: inline-flex;
+
+  margin-top: 0;
+}
+
+
+/*
+   If your Button component does not have
+   a primary variant, this ensures the
+   reference orange button appearance.
+*/
+
+.copy > a {
+  background: var(--orange);
+
+  border-color: var(--orange);
+
+  color: #fff;
+
+  border-radius: 999px;
+}
+
+
+/* =========================================================
+   TEAM TITLE
+========================================================= */
+
+.teamHeading {
+  margin-top: 52px;
+
+  margin-bottom: 19px;
+
+  color: var(--ink);
+
+  font-size: 17px;
+
+  font-weight: 400;
+
+  line-height: 1.2;
+}
+
+
+/* =========================================================
+   TEAM GRID
+========================================================= */
+
+.team {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  column-gap: 28px;
+
+  row-gap: 27px;
+
+  width: 100%;
+
+  max-width: 760px;
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+/* =========================================================
+   TEAM MEMBER
+========================================================= */
+
+.member {
+  min-width: 0;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   TEAM IMAGE
+========================================================= */
+
+.memberImage {
+  width: 145px;
+
+  height: 155px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background: #ead7c8;
+}
+
+
+.memberImage img {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: top center;
+
+  filter: grayscale(100%);
+}
+
+
+/* =========================================================
+   TEAM NAME
+========================================================= */
+
+.team p {
+  margin:
+    11px
+    0
+    0;
+
+  color: var(--ink);
+
+  font-family: var(--font-display);
+
+  font-size: 14px;
+
+  font-style: italic;
+
+  font-weight: 600;
+
+  line-height: 1.25;
+}
+
+
+/* =========================================================
+   TEAM ROLE
+========================================================= */
+
+.team span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TOP DECORATION
+========================================================= */
+
+.patternTop {
+  position: absolute;
+
+  z-index: 1;
+
+  top: 112px;
+
+  left: calc(
+    50% - 785px
+  );
+
+  right: auto;
+
+  color: #e7b995;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT DECORATION
+========================================================= */
+
+.patternBottom {
+  position: absolute;
+
+  z-index: 1;
+
+  right: -15px;
+
+  bottom: 150px;
+
+  left: auto;
+
+  color: #e7b995;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   1700PX+
+========================================================= */
+
+@media (min-width: 1700px) {
+
+  .section {
+    min-height: 1305px;
+
+    padding-top: 235px;
+  }
+
+  .grid {
+    width: 1570px;
+
+    grid-template-columns:
+      657px
+      798px;
+
+    column-gap: 115px;
+  }
+
+  .portrait {
+    width: 657px;
+
+    height: 936px;
+  }
+
+  .copy h2 {
+    font-size: 58px;
+  }
+
+}
+
+
+/* =========================================================
+   1400 - 1699
+========================================================= */
+
+@media
+  (min-width: 1400px)
+  and (max-width: 1699px) {
+
+  .section {
+    min-height: 1150px;
+
+    padding:
+      190px
+      0
+      110px;
+  }
+
+  .grid {
+    width: calc(100% - 180px);
+
+    grid-template-columns:
+      minmax(500px, 0.82fr)
+      minmax(600px, 1fr);
+
+    column-gap: 75px;
+  }
+
+  .portrait {
+    width: 100%;
+
+    height: auto;
+
+    aspect-ratio: 657 / 936;
+  }
+
+  .copy h2 {
+    font-size: 52px;
+  }
+
+  .body {
+    max-width: 680px;
+
+    font-size: 16px;
+  }
+
+  .team {
+    max-width: 700px;
+
+    column-gap: 18px;
+  }
+
+  .memberImage {
+    width: 125px;
+
+    height: 135px;
+  }
+
+}
+
+
+/* =========================================================
+   1100 - 1399
+========================================================= */
+
+@media
+  (min-width: 1100px)
+  and (max-width: 1399px) {
+
+  .section {
+    min-height: 1000px;
+
+    padding:
+      130px
+      0
+      100px;
+  }
+
+  .grid {
+    width: calc(100% - 100px);
+
+    grid-template-columns:
+      minmax(400px, 0.8fr)
+      minmax(500px, 1fr);
+
+    column-gap: 55px;
+  }
+
+  .portrait {
+    width: 100%;
+
+    height: auto;
+
+    aspect-ratio: 657 / 936;
+  }
+
+  .copy h2 {
+    font-size: 45px;
+  }
+
+  .body {
+    font-size: 15px;
+
+    margin-top: 22px;
+  }
+
+  .team {
+    column-gap: 12px;
+
+    max-width: 650px;
+  }
+
+  .memberImage {
+    width: 105px;
+
+    height: 112px;
+
+    border-radius: 24px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media
+  (min-width: 701px)
+  and (max-width: 1099px) {
+
+  .section {
+    min-height: auto;
+
+    padding:
+      100px
+      35px
+      100px;
+  }
+
+  .grid {
+    width: 100%;
+
+    grid-template-columns:
+      minmax(300px, 0.8fr)
+      minmax(380px, 1fr);
+
+    column-gap: 35px;
+  }
+
+  .portrait {
+    width: 100%;
+
+    height: auto;
+
+    aspect-ratio: 657 / 936;
+  }
+
+  .copy h2 {
+    font-size: 40px;
+  }
+
+  .body {
+    font-size: 15px;
+  }
+
+  .team {
+    grid-template-columns:
+      repeat(4, 1fr);
+
+    column-gap: 5px;
+  }
+
+  .memberImage {
+    width: 85px;
+
+    height: 92px;
+
+    border-radius: 20px;
+  }
+
+  .team p {
+    font-size: 11px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .section {
+    min-height: auto;
+
+    padding:
+      75px
+      20px
+      80px;
+  }
+
+  .grid {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 45px;
+  }
+
+  .portrait {
+    width: 100%;
+
+    height: auto;
+
+    aspect-ratio: 657 / 936;
+
+    border-radius: 25px;
+  }
+
+  .portrait figcaption {
+    bottom: 25px;
+
+    width: calc(100% - 45px);
+  }
+
+  .copy {
+    width: 100%;
+  }
+
+  .copy h2 {
+    max-width: 100%;
+
+    font-size: 40px;
+
+    line-height: 1.05;
+  }
+
+  .body {
+    font-size: 15px;
+
+    line-height: 1.55;
+
+    margin:
+      20px
+      0
+      22px;
+  }
+
+  .teamHeading {
+    margin-top: 40px;
+  }
+
+  .team {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    column-gap: 12px;
+
+    row-gap: 30px;
+
+    max-width: 100%;
+  }
+
+  .memberImage {
+    width: 115px;
+
+    height: 120px;
+
+    border-radius: 23px;
+  }
+
+  .patternTop {
+    top: 30px;
+
+    left: 8%;
+  }
+
+  .patternBottom {
+    right: -80px;
+
+    bottom: 60px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .section {
+    padding:
+      60px
+      16px
+      70px;
+  }
+
+  .copy h2 {
+    font-size: 35px;
+  }
+
+  .memberImage {
+    width: 100px;
+
+    height: 105px;
+  }
+
+}
+
+
+
+/*
+
+
+/* =========================================================
+   FIGMA ORNAMENTS
+========================================================= */
+
+.ornamentTop,
+.ornamentBottomLeft,
+.ornamentRight {
+  position: absolute;
+
+  z-index: 4;
+
+  display: block;
+
+  height: auto;
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+
+/* =========================================================
+   1. TOP HORIZONTAL ORNAMENT
+========================================================= */
+
+/*
+   Figma:
+   Located above the founder portrait.
+*/
+
+.ornamentTop {
+  top: 140px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 320px;
+
+  height: auto;
+
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   2. BOTTOM-LEFT HORIZONTAL ORNAMENT
+========================================================= */
+
+/*
+   Figma:
+   Same horizontal artwork appears below
+   the founder portrait.
+*/
+
+.ornamentBottomLeft {
+  bottom: 110px;
+
+  left: 50%;
+
+  transform: translateX(-52%);
+
+  width: 300px;
+
+  height: auto;
+
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   3. RIGHT LATTICE ORNAMENT
+========================================================= */
+
+/*
+   Figma:
+   Large lattice is positioned to the right
+   of the second row of team members.
+*/
+
+.ornamentRight {
+  top: 760px;
+
+  right: 110px;
+
+  left: auto;
+
+  width: 180px;
+
+  height: auto;
+
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1700px) {
+
+  .ornamentTop {
+    top: 337px;
+
+    left: calc(50% - 785px);
+
+    width: 145px;
+  }
+
+
+  .ornamentBottomLeft {
+    top: 1005px;
+
+    left: calc(50% - 685px);
+
+    width: 145px;
+  }
+
+
+  .ornamentRight {
+    top: 895px;
+
+    left: calc(50% + 430px);
+
+    width: 150px;
+  }
+
+}
+
+
+/* =========================================================
+   1400 - 1699
+========================================================= */
+
+@media
+  (min-width: 1400px)
+  and (max-width: 1699px) {
+
+  .ornamentTop {
+    top: 300px;
+
+    left: 17%;
+
+    width: 125px;
+  }
+
+
+  .ornamentBottomLeft {
+    top: 890px;
+
+    left: 29%;
+
+    width: 125px;
+  }
+
+
+  .ornamentRight {
+    top: 790px;
+
+    right: 4%;
+
+    left: auto;
+
+    width: 120px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media
+  (min-width: 701px)
+  and (max-width: 1099px) {
+
+  .ornamentTop {
+    top: 250px;
+
+    left: 8%;
+
+    width: 110px;
+  }
+
+
+  .ornamentBottomLeft {
+    top: 760px;
+
+    left: 25%;
+
+    width: 105px;
+  }
+
+
+  .ornamentRight {
+    top: 700px;
+
+    right: 2%;
+
+    left: auto;
+
+    width: 100px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .ornamentTop {
+    top: 25px;
+
+    left: 8%;
+
+    width: 105px;
+  }
+
+
+  .ornamentBottomLeft {
+    top: auto;
+
+    bottom: 30px;
+
+    left: 8%;
+
+    width: 100px;
+  }
+
+
+  .ornamentRight {
+    top: auto;
+
+    right: -25px;
+
+    bottom: 120px;
+
+    left: auto;
+
+    width: 105px;
+  }
+
+}

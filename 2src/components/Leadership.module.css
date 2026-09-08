@@ -1,0 +1,135 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 1.5rem;
+}
+
+.pattern {
+  position: absolute;
+  top: 3rem;
+  right: -2rem;
+  color: var(--dark-brown);
+  pointer-events: none;
+}
+
+.grid {
+  display: grid;
+  gap: 4.5rem;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.portrait {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 2rem;
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 0.82;
+  object-fit: cover;
+  object-position: top;
+}
+
+.portrait figcaption {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  left: 1.1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 1.1rem;
+  background: rgba(61, 28, 14, 0.88);
+  color: #fff9f0;
+}
+
+.portrait strong,
+.portrait span {
+  display: block;
+}
+
+.portrait strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.portrait span {
+  margin-top: 0.15rem;
+  opacity: 0.72;
+  font-size: 0.82rem;
+}
+
+.copy h2 {
+  max-width: 14ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 3vw, 56px);
+  line-height: 1.2;
+  font-weight: 500;
+  line-height: 1.12;
+  color: var(--ink);
+}
+
+.copy h2 em {
+  color: var(--orange);
+  font-style: italic;
+}
+
+.body {
+  max-width: 38rem;
+  margin: 1.2rem 0 1.5rem;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.35rem 0.9rem;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team li {
+  text-align: center;
+}
+
+.team img {
+  width: 4.6rem;
+  height: 4.6rem;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+}
+
+.team p {
+  margin: 0.45rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.team span {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+@media (min-width: 700px) {
+  .team {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 980px) {
+  .grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 4.5rem;
+    align-items: start;
+  }
+}
