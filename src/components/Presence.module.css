@@ -1,530 +1,908 @@
 /* =========================================================
-   PRESENCE — KARNATAKA
-   Layout is isolated from global .section styles.
-   Desktop composition follows the supplied reference:
-   heading/description on the left, map elevated on the right,
-   district card below the heading.
+   PRESENCE SECTION
 ========================================================= */
 
 .section {
   position: relative;
-  overflow: hidden;
   width: 100%;
-  min-height: 930px;
+  min-height: 720px;
+  overflow: visible;
+
   padding: 0;
-  color: #fff;
-  background: linear-gradient(
-    to bottom,
-    var(--dark-brown) 0%,
-    var(--dark-brown) 62%,
-    var(--cream) 62%,
-    var(--cream) 100%
-  );
-}
 
-.pattern {
-  position: absolute;
-  left: 7.5%;
-  top: 5.5rem;
-  color: rgba(255, 245, 230, 0.13);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.inner {
-  position: relative;
-  z-index: 2;
-  width: min(1328px, calc(100% - 64px));
-  margin: 0 auto;
-  padding: 4.6rem 0 4rem;
-}
-
-.headingBlock {
-  width: calc(100% - 420px);
-  max-width: 860px;
-}
-
-.inner > .headingBlock > h2 {
-  margin: 0;
-  max-width: 900px;
-  font-family: var(--font-display);
-  font-size: clamp(42px, 3.1vw, 56px);
-  font-weight: 500;
-  line-height: 1.08;
-  letter-spacing: -0.025em;
-}
-
-.inner > .headingBlock > h2 em {
-  color: var(--orange);
-  font-style: italic;
-}
-
-.intro {
-  max-width: 780px;
-  margin: 1.2rem 0 3.8rem;
-  color: rgba(255, 255, 255, 0.78);
-  font-family: var(--font-ui);
-  font-size: 17px;
-  line-height: 1.5;
-}
-
-.layout {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 820px) minmax(420px, 1fr);
-  gap: 36px;
-  align-items: start;
-  width: 100%;
-}
-
-.card {
-  position: relative;
-  z-index: 2;
-  min-width: 0;
-  width: 100%;
-  min-height: 518px;
-  overflow: hidden;
-  border: 1px solid rgba(226, 109, 29, 0.72);
-  border-radius: 24px;
-  background: #fffaf6;
-  color: var(--ink);
-  box-shadow: 0 18px 36px rgba(62, 22, 9, 0.08);
-}
-
-.cardAsset {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1046 / 692;
-  object-fit: contain;
-  object-position: center;
-}
-
-.cardDynamicInner {
-  display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  width: 100%;
-  min-height: 518px;
-}
-
-.details {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  padding: 2.1rem 2rem 1.7rem;
-}
-
-.kicker {
-  color: #8d7669;
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.details h3 {
-  margin: 0.45rem 0 0.55rem;
-  color: var(--ink);
-  font-family: var(--font-display);
-  font-size: clamp(30px, 2.2vw, 42px);
-  font-weight: 500;
-  line-height: 1.05;
-}
-
-.description {
-  max-width: 30rem;
-  margin: 0 0 1.4rem;
-  color: rgba(38, 38, 38, 0.76);
-  font-size: 0.82rem;
-  line-height: 1.55;
-}
-
-.details::after {
-  content: '';
-  width: 100%;
-  height: 1px;
-  margin-bottom: 0.9rem;
-  order: 0;
-  background: rgba(226, 109, 29, 0.25);
-}
-
-.details > .kicker,
-.details > h3,
-.details > .description {
-  order: -1;
-}
-
-.details ul {
-  display: grid;
-  gap: 0.85rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.details li {
-  display: grid;
-  grid-template-columns: 2.3rem 1fr;
-  column-gap: 0.75rem;
-  align-items: center;
-}
-
-.details li svg {
-  grid-row: span 2;
-  display: grid;
-  place-items: center;
-  width: 2.3rem;
-  height: 2.3rem;
-  padding: 0.55rem;
-  border-radius: 50%;
-  background: #fff0e4;
-  color: var(--orange);
-}
-
-.details li span {
-  color: var(--ink);
-  font-size: 0.74rem;
-  line-height: 1.2;
-}
-
-.details li strong {
-  color: var(--orange);
-  font-family: var(--font-accent);
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.1;
-}
-
-.events {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  width: fit-content;
-  margin-top: auto;
-  padding-top: 1rem;
-  color: var(--orange);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.events span {
-  font-size: 1.2rem;
-  line-height: 1;
-}
-
-.photo {
-  min-width: 0;
-  min-height: 518px;
-  overflow: hidden;
-  border-radius: 0 24px 24px 0;
-  background: #eadfd5;
-}
-
-.photo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 518px;
-  object-fit: cover;
-  filter: sepia(0.18) saturate(0.68) contrast(0.92);
-  transition: opacity 0.35s var(--ease), transform 0.55s var(--ease);
-}
-
-.mapCard {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  min-width: 0;
-  margin-top: -15.1rem;
-}
-
-.mapAsset {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 777 / 1004;
-  object-fit: contain;
-  object-position: top center;
-}
-
-.hotspots {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-}
-
-.hotspot {
-  position: absolute;
-  width: 2.05rem;
-  height: 2.05rem;
-  padding: 0;
-  transform: translate(-50%, -50%);
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-}
-
-.hotspot::before {
-  content: '';
-  position: absolute;
-  inset: 0.35rem;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
-}
-
-.hotspot:hover::before,
-.hotspot:focus-visible::before {
-  border-color: rgba(226, 109, 29, 0.45);
-  background: rgba(226, 109, 29, 0.12);
-  transform: scale(1.15);
-}
-
-.hotspotActive::before {
-  border-color: rgba(226, 109, 29, 0.18);
-  background: rgba(226, 109, 29, 0.12);
-}
-
-.activeMarker {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  transform: translate(-50%, -155%);
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.markerDot {
-  position: relative;
-  width: 0.85rem;
-  height: 0.85rem;
-  flex: 0 0 auto;
-  border-radius: 50% 50% 50% 0;
-  background: var(--orange);
-  box-shadow: 0 0 0 5px rgba(226, 109, 29, 0.12);
-  transform: rotate(-45deg);
-}
-
-.markerDot::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0.25rem;
-  height: 0.25rem;
-  border-radius: 50%;
-  background: #fff;
-  transform: translate(-50%, -50%);
-}
-
-.markerLabel {
-  padding: 0.55rem 0.8rem;
-  border: 1px solid rgba(75, 40, 24, 0.08);
-  border-radius: 999px;
-  background: #fffaf6;
-  color: var(--ink);
-  box-shadow: 0 8px 22px rgba(62, 22, 9, 0.15);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-@media (min-width: 1440px) {
-  .section {
-    min-height: 930px;
-  }
-
-  .inner {
-    width: min(1328px, calc(100% - 96px));
-    padding-top: 4.4rem;
-  }
-
-  .headingBlock {
-    width: 820px;
-  }
-
-  .intro {
-    margin-bottom: 3.7rem;
-  }
-
-  .layout {
-    grid-template-columns: 820px 1fr;
-    gap: 36px;
-  }
-
-  .mapCard {
-    margin-top: -15.15rem;
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1439px) {
-  .section {
-    min-height: 880px;
-  }
-
-  .inner {
-    width: min(1180px, calc(100% - 64px));
-    padding-top: 4rem;
-  }
-
-  .headingBlock {
-    width: 72%;
-  }
-
-  .inner > .headingBlock > h2 {
-    font-size: 48px;
-  }
-
-  .intro {
-    max-width: 720px;
-    margin-bottom: 3.2rem;
-    font-size: 16px;
-  }
-
-  .layout {
-    grid-template-columns: minmax(0, 1.46fr) minmax(330px, 1fr);
-    gap: 28px;
-  }
-
-  .mapCard {
-    margin-top: -12rem;
-  }
-}
-
-@media (min-width: 701px) and (max-width: 1199px) {
-  .section {
-    min-height: 900px;
-    background: linear-gradient(
+  background:
+    linear-gradient(
       to bottom,
-      var(--dark-brown) 0%,
+      var(--dark-brown) 0,
       var(--dark-brown) 58%,
       var(--cream) 58%,
       var(--cream) 100%
     );
+
+  color: var(--ink);
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.inner {
+  position: relative;
+  z-index: 2;
+
+  width: min(1755px, calc(100% - 120px));
+
+  margin: 0 auto;
+
+  padding-top: 82px;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.inner > h2 {
+  width: 760px;
+
+  margin: 0;
+
+  color: #fff;
+
+  font-family: var(--font-display);
+
+  font-size: 43px;
+
+  font-weight: 500;
+
+  line-height: 1.08;
+
+  letter-spacing: -0.025em;
+}
+
+.inner > h2 em {
+  color: var(--orange);
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+  width: 620px;
+
+  margin: 16px 0 36px;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   MAIN TWO-COLUMN AREA
+========================================================= */
+
+.layout {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.46fr)
+    minmax(0, 1fr);
+
+  gap: 44px;
+
+  align-items: start;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   DISTRICT CARD
+========================================================= */
+
+.card {
+  position: relative;
+
+  width: 100%;
+
+  height: 320px;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  border-radius: 26px;
+
+  background: #fff9f4;
+
+  border: 1px solid rgba(225, 111, 38, 0.58);
+
+  box-shadow:
+    0 18px 32px rgba(67, 27, 12, 0.10);
+
+  color: var(--ink);
+}
+
+
+/* =========================================================
+   CARD INTERNAL LAYOUT
+========================================================= */
+
+.cardDynamicInner {
+  display: grid;
+
+  grid-template-columns: 42% 58%;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.details {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+
+  padding: 18px 22px 14px;
+
+  background: #fff9f4;
+}
+
+
+.kicker {
+  display: block;
+
+  margin: 0 0 5px;
+
+  color: #8d7a6e;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.11em;
+
+  text-transform: uppercase;
+}
+
+
+.details h3 {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-family: var(--font-display);
+
+  font-size: 28px;
+
+  font-weight: 500;
+
+  line-height: 1.05;
+}
+
+
+.description {
+  max-width: 320px;
+
+  margin: 10px 0 13px;
+
+  color: #4e4844;
+
+  font-size: 9px;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   STATS LIST
+========================================================= */
+
+.details > ul {
+  margin: 0;
+
+  padding: 10px 0 0;
+
+  border-top: 1px dashed rgba(225, 111, 38, 0.35);
+
+  list-style: none;
+}
+
+
+.details > ul li {
+  display: grid;
+
+  grid-template-columns: 32px 1fr;
+
+  grid-template-rows: auto auto;
+
+  column-gap: 11px;
+
+  align-items: center;
+
+  min-height: 54px;
+
+  margin: 0;
+}
+
+
+.details > ul li svg {
+  grid-row: 1 / 3;
+
+  width: 32px;
+  height: 32px;
+
+  padding: 7px;
+
+  box-sizing: border-box;
+
+  border-radius: 50%;
+
+  background: #fff0e4;
+
+  color: var(--orange);
+
+  stroke-width: 1.7;
+}
+
+
+.details > ul li span {
+  align-self: end;
+
+  color: #3c3734;
+
+  font-size: 9px;
+
+  line-height: 1.1;
+}
+
+
+.details > ul li strong {
+  align-self: start;
+
+  color: var(--orange);
+
+  font-family: var(--font-display);
+
+  font-size: 20px;
+
+  font-weight: 500;
+
+  line-height: 1.05;
+}
+
+
+/* =========================================================
+   EVENTS
+========================================================= */
+
+.events {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: auto;
+
+  padding-right: 13px;
+
+  color: var(--orange);
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  text-decoration: none;
+}
+
+
+.events span {
+  font-size: 18px;
+
+  line-height: 1;
+
+  transition: transform 0.25s ease;
+}
+
+
+.events:hover span {
+  transform: translateX(4px);
+}
+
+
+/* =========================================================
+   DISTRICT IMAGE
+========================================================= */
+
+.photo {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border-radius:
+    0
+    26px
+    26px
+    0;
+}
+
+
+.photo img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  filter:
+    grayscale(100%)
+    sepia(18%)
+    contrast(0.88);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.5s ease;
+}
+
+
+.photo img:hover {
+  transform: scale(1.015);
+}
+
+
+/* =========================================================
+   MASTER ASSET
+========================================================= */
+
+.cardAsset {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 26px;
+}
+
+
+/* =========================================================
+   MAP CARD
+========================================================= */
+
+.mapCard {
+  position: relative;
+
+  width: 100%;
+
+  height: 470px;
+
+  margin-top: -160px;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  border-radius: 30px;
+
+  background: #fffaf7;
+
+  border: 1px solid rgba(225, 111, 38, 0.48);
+
+  box-shadow:
+    0 20px 35px rgba(67, 27, 12, 0.11);
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.mapAsset {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  padding: 17px 20px;
+}
+
+
+/* =========================================================
+   HOTSPOTS
+========================================================= */
+
+.hotspots {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+
+.hotspot {
+  position: absolute;
+
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  transform: translate(-50%, -50%);
+
+  cursor: pointer;
+
+  pointer-events: auto;
+}
+
+
+.hotspotActive {
+  z-index: 10;
+}
+
+
+/* =========================================================
+   ORANGE GLOW
+========================================================= */
+
+.hotspotActive::before {
+  content: '';
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 52px;
+  height: 52px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 137, 0, 0.98) 0%,
+      rgba(255, 111, 0, 0.75) 38%,
+      rgba(255, 111, 0, 0) 72%
+    );
+
+  filter: blur(2px);
+}
+
+
+/* =========================================================
+   MARKER
+========================================================= */
+
+.activeMarker {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transform: translate(-50%, -100%);
+
+  z-index: 20;
+}
+
+
+.markerLabel {
+  position: relative;
+
+  display: block;
+
+  padding: 7px 11px;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  color: #3b3531;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.13);
+}
+
+
+.markerDot {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: -12px;
+
+  width: 8px;
+  height: 8px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: var(--orange);
+
+  border: 2px solid #fff;
+
+  box-sizing: content-box;
+}
+
+
+/* =========================================================
+   DECORATIVE PATTERN
+========================================================= */
+
+.pattern {
+  position: absolute;
+
+  z-index: 1;
+
+  left: 7%;
+
+  bottom: 205px;
+
+  opacity: 0.09;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP — MATCH FIGMA
+========================================================= */
+
+@media (min-width: 1500px) {
+
+  .section {
+    min-height: 720px;
+
+    background:
+      linear-gradient(
+        to bottom,
+        var(--dark-brown) 0,
+        var(--dark-brown) 58%,
+        var(--cream) 58%,
+        var(--cream) 100%
+      );
   }
+
 
   .inner {
-    width: calc(100% - 48px);
-    padding-top: 4.5rem;
+    width: min(
+      1755px,
+      calc(100% - 120px)
+    );
+
+    padding-top: 82px;
   }
 
-  .headingBlock {
-    width: 75%;
+
+  .inner > h2 {
+    font-size: 43px;
   }
 
-  .inner > .headingBlock > h2 {
-    font-size: 44px;
-  }
-
-  .intro {
-    margin-bottom: 3rem;
-    font-size: 16px;
-  }
 
   .layout {
-    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.85fr);
-    gap: 20px;
+    grid-template-columns:
+      minmax(0, 1.46fr)
+      minmax(0, 1fr);
+
+    gap: 44px;
   }
 
-  .mapCard {
-    margin-top: -8rem;
+
+  .card {
+    height: 320px;
   }
+
+
+  .mapCard {
+    height: 470px;
+
+    margin-top: -160px;
+  }
+
+}
+
+
+/* =========================================================
+   1200 — 1499
+========================================================= */
+
+@media
+  (min-width: 1200px)
+  and (max-width: 1499px) {
+
+  .inner {
+    width: calc(100% - 90px);
+
+    padding-top: 70px;
+  }
+
+
+  .inner > h2 {
+    font-size: 40px;
+  }
+
+
+  .intro {
+    margin-bottom: 32px;
+  }
+
+
+  .layout {
+    grid-template-columns:
+      minmax(0, 1.42fr)
+      minmax(330px, 0.78fr);
+
+    gap: 30px;
+  }
+
+
+  .card {
+    height: 300px;
+  }
+
+
+  .mapCard {
+    height: 430px;
+
+    margin-top: -135px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media
+  (min-width: 701px)
+  and (max-width: 1199px) {
+
+  .section {
+    min-height: 800px;
+  }
+
+
+  .inner {
+    width: calc(100% - 60px);
+
+    padding-top: 60px;
+  }
+
+
+  .inner > h2 {
+    width: 600px;
+
+    font-size: 38px;
+  }
+
+
+  .intro {
+    width: 500px;
+
+    font-size: 14px;
+
+    margin-bottom: 28px;
+  }
+
+
+  .layout {
+    grid-template-columns:
+      minmax(0, 1.35fr)
+      300px;
+
+    gap: 22px;
+  }
+
+
+  .card {
+    height: 290px;
+  }
+
+
+  .mapCard {
+    width: 300px;
+
+    height: 390px;
+
+    margin-top: -100px;
+  }
+
+
+  .details {
+    padding: 16px;
+  }
+
+
+  .details h3 {
+    font-size: 24px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .section {
+    min-height: auto;
+
+    padding:
+      60px 20px 70px;
+
+    background: var(--dark-brown);
+  }
+
+
+  .inner {
+    width: 100%;
+
+    padding-top: 0;
+  }
+
+
+  .inner > h2 {
+    width: 100%;
+
+    font-size: 34px;
+  }
+
+
+  .intro {
+    width: 100%;
+
+    margin:
+      12px 0 28px;
+
+    font-size: 14px;
+  }
+
+
+  .layout {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+
+  .card {
+    height: auto;
+
+    min-height: 470px;
+  }
+
 
   .cardDynamicInner {
     grid-template-columns: 1fr;
   }
 
+
+  .details {
+    min-height: 285px;
+  }
+
+
   .photo {
-    min-height: 300px;
-    border-radius: 0 0 24px 24px;
+    height: 230px;
+
+    border-radius:
+      0
+      0
+      26px
+      26px;
   }
 
-  .photo img {
-    min-height: 300px;
-  }
-}
 
-@media (max-width: 700px) {
-  .section {
-    min-height: 0;
-    background: var(--dark-brown);
+  .mapCard {
+    width: 100%;
+
+    height: 480px;
+
+    margin-top: 0;
   }
+
+
+  .mapAsset {
+    padding: 20px;
+  }
+
 
   .pattern {
     display: none;
   }
 
-  .inner {
-    width: calc(100% - 32px);
-    padding: 4.5rem 0 4rem;
-  }
-
-  .headingBlock {
-    width: 100%;
-  }
-
-  .inner > .headingBlock > h2 {
-    font-size: 38px;
-    line-height: 1.08;
-  }
-
-  .intro {
-    margin: 0.9rem 0 2rem;
-    font-size: 15px;
-    line-height: 1.55;
-  }
-
-  .layout {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .mapCard {
-    order: 1;
-    margin-top: 0;
-  }
-
-  .card {
-    order: 2;
-    min-height: 0;
-  }
-
-  .cardDynamicInner {
-    grid-template-columns: 1fr;
-    min-height: 0;
-  }
-
-  .details {
-    padding: 1.5rem;
-  }
-
-  .photo {
-    min-height: 260px;
-    border-radius: 0 0 24px 24px;
-  }
-
-  .photo img {
-    min-height: 260px;
-  }
 }
 
-@media (max-width: 480px) {
-  .inner {
-    width: calc(100% - 24px);
-    padding-top: 4rem;
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .section {
+    padding-left: 15px;
+
+    padding-right: 15px;
   }
 
-  .inner > .headingBlock > h2 {
-    font-size: 34px;
+
+  .inner > h2 {
+    font-size: 31px;
   }
 
-  .intro {
-    font-size: 14px;
+
+  .card {
+    min-height: 450px;
   }
+
+
+  .mapCard {
+    height: 450px;
+  }
+
 }

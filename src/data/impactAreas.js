@@ -7,7 +7,7 @@ import socialWelfare from '../assets/social-welfare.jpg'
 export const impactAreas = [
   {
     id: '01',
-    title: 'Agriculture Transformation',
+    title: 'Agriculture & Environment',
     description:
       'Pragathi Bandhu farmer groups, soil and water practice, and credit that keeps small holdings viable.',
     image: agriculture,
@@ -23,7 +23,7 @@ export const impactAreas = [
   },
   {
     id: '03',
-    title: 'Healthcare Access',
+    title: 'Healthcare & Insurance',
     description:
       'Village camps, de-addiction, and insurance so a hospital bill does not undo a lifetime of savings.',
     image: healthcare,
@@ -31,18 +31,18 @@ export const impactAreas = [
   },
   {
     id: '04',
-    title: 'Education & Skill Development',
-    description:
-      'Sujnananidhi scholarships and livelihood skills that keep rural youth in learning and work.',
-    image: education,
-    size: 'regular',
-  },
-  {
-    id: '05',
     title: 'Social Welfare',
     description:
       'Housing, sanitation, and village infrastructure that make everyday life dignified.',
     image: socialWelfare,
-    size: 'tall',
+    size: 'regular',
+  },
+  {
+    id: '05',
+    title: 'Education & Skills',
+    description:
+      'Sujnananidhi scholarships and livelihood skills that keep rural youth in learning and work.',
+    image: education,
+    size: 'wide',
   },
 ]
