@@ -1,10 +1,11 @@
 .section {
-  padding: 5rem 1.5rem 6rem;
+  padding: 7rem 0 9rem;
   background: #f4e4d8;
 }
 
 .inner {
-  max-width: 1460px;
+  width: min(1600px, calc(100vw - 320px));
+  max-width: none;
   margin: 0 auto;
 }
 
@@ -16,15 +17,16 @@
 }
 
 .headingWrap {
-  max-width: 920px;
+  max-width: 840px;
 }
 
 .header h2 {
+  max-width: 18ch;
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(44px, 3.1vw, 72px);
-  line-height: 0.96;
-  letter-spacing: -0.04em;
+  font-size: clamp(40px, 3vw, 56px);
+  line-height: 1.12;
+  letter-spacing: 0;
   font-weight: 500;
   color: var(--ink);
 }
@@ -70,47 +72,53 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 1.4rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: 200px 200px;
+  gap: 1.5rem;
+  margin-top: 4rem;
 }
 
 .card {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  min-height: 260px;
-  border: 2px solid rgba(214, 128, 82, 0.9);
-  border-radius: 28px;
-  background: #f8efe8;
-  box-shadow: 0 10px 20px rgba(74, 45, 18, 0.04);
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .card img {
-  position: absolute;
-  inset: 0;
+  display: block;
+  order: 3;
   width: 100%;
-  height: 100%;
+  height: 180px;
   object-fit: cover;
-  filter: saturate(0.8) contrast(1) brightness(0.92);
+  filter: saturate(0.88) contrast(1) brightness(0.96);
 }
 
-.card:before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(180deg, rgba(28, 16, 8, 0.06), rgba(28, 16, 8, 0.2));
+.cardAsset {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.card .cardAsset {
+  width: 100%;
+  height: 100%;
+  order: initial;
+  filter: none;
+  object-fit: fill;
 }
 
 .cardTop {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  right: 1rem;
-  z-index: 2;
+  order: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1.2rem 1.2rem 0;
 }
 
 .badge {
@@ -139,56 +147,67 @@
 }
 
 .meta {
-  position: absolute;
-  left: 1.2rem;
-  right: 1.2rem;
-  bottom: 1.25rem;
-  z-index: 2;
+  order: 2;
+  min-height: 82px;
+  padding: 0.8rem 1.2rem 1rem;
 }
 
 .meta h3 {
   margin: 0;
-  color: rgba(28, 16, 8, 0.92);
+  color: rgba(28, 16, 8, 0.96);
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2vw, 2.3rem);
+  font-size: clamp(1.35rem, 1.7vw, 2rem);
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
 
 .tall {
-  grid-column: 1 / 4;
-  min-height: 530px;
+  grid-column: 1;
+  grid-row: 1 / span 2;
 }
 
 .wide {
-  grid-column: span 3;
+  grid-column: span 1;
 }
 
 .regular {
-  grid-column: span 3;
+  grid-column: span 1;
 }
 
 .card:nth-child(1) {
-  grid-column: 1 / 4;
+  grid-column: 1;
   grid-row: 1 / span 2;
 }
 
 .card:nth-child(2) {
-  grid-column: 4 / 7;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .card:nth-child(3) {
-  grid-column: 7 / 10;
+  grid-column: 3;
+  grid-row: 1;
 }
 
 .card:nth-child(4) {
-  grid-column: 10 / 13;
+  grid-column: 4;
+  grid-row: 1;
 }
 
 .card:nth-child(5) {
-  grid-column: 4 / 13;
-  min-height: 210px;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.card:nth-child(6) {
+  grid-column: 3 / 5;
+  grid-row: 2;
+  display: block;
+}
+
+.card:nth-child(1) img {
+  height: 100%;
 }
 
 @media (max-width: 1100px) {
@@ -203,20 +222,38 @@
 
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+  }
+
+  .inner {
+    width: 100%;
   }
 
   .card:nth-child(1),
   .card:nth-child(2),
   .card:nth-child(3),
   .card:nth-child(4),
-  .card:nth-child(5) {
+  .card:nth-child(5),
+  .card:nth-child(6) {
     grid-column: auto;
     grid-row: auto;
     min-height: 320px;
+    display: flex;
   }
 
   .card:nth-child(1) {
     min-height: 420px;
+  }
+
+  .card:nth-child(1) img {
+    height: 100%;
+  }
+
+  .card:nth-child(6) img {
+    width: 100%;
+    height: 180px;
+    grid-column: auto;
+    grid-row: auto;
   }
 }
 
@@ -241,7 +278,8 @@
 
   .card,
   .card:nth-child(1),
-  .card:nth-child(5) {
+  .card:nth-child(5),
+  .card:nth-child(6) {
     min-height: 300px;
   }
 

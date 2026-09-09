@@ -1,4 +1,3 @@
-import { ArrowUpRight } from 'lucide-react'
 import { impactAreas } from '../data/impactAreas'
 import { useReveal } from '../hooks/useReveal'
 import styles from './ImpactAreas.module.css'
@@ -32,18 +31,7 @@ export default function ImpactAreas() {
         <div className={styles.grid}>
           {impactAreas.map((area) => (
             <article key={area.id} className={`${styles.card} ${styles[area.size]}`}>
-              <div className={styles.cardTop}>
-                <span className={styles.badge}>40+ Years of Impact</span>
-                <span className={styles.iconWrap} aria-hidden="true">
-                  <ArrowUpRight size={16} />
-                </span>
-              </div>
-
-              <img src={area.image} alt={area.title} loading="lazy" />
-
-              <div className={styles.meta}>
-                <h3>{area.title}</h3>
-              </div>
+              <img className={styles.cardAsset} src={area.image} alt={area.title} loading="lazy" />
             </article>
           ))}
         </div>

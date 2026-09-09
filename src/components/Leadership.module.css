@@ -8,11 +8,11 @@
 
   width: 100%;
 
-  min-height: 1305px;
+  min-height: 0;
 
   overflow: hidden;
 
-  padding: 235px 0 145px;
+  padding: 0;
 
   background: var(--cream);
 
@@ -442,6 +442,55 @@
   pointer-events: none;
 }
 
+.ornamentTop,
+.ornamentBottomLeft,
+.ornamentRight {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.ornamentTop {
+  top: 112px;
+  left: calc(50% - 785px);
+  width: 220px;
+}
+
+.ornamentBottomLeft {
+  bottom: 95px;
+  left: calc(50% - 785px);
+  width: 220px;
+}
+
+.ornamentRight {
+  right: 0;
+  bottom: 150px;
+  width: 160px;
+}
+
+.section > .ornamentTop,
+.section > .ornamentBottomLeft,
+.section > .ornamentRight {
+  display: none;
+}
+
+.figmaExport {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.leadershipCta {
+  position: absolute;
+  top: 36.9%;
+  left: 49.2%;
+  width: 13%;
+  height: 3.9%;
+  z-index: 2;
+  border-radius: 999px;
+}
+
 
 /* =========================================================
    1700PX+
@@ -764,6 +813,11 @@
     bottom: 60px;
   }
 
+}
+
+.section:has(.figmaExport) {
+  min-height: 0;
+  padding: 0;
 }
 
 

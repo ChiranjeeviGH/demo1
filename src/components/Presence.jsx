@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useReveal } from '../hooks/useReveal'
 import DecorativePattern from './DecorativePattern'
 import DistrictInfoPanel from './DistrictInfoPanel'
@@ -8,16 +7,7 @@ import styles from './Presence.module.css'
 
 export default function Presence() {
   const { ref, visible } = useReveal()
-  const [selectedId, setSelectedId] = useState('mysuru')
-  const selectedDistrict = districtList.find((district) => district.id === selectedId) ?? districtList[0]
-
-  const handleHover = (districtId) => {
-    setSelectedId(districtId)
-  }
-
-  const handleSelect = (districtId) => {
-    setSelectedId(districtId)
-  }
+  const selectedDistrict = districtList.find((district) => district.id === 'mysuru') ?? districtList[0]
 
   return (
     <section id="presence" className={styles.section} ref={ref}>
@@ -34,16 +24,14 @@ export default function Presence() {
         </div>
 
         <div className={styles.layout}>
-          <article className={styles.card} aria-live="polite">
+          <article
+            className={`${styles.card} ${styles.assetCardWrapper}`}
+            aria-live="polite"
+          >
             <DistrictInfoPanel district={selectedDistrict} />
           </article>
 
-          <DistrictMap
-            districts={districtList}
-            selectedId={selectedId}
-            onHover={handleHover}
-            onSelect={handleSelect}
-          />
+          <DistrictMap />
         </div>
       </div>
     </section>

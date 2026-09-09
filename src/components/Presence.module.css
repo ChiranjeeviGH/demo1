@@ -43,7 +43,7 @@
    SECTION HEADING
 ========================================================= */
 
-.inner > h2 {
+.headingBlock h2 {
   width: 760px;
 
   margin: 0;
@@ -61,7 +61,7 @@
   letter-spacing: -0.025em;
 }
 
-.inner > h2 em {
+.headingBlock h2 em {
   color: var(--orange);
 
   font-style: italic;
@@ -94,11 +94,9 @@
 
   display: grid;
 
-  grid-template-columns:
-    minmax(0, 1.46fr)
-    minmax(0, 1fr);
+  grid-template-columns: minmax(0, 657px) minmax(0, 450px);
 
-  gap: 44px;
+  gap: 28px;
 
   align-items: start;
 
@@ -115,7 +113,7 @@
 
   width: 100%;
 
-  height: 320px;
+  height: 416px;
 
   margin: 0;
 
@@ -131,6 +129,15 @@
     0 18px 32px rgba(67, 27, 12, 0.10);
 
   color: var(--ink);
+}
+
+
+.assetCardWrapper {
+  height: auto;
+  aspect-ratio: 1046 / 692;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 
@@ -322,15 +329,7 @@
 
 .events span {
   font-size: 18px;
-
   line-height: 1;
-
-  transition: transform 0.25s ease;
-}
-
-
-.events:hover span {
-  transform: translateX(4px);
 }
 
 
@@ -369,14 +368,6 @@
     sepia(18%)
     contrast(0.88);
 
-  transition:
-    opacity 0.35s ease,
-    transform 0.5s ease;
-}
-
-
-.photo img:hover {
-  transform: scale(1.015);
 }
 
 
@@ -392,7 +383,7 @@
 
   object-fit: cover;
 
-  border-radius: 26px;
+  border-radius: 0;
 }
 
 
@@ -405,9 +396,9 @@
 
   width: 100%;
 
-  height: 470px;
+  height: 605px;
 
-  margin-top: -160px;
+  margin-top: -189px;
 
   overflow: hidden;
 
@@ -624,38 +615,33 @@
 
 
   .inner {
-    width: min(
-      1755px,
-      calc(100% - 120px)
-    );
+    width: min(1135px, calc(100% - 40px));
 
     padding-top: 82px;
   }
 
 
-  .inner > h2 {
+  .headingBlock h2 {
     font-size: 43px;
   }
 
 
   .layout {
-    grid-template-columns:
-      minmax(0, 1.46fr)
-      minmax(0, 1fr);
+    grid-template-columns: minmax(0, 657px) minmax(0, 450px);
 
-    gap: 44px;
+    gap: 28px;
   }
 
 
   .card {
-    height: 320px;
+    height: 416px;
   }
 
 
   .mapCard {
-    height: 470px;
+    height: 605px;
 
-    margin-top: -160px;
+    margin-top: -189px;
   }
 
 }
@@ -670,13 +656,13 @@
   and (max-width: 1499px) {
 
   .inner {
-    width: calc(100% - 90px);
+    width: min(1135px, calc(100% - 40px));
 
-    padding-top: 70px;
+    padding-top: 82px;
   }
 
 
-  .inner > h2 {
+  .headingBlock h2 {
     font-size: 40px;
   }
 
@@ -687,23 +673,21 @@
 
 
   .layout {
-    grid-template-columns:
-      minmax(0, 1.42fr)
-      minmax(330px, 0.78fr);
+    grid-template-columns: minmax(0, 657px) minmax(0, 450px);
 
-    gap: 30px;
+    gap: 28px;
   }
 
 
   .card {
-    height: 300px;
+    height: 416px;
   }
 
 
   .mapCard {
-    height: 430px;
+    height: 605px;
 
-    margin-top: -135px;
+    margin-top: -189px;
   }
 
 }
@@ -729,7 +713,7 @@
   }
 
 
-  .inner > h2 {
+  .headingBlock h2 {
     width: 600px;
 
     font-size: 38px;
@@ -803,7 +787,7 @@
   }
 
 
-  .inner > h2 {
+  .headingBlock h2 {
     width: 100%;
 
     font-size: 34px;
@@ -891,7 +875,7 @@
   }
 
 
-  .inner > h2 {
+  .headingBlock h2 {
     font-size: 31px;
   }
 
@@ -905,4 +889,9 @@
     height: 450px;
   }
 
+}
+
+
+.assetCardWrapper {
+  height: auto;
 }
