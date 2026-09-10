@@ -1,0 +1,109 @@
+@keyframes buttonRise {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-2px) scale(1.006);
+  }
+
+  100% {
+    transform: translateY(-3px) scale(1.01);
+  }
+}
+
+@keyframes iconFloat {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+
+  50% {
+    transform: translateX(1px) scale(1.04);
+  }
+
+  100% {
+    transform: translateX(2px) scale(1.08);
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0.4rem 0.45rem 0.4rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.55s var(--ease),
+    color 0.55s var(--ease),
+    border-color 0.55s var(--ease),
+    transform 0.55s var(--ease),
+    box-shadow 0.55s var(--ease);
+  box-shadow: 0 10px 16px rgba(101, 37, 14, 0.08);
+  will-change: transform, box-shadow;
+}
+
+.btn:hover {
+  animation: buttonRise 0.5s var(--ease) forwards;
+  box-shadow: 0 14px 22px rgba(101, 37, 14, 0.14);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 2.45rem;
+  height: 2.45rem;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  transition: transform 0.35s var(--ease), background 0.35s var(--ease);
+  will-change: transform;
+}
+
+.btn:hover .icon {
+  animation: iconFloat 0.45s var(--ease) forwards;
+}
+
+.solid {
+  background: var(--orange);
+  color: #fff5eb;
+}
+
+.solid .icon {
+  background: #fff;
+  color: var(--dark-brown);
+}
+
+.solid:hover {
+  background: var(--orange-deep);
+}
+
+.outline {
+  background: transparent;
+  border-color: rgba(100, 36, 15, 0.45);
+  color: var(--dark-brown);
+}
+
+.ghost {
+  background: rgba(255, 245, 235, 0.12);
+  border-color: rgba(255, 245, 235, 0.4);
+  color: #fff5eb;
+}
+
+.ghost .icon {
+  background: var(--orange);
+  color: #fff;
+}

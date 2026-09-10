@@ -1,0 +1,173 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  animation: header-enter 0.8s var(--ease) both;
+  transition:
+    background 0.6s var(--ease),
+    backdrop-filter 0.6s var(--ease),
+    box-shadow 0.6s var(--ease);
+  background: rgba(31, 28, 27, 0.84);
+}
+
+@keyframes header-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scrolled {
+  background: rgba(64, 22, 9, 0.88);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(248, 234, 220, 0.08);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  min-height: 72px;
+  padding: 0.75rem 0;
+  padding-inline: var(--page-gutter);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #fff5eb;
+  text-decoration: none;
+}
+
+.brand strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.mark {
+  place-items: center;
+  width: 2.45rem;
+  height: 2.45rem;
+  flex: 0 0 auto;
+}
+
+.nav {
+  display: none;
+  gap: 1.55rem;
+}
+
+.nav a {
+  color: rgba(255, 245, 235, 0.86);
+  font-size: 0.73rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #fff;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.actions a {
+  display: none;
+}
+
+.menuBtn {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid rgba(255, 245, 235, 0.28);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff5eb;
+  cursor: pointer;
+}
+
+.panel {
+  position: absolute;
+  inset: 100% 1rem auto;
+  padding: 1.25rem;
+  border: 1px solid rgba(248, 234, 220, 0.12);
+  border-radius: 1.25rem;
+  background: var(--deep-brown);
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.5s var(--ease),
+    transform 0.5s var(--ease);
+}
+
+.panelOpen {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.panel nav {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.panel a {
+  padding: 0.7rem 0.35rem;
+  color: #fff5eb;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(248, 234, 220, 0.08);
+}
+
+@media (min-width: 1100px) {
+  .nav {
+    display: flex;
+  }
+
+  .actions a {
+    display: inline-flex;
+  }
+
+  .menuBtn,
+  .panel {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .actions a {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 700px) {
+  .brand strong {
+    max-width: 14rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    animation: none;
+  }
+}

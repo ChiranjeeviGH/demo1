@@ -1,0 +1,248 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 5.5rem 0 4rem;
+  background: #fdf6ed;
+}
+
+.patternTop,
+.patternBottom,
+.patternCorner {
+  position: absolute;
+  pointer-events: none;
+  background-color: #e8b089;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* Horizontal strip — clear gap above the portrait */
+.patternTop {
+  top: -2.9rem;
+  left: 50%;
+  z-index: 2;
+  width: 44%;
+  height: 38px;
+  transform: translateX(-50%);
+  opacity: 0.5;
+  -webkit-mask-image: url('/section-leadership/pattern-top.png');
+  mask-image: url('/section-leadership/pattern-top.png');
+}
+
+.patternBottom {
+  bottom: -5.5rem;
+  left: 50%;
+  z-index: 2;
+  width: 44%;
+  height: 38px;
+  transform: translateX(-50%);
+  opacity: 0.5;
+  -webkit-mask-image: url('/section-leadership/pattern-top.png');
+  mask-image: url('/section-leadership/pattern-top.png');
+}
+
+/* Compact lattice in the bottom-right */
+.patternCorner {
+  z-index: 0;
+  right: -1rem;
+  bottom: -2rem;
+  width: 118px;
+  height: 78px;
+  opacity: 0.35;
+  -webkit-mask-image: url('/section-leadership/pattern-corner.png');
+  mask-image: url('/section-leadership/pattern-corner.png');
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 2.25rem;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding-inline: var(--page-gutter);
+}
+
+.portrait {
+  position: relative;
+  max-width: 42rem;
+  margin: 2.25rem auto 0;
+  overflow: visible;
+}
+
+.portraitImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 0.7;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 1.75rem;
+  box-shadow: 0 18px 32px rgba(66, 31, 18, 0.08);
+}
+
+.nameTag {
+  position: absolute;
+  left: 50%;
+  bottom: 1.05rem;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  width: min(88.2%, 25.95rem);
+  transform: translateX(-50%);
+}
+
+.nameplate {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 8px 16px rgba(50, 26, 9, 0.08);
+}
+
+.copy h2 {
+  max-width: 14ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.75rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.copy h2 em {
+  color: var(--orange);
+  font-style: italic;
+}
+
+.body {
+  max-width: 49.3rem;
+  margin: 1.15rem 0 1.5rem;
+  color: rgba(38, 38, 38, 0.78);
+  font-size: 1.00rem;
+  line-height: 1.5;
+}
+
+.teamBlock {
+  position: relative;
+  margin-top: 2.4rem;
+}
+
+.teamHeading {
+  margin: 0 0 1.1rem;
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team li {
+  text-align: center;
+}
+
+.team img {
+  display: block;
+  width: 100%;
+  max-width: 7.5rem;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 1rem;
+  background: #f3e2d4;
+  filter: grayscale(0.35) sepia(0.12) contrast(1.02) brightness(0.96);
+}
+
+.team p {
+  margin: 0.55rem 0 0;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.team span {
+  display: block;
+  margin-top: 0.2rem;
+  color: rgba(38, 38, 38, 0.55);
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 700px) {
+  .team {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem 1.1rem;
+    max-width: 34rem;
+  }
+
+  .team img {
+    max-width: none;
+  }
+}
+
+@media (min-width: 980px) {
+  .section {
+    padding: 6rem 0 4.5rem;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+    column-gap: 10%;
+    row-gap: 3rem;
+    align-items: start;
+  }
+
+  .patternTop {
+    top: -3.1rem;
+    width: 44%;
+    height: 38px;
+  }
+
+  .patternBottom {
+    bottom: -5.5rem;
+    width: 44%;
+    height: 38px;
+  }
+
+  .patternCorner {
+    width: 150px;
+    height: 100px;
+    top: 16.5rem;
+    right: auto;
+    bottom: auto;
+    left: calc(100% - 3.75rem);
+  }
+
+  .portrait {
+    max-width: 32rem;
+    margin-top: 0;
+    justify-self: center;
+  }
+
+  .copy {
+    padding-top: 0.35rem;
+  }
+
+  .copy h2 {
+    font-size: clamp(2.8rem, 3.4vw, 3.9rem);
+  }
+}

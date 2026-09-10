@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="36" viewBox="0 0 120 36" fill="none">
+  <!--
+    Seamless kolam band tile (circle · diamond · circle · diamond).
+    Edge dots sit on x=0 and x=120 so adjacent tiles join cleanly.
+  -->
+  <g stroke="#c9a48a" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Continuous weaving stroke -->
+    <path d="
+      M0 18
+      C0 9 7 3 15 3
+      C23 3 28 9 30 18
+      C32 9 37 3 45 3
+      C53 3 58 9 60 18
+      C62 9 67 3 75 3
+      C83 3 88 9 90 18
+      C92 9 97 3 105 3
+      C113 3 120 9 120 18
+      C120 27 113 33 105 33
+      C97 33 92 27 90 18
+      C88 27 83 33 75 33
+      C67 33 62 27 60 18
+      C58 27 53 33 45 33
+      C37 33 32 27 30 18
+      C28 27 23 33 15 33
+      C7 33 0 27 0 18
+    " />
+  </g>
+  <!-- Center dots for each motif -->
+  <g fill="#c9a48a">
+    <circle cx="15" cy="18" r="1.55" />
+    <circle cx="45" cy="18" r="1.55" />
+    <circle cx="75" cy="18" r="1.55" />
+    <circle cx="105" cy="18" r="1.55" />
+    <circle cx="30" cy="18" r="1.55" />
+    <circle cx="60" cy="18" r="1.55" />
+    <circle cx="90" cy="18" r="1.55" />
+    <circle cx="0" cy="18" r="1.55" />
+    <circle cx="120" cy="18" r="1.55" />
+  </g>
+</svg>

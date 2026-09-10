@@ -1,0 +1,997 @@
+/* =========================================================
+   PRESENCE — KARNATAKA
+   Figma-matched composition
+========================================================= */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 720px;
+  padding: 0;
+  color: #fff;
+
+  background:
+    linear-gradient(
+      to bottom,
+      var(--dark-brown) 0%,
+      var(--dark-brown) 66%,
+      var(--cream) 66%,
+      var(--cream) 100%
+    );
+}
+
+/* =========================================================
+   DECORATIVE PATTERN
+========================================================= */
+
+.pattern {
+  position: absolute;
+  left: 9%;
+  top: 8.8rem;
+
+  color: rgba(255, 245, 230, 0.10);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =========================================================
+   MAIN CONTAINER
+
+   IMPORTANT:
+   Same approximate content boundary as Leadership.
+   This controls ONLY the outer alignment.
+========================================================= */
+
+.inner {
+  position: relative;
+  z-index: 2;
+
+  width: min(
+    calc(100% - 80px),
+    1280px
+  );
+
+  max-width: none;
+
+  margin: 0 auto;
+
+  padding:
+    5.8rem
+    0
+    2rem;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.headingBlock {
+  width: 100%;
+  max-width: 820px;
+}
+
+.inner > .headingBlock > h2 {
+  margin: 0;
+
+  max-width: 820px;
+
+  font-family: var(--font-display);
+  font-size: clamp(52px, 4.4vw, 78px);
+  font-weight: 500;
+
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.inner > .headingBlock > h2 em {
+  color: var(--orange);
+  font-style: italic;
+}
+
+.intro {
+  max-width: 640px;
+
+  margin:
+    1rem
+    0
+    3.1rem;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-family: var(--font-ui);
+  font-size: 16px;
+
+  line-height: 1.45;
+}
+
+/* =========================================================
+   MAIN COMPOSITION
+
+   Desktop target:
+
+   Leadership left boundary
+   ↓
+   ┌──────────────610px──────────────┐
+   │          DISTRICT CARD          │
+   └─────────────────────────────────┘
+
+                         ┌────────470px────────┐
+                         │         MAP         │
+                         └─────────────────────┘
+                                             ↑
+                                  Leadership right boundary
+
+   The images themselves are NOT resized.
+========================================================= */
+
+.layout {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    680px
+    560px;
+
+  gap: 0;
+
+  justify-content: space-between;
+  align-items: start;
+
+  width: 100%;
+  max-width: none;
+}
+
+/* =========================================================
+   DISTRICT CARD
+========================================================= */
+
+.card {
+  position: relative;
+  z-index: 2;
+
+  width: 680px;
+  height: 386px;
+
+  overflow: hidden;
+
+  border: 0;
+
+  background: rgba(255, 250, 246, 0.98);
+
+  color: var(--ink);
+
+  box-shadow: none;
+}
+
+/* =========================================================
+   CARD IMAGE
+========================================================= */
+
+.cardImage {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   DYNAMIC CARD
+========================================================= */
+
+.cardDynamicInner {
+  display: grid;
+
+  grid-template-columns:
+    300px
+    310px;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================================
+   CARD DETAILS
+========================================================= */
+
+.details {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  height: 100%;
+
+  padding:
+    1.55rem
+    1.65rem
+    1.05rem;
+}
+
+.kicker {
+  color: #8d7669;
+
+  font-size: 0.62rem;
+  font-weight: 600;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+}
+
+.details h3 {
+  margin:
+    0.45rem
+    0
+    0.45rem;
+
+  color: var(--ink);
+
+  font-family: var(--font-display);
+
+  font-size: 32px;
+  font-weight: 500;
+
+  line-height: 1;
+}
+
+.description {
+  max-width: 260px;
+
+  margin:
+    0
+    0
+    0.95rem;
+
+  color:
+    rgba(38, 38, 38, 0.76);
+
+  font-size: 0.68rem;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.details::after {
+  content: "";
+
+  width: 100%;
+  height: 1px;
+
+  margin:
+    0
+    0
+    0.9rem;
+
+  order: 0;
+
+  background:
+    rgba(226, 109, 29, 0.24);
+}
+
+.details > .kicker,
+.details > h3,
+.details > .description {
+  order: -1;
+}
+
+/* =========================================================
+   STAT LIST
+========================================================= */
+
+.details ul {
+  display: grid;
+
+  gap: 0.62rem;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.details li {
+  display: grid;
+
+  grid-template-columns:
+    2rem
+    minmax(0, 1fr)
+    auto;
+
+  column-gap: 0.7rem;
+
+  align-items: center;
+}
+
+.details li svg {
+  display: grid;
+
+  place-items: center;
+
+  width: 2rem;
+  height: 2rem;
+
+  padding: 0.45rem;
+
+  border-radius: 50%;
+
+  background: #fff0e4;
+
+  color: var(--orange);
+}
+
+.details li span {
+  color: var(--ink);
+
+  font-size: 0.68rem;
+
+  line-height: 1.2;
+}
+
+.details li strong {
+  justify-self: end;
+
+  color: var(--orange);
+
+  font-family: var(--font-accent);
+
+  font-size: 1.12rem;
+
+  font-weight: 600;
+
+  line-height: 1;
+}
+
+/* =========================================================
+   VIEW EVENTS
+========================================================= */
+
+.events {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.65rem;
+
+  width: fit-content;
+
+  margin-top: auto;
+
+  padding-top: 0.7rem;
+
+  color: var(--orange);
+
+  font-size: 0.68rem;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.35s var(--ease),
+    color 0.35s var(--ease);
+}
+
+.events:hover,
+.events:focus-visible {
+  transform: translateX(2px);
+  color: #c95c1b;
+}
+
+.events span {
+  display: inline-block;
+
+  font-size: 1.15rem;
+
+  line-height: 1;
+
+  transition:
+    transform 0.35s var(--ease);
+}
+
+.events:hover span,
+.events:focus-visible span {
+  transform: translateX(2px);
+}
+
+/* =========================================================
+   CARD PHOTO
+========================================================= */
+
+.photo {
+  min-width: 0;
+  height: 100%;
+
+  overflow: hidden;
+
+  border-radius:
+    0
+    20px
+    20px
+    0;
+
+  background: #eadfd5;
+}
+
+.photo img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  filter:
+    sepia(0.15)
+    saturate(0.85)
+    contrast(0.92);
+
+  transition:
+    opacity 0.35s var(--ease),
+    transform 0.55s var(--ease);
+}
+
+/* =========================================================
+   MAP
+
+   Keep the Figma map size and vertical position.
+   Only align it to the RIGHT edge of .inner.
+========================================================= */
+
+.mapCard {
+  position: relative;
+
+  z-index: 3;
+
+  width: 470px;
+  height: 600px;
+
+  margin-top: -160px;
+
+  justify-self: end;
+
+  overflow: hidden;
+
+  background: transparent;
+
+  border: 0;
+  border-radius: 0;
+
+  box-shadow: none;
+}
+
+.mapAsset {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  border-radius: 0;
+}
+
+/* =========================================================
+   MAP HOTSPOTS
+========================================================= */
+
+.hotspots {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 4;
+}
+
+.hotspot {
+  position: absolute;
+
+  width: 2.15rem;
+  height: 2.15rem;
+
+  padding: 0;
+
+  transform:
+    translate(-50%, -50%);
+
+  border: 0;
+  border-radius: 50%;
+
+  background: transparent;
+}
+
+.hotspot::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0.35rem;
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius: 50%;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.hotspotActive::before {
+  border-color:
+    rgba(226, 109, 29, 0.18);
+
+  background:
+    rgba(226, 109, 29, 0.12);
+}
+
+/* =========================================================
+   ACTIVE MARKER
+========================================================= */
+
+.activeMarker {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.35rem;
+
+  transform:
+    translate(-50%, -120%);
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+.markerDot {
+  position: relative;
+
+  width: 0.9rem;
+  height: 0.9rem;
+
+  flex: 0 0 auto;
+
+  border-radius:
+    50%
+    50%
+    50%
+    0;
+
+  background:
+    radial-gradient(
+      circle at 35% 35%,
+      #ffd3a3 0%,
+      #f7b25f 30%,
+      #d96d18 100%
+    );
+
+  box-shadow:
+    0 0 0 5px
+    rgba(226, 109, 29, 0.12);
+
+  transform: rotate(-45deg);
+}
+
+.markerDot::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 0.25rem;
+  height: 0.25rem;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+.markerLabel {
+  padding:
+    0.55rem
+    0.8rem;
+
+  border:
+    1px solid
+    rgba(75, 40, 24, 0.08);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 250, 246, 0.96);
+
+  color: var(--ink);
+
+  box-shadow:
+    0 8px 22px
+    rgba(62, 22, 9, 0.15);
+
+  font-size: 0.62rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   LARGE DESKTOP — 1440px+
+
+   This is the important Figma alignment breakpoint.
+========================================================= */
+
+@media (min-width: 1440px) {
+  .inner {
+    width: 1280px;
+
+    max-width:
+      calc(100% - 80px);
+
+    padding-top: 6.8rem;
+  }
+
+  .headingBlock {
+    max-width: 790px;
+
+    position: relative;
+    left: 35px;
+  }
+
+  .inner > .headingBlock > h2 {
+    font-size: 46px;
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+  .intro {
+    margin-bottom: 4.2rem;
+  }
+
+  .layout {
+    width: 100%;
+
+    grid-template-columns:
+      680px
+      560px;
+
+    gap: 0;
+
+    justify-content: space-between;
+  }
+
+  .card {
+    width: 700px;
+
+    transform: translateX(5%);
+  }
+
+  .mapCard {
+    width: 500px;
+
+    transform: translateX(-5%);
+
+    justify-self: end;
+  }
+}
+
+/* =========================================================
+   1200–1439px
+========================================================= */
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .inner {
+    width:
+      min(
+        calc(100% - 64px),
+        1160px
+      );
+
+    max-width: none;
+
+    padding-top: 5.5rem;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .inner > .headingBlock > h2 {
+    font-size: 36px;
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+  .headingBlock {
+    position: relative;
+    left: 0;
+  }
+
+  .intro {
+    margin-bottom: 3.8rem;
+  }
+
+  .layout {
+    width: 100%;
+
+    grid-template-columns:
+      minmax(0, 650px)
+      minmax(360px, 470px);
+
+    gap: 0;
+
+    justify-content: space-between;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .cardDynamicInner {
+    grid-template-columns:
+      48%
+      52%;
+  }
+
+  .mapCard {
+    width: 100%;
+
+    transform: translateX(-5%);
+
+    justify-self: end;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 701px) and (max-width: 1199px) {
+  .section {
+    min-height: 900px;
+
+    background:
+      linear-gradient(
+        to bottom,
+        var(--dark-brown) 0%,
+        var(--dark-brown) 61%,
+        var(--cream) 61%,
+        var(--cream) 100%
+      );
+  }
+
+  .inner {
+    width: calc(100% - 64px);
+
+    padding:
+      5rem
+      0
+      4rem;
+  }
+
+  .headingBlock {
+    width: 75%;
+
+    position: relative;
+    left: 0;
+  }
+
+  .inner > .headingBlock > h2 {
+    font-size: 46px;
+  }
+
+  .intro {
+    margin-bottom: 3.5rem;
+  }
+
+  .layout {
+    grid-template-columns:
+      minmax(0, 1.35fr)
+      minmax(280px, 0.85fr);
+
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%;
+
+    height: 400px;
+  }
+
+  .cardDynamicInner {
+    grid-template-columns:
+      48%
+      52%;
+  }
+
+  .mapCard {
+    width: 100%;
+
+    height: 500px;
+
+    margin-top: -100px;
+
+    justify-self: end;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  .section {
+    min-height: 0;
+
+    background: var(--dark-brown);
+  }
+
+  .pattern {
+    display: none;
+  }
+
+  .inner {
+    width: 100%;
+
+    padding:
+      4.5rem
+      var(--page-gutter)
+      4rem;
+  }
+
+  .headingBlock {
+    width: 100%;
+  }
+
+  .inner > .headingBlock > h2 {
+    font-size: 38px;
+
+    line-height: 1.04;
+  }
+
+  .intro {
+    margin:
+      0.9rem
+      0
+      2.5rem;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+  }
+
+  .layout {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.5rem;
+
+    width: 100%;
+  }
+
+  /* =======================================================
+     MAP FIRST ON MOBILE
+  ======================================================= */
+
+  .mapCard {
+    order: 1;
+
+    width: 100%;
+
+    height: auto;
+
+    margin-top: 0;
+
+    aspect-ratio: 0.78;
+
+    justify-self: auto;
+  }
+
+  /* =======================================================
+     CARD SECOND ON MOBILE
+  ======================================================= */
+
+  .card {
+    order: 2;
+
+    width: 100%;
+
+    height: auto;
+
+    min-height: 0;
+  }
+
+  .cardDynamicInner {
+    grid-template-columns: 1fr;
+
+    height: auto;
+  }
+
+  .details {
+    min-height: 360px;
+
+    padding: 1.5rem;
+  }
+
+  .details h3 {
+    font-size: 32px;
+  }
+
+  .photo {
+    height: 300px;
+
+    min-height: 0;
+
+    border-radius:
+      0
+      0
+      20px
+      20px;
+  }
+
+  .photo img {
+    min-height: 0;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .inner {
+    padding-top: 4rem;
+  }
+
+  .inner > .headingBlock > h2 {
+    font-size: 34px;
+  }
+
+  .intro {
+    font-size: 14px;
+  }
+
+  .details {
+    padding: 1.35rem;
+  }
+
+  .details li {
+    grid-template-columns:
+      2rem
+      minmax(0, 1fr)
+      auto;
+
+    column-gap: 0.6rem;
+  }
+
+  .details li strong {
+    font-size: 1rem;
+  }
+}
