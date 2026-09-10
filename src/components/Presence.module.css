@@ -132,8 +132,8 @@
   display: grid;
 
   grid-template-columns:
-    610px
-    470px;
+    680px
+    560px;
 
   gap: 0;
 
@@ -152,7 +152,7 @@
   position: relative;
   z-index: 2;
 
-  width: 650px;
+  width: 680px;
   height: 386px;
 
   overflow: hidden;
@@ -668,8 +668,8 @@
     width: 100%;
 
     grid-template-columns:
-      650px
-      470px;
+      680px
+      560px;
 
     gap: 0;
 
@@ -677,11 +677,11 @@
   }
 
   .card {
-    width: 650px;
+    width: 680px;
   }
 
   .mapCard {
-    width: 470px;
+    width: 560px;
 
     justify-self: end;
   }
