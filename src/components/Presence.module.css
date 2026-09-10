@@ -677,11 +677,11 @@
   }
 
   .card {
-    width: 680px;
+    width: 700px;
   }
 
   .mapCard {
-    width: 560px;
+    width: 500px;
 
     justify-self: end;
   }
