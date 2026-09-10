@@ -1,3 +1,5 @@
+@import './heritage-motion.module.css';
+
 .section {
   position: relative;
   overflow: hidden;

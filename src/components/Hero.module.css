@@ -1,3 +1,5 @@
+@import './heritage-motion.module.css';
+
 .hero {
   position: relative;
   display: flex;

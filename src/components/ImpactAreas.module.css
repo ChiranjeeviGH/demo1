@@ -1,3 +1,5 @@
+@import './heritage-motion.module.css';
+
 .section {
   padding: 4rem 0 6.5rem;
   background: var(--light-cream);
