@@ -142,21 +142,26 @@
   z-index: 1;
   max-width: var(--content-width);
   margin: 2rem auto 0;
-  overflow-x: auto;
-  scrollbar-width: none;
+  overflow: hidden;
+  padding: 0.25rem var(--page-gutter) 0.5rem;
 }
 
-.scroller::-webkit-scrollbar {
-  display: none;
-}
-
-.scroller ul {
+.track {
   display: flex;
-  gap: 1.75rem;
+  gap: 0;
   width: max-content;
   margin: 0;
-  padding: 0.25rem var(--page-gutter) 0.5rem;
+  padding: 0;
   list-style: none;
+}
+
+.on .track {
+  animation: awards-marquee 42s linear 1.2s infinite;
+}
+
+.scroller:hover .track,
+.scroller:focus-within .track {
+  animation-play-state: paused;
 }
 
 .scroller li,
@@ -174,6 +179,7 @@
   color: #f2a13e;
   text-align: center;
   flex: 0 0 auto;
+  margin-right: 1.75rem;
   opacity: 0;
   transition:
     transform 0.32s var(--ease),
@@ -348,6 +354,16 @@
   }
 }
 
+@keyframes awards-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section::before,
   .pattern,
@@ -365,12 +381,18 @@
   .inner h2,
   .inner p,
   .on .inner h2,
-  .on .inner p {
+  .on .inner p,
+  .on .track {
     animation: none !important;
     opacity: 1;
     transform: none;
     transition: none;
     clip-path: none;
+  }
+
+  .scroller {
+    overflow-x: auto;
+    scrollbar-width: none;
   }
 
   .section::before {
