@@ -7,6 +7,22 @@
   background: var(--cream);
 }
 
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    118deg,
+    transparent 28%,
+    rgba(246, 207, 176, 0.12) 48%,
+    transparent 70%
+  );
+  background-size: 220% 220%;
+  animation: lamp-sweep 12s ease-in-out infinite alternate;
+}
+
 .pattern {
   position: absolute;
   z-index: 0;
@@ -87,13 +103,9 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 2rem;
-  opacity: 0;
 }
 
-.on .filters {
-  animation: fade-in 0.85s var(--ease) 0.18s both;
-}
-
+.filter,
 .filters button {
   padding: 0.55rem 1.15rem;
   border: 0;
@@ -103,17 +115,22 @@
   font: inherit;
   font-size: 0.82rem;
   cursor: pointer;
+  opacity: 0;
   transition:
-    background 0.35s var(--ease),
-    color 0.35s var(--ease),
-    border-color 0.35s var(--ease),
-    transform 0.35s var(--ease);
+    background 0.4s var(--ease),
+    color 0.4s var(--ease),
+    border-color 0.4s var(--ease),
+    transform 0.32s var(--ease),
+    filter 0.32s var(--ease);
 }
 
+.filter:hover,
 .filters button:hover {
-  transform: scale(1.02);
+  transform: scale(1.015);
+  filter: brightness(1.04);
 }
 
+.filter.filterActive,
 .filters button.filterActive {
   border: 1px solid var(--orange);
   background: var(--light-cream);
@@ -125,24 +142,30 @@
   z-index: 1;
   max-width: var(--content-width);
   margin: 2rem auto 0;
-  overflow-x: auto;
-  scrollbar-width: none;
+  overflow: hidden;
+  padding: 0.25rem var(--page-gutter) 0.5rem;
 }
 
-.scroller::-webkit-scrollbar {
-  display: none;
-}
-
-.scroller ul {
+.track {
   display: flex;
-  gap: 1.75rem;
+  gap: 0;
   width: max-content;
   margin: 0;
-  padding: 0.25rem var(--page-gutter) 0.5rem;
+  padding: 0;
   list-style: none;
 }
 
-.scroller li {
+.on .track {
+  animation: awards-marquee 42s linear 1.2s infinite;
+}
+
+.scroller:hover .track,
+.scroller:focus-within .track {
+  animation-play-state: paused;
+}
+
+.scroller li,
+.tile {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,6 +179,17 @@
   color: #f2a13e;
   text-align: center;
   flex: 0 0 auto;
+  margin-right: 1.75rem;
+  opacity: 0;
+  transition:
+    transform 0.32s var(--ease),
+    filter 0.32s var(--ease);
+}
+
+.on .tile:hover,
+.on .scroller li:hover {
+  transform: scale(1.015);
+  filter: brightness(1.03);
 }
 
 .scroller strong {
@@ -168,6 +202,7 @@
   width: 58px;
   height: 58px;
   object-fit: contain;
+  transform-origin: center;
 }
 
 @media (max-width: 799px) {
@@ -199,49 +234,180 @@
 }
 
 .on .pattern {
-  animation: pattern-draw 1.35s var(--ease) both;
+  animation: pattern-draw 1.4s var(--ease) both;
 }
 
-.on .patternLeft { --pattern-opacity: 0.8; animation-delay: 0s; }
-.on .patternRight { --pattern-opacity: 0.8; animation-delay: 0.1s; }
-.on .patternBottom { --pattern-opacity: 0.8; animation-delay: 0.2s; }
+.on .patternLeft {
+  --pattern-opacity: 0.8;
+  animation-delay: 0s;
+}
 
+.on .patternRight {
+  --pattern-opacity: 0.8;
+  animation-delay: 0.12s;
+}
+
+.on .patternBottom {
+  --pattern-opacity: 0.8;
+  animation-delay: 0.28s;
+}
+
+.on .filter,
+.on .filters button {
+  animation: fade-up-sm 0.8s var(--ease) both;
+}
+
+.on .filter:nth-child(1),
+.on .filters button:nth-child(1) { animation-delay: 0.2s; }
+.on .filter:nth-child(2),
+.on .filters button:nth-child(2) { animation-delay: 0.28s; }
+.on .filter:nth-child(3),
+.on .filters button:nth-child(3) { animation-delay: 0.36s; }
+.on .filter:nth-child(4),
+.on .filters button:nth-child(4) { animation-delay: 0.44s; }
+.on .filter:nth-child(5),
+.on .filters button:nth-child(5) { animation-delay: 0.52s; }
+.on .filter:nth-child(6),
+.on .filters button:nth-child(6) { animation-delay: 0.6s; }
+
+.on .tile,
 .on .scroller li {
-  animation: fade-up-sm 0.85s var(--ease) both;
+  animation: award-tile 0.95s var(--ease) both;
 }
 
-.on .scroller li:nth-child(1) { animation-delay: 0.16s; }
-.on .scroller li:nth-child(2) { animation-delay: 0.22s; }
-.on .scroller li:nth-child(3) { animation-delay: 0.28s; }
-.on .scroller li:nth-child(4) { animation-delay: 0.34s; }
-.on .scroller li:nth-child(5) { animation-delay: 0.4s; }
-.on .scroller li:nth-child(6) { animation-delay: 0.46s; }
-.on .scroller li:nth-child(7) { animation-delay: 0.52s; }
-.on .scroller li:nth-child(8) { animation-delay: 0.58s; }
+.on .tile:nth-child(1),
+.on .scroller li:nth-child(1) { animation-delay: 0.28s; }
+.on .tile:nth-child(2),
+.on .scroller li:nth-child(2) { animation-delay: 0.36s; }
+.on .tile:nth-child(3),
+.on .scroller li:nth-child(3) { animation-delay: 0.44s; }
+.on .tile:nth-child(4),
+.on .scroller li:nth-child(4) { animation-delay: 0.52s; }
+.on .tile:nth-child(5),
+.on .scroller li:nth-child(5) { animation-delay: 0.6s; }
+.on .tile:nth-child(6),
+.on .scroller li:nth-child(6) { animation-delay: 0.68s; }
+.on .tile:nth-child(7),
+.on .scroller li:nth-child(7) { animation-delay: 0.76s; }
+.on .tile:nth-child(8),
+.on .scroller li:nth-child(8) { animation-delay: 0.84s; }
+.on .tile:nth-child(9),
+.on .scroller li:nth-child(9) { animation-delay: 0.92s; }
+.on .tile:nth-child(10),
+.on .scroller li:nth-child(10) { animation-delay: 1s; }
+.on .tile:nth-child(11),
+.on .scroller li:nth-child(11) { animation-delay: 1.08s; }
+.on .tile:nth-child(12),
+.on .scroller li:nth-child(12) { animation-delay: 1.16s; }
 
-.scroller li {
-  opacity: 0;
+.on .tile img,
+.on .scroller li img {
+  animation: award-emblem 1.05s var(--ease) both;
+}
+
+.on .tile:nth-child(1) img,
+.on .scroller li:nth-child(1) img { animation-delay: 0.36s; }
+.on .tile:nth-child(2) img,
+.on .scroller li:nth-child(2) img { animation-delay: 0.44s; }
+.on .tile:nth-child(3) img,
+.on .scroller li:nth-child(3) img { animation-delay: 0.52s; }
+.on .tile:nth-child(4) img,
+.on .scroller li:nth-child(4) img { animation-delay: 0.6s; }
+.on .tile:nth-child(5) img,
+.on .scroller li:nth-child(5) img { animation-delay: 0.68s; }
+.on .tile:nth-child(6) img,
+.on .scroller li:nth-child(6) img { animation-delay: 0.76s; }
+.on .tile:nth-child(7) img,
+.on .scroller li:nth-child(7) img { animation-delay: 0.84s; }
+.on .tile:nth-child(8) img,
+.on .scroller li:nth-child(8) img { animation-delay: 0.92s; }
+.on .tile:nth-child(9) img,
+.on .scroller li:nth-child(9) img { animation-delay: 1s; }
+.on .tile:nth-child(10) img,
+.on .scroller li:nth-child(10) img { animation-delay: 1.08s; }
+.on .tile:nth-child(11) img,
+.on .scroller li:nth-child(11) img { animation-delay: 1.16s; }
+.on .tile:nth-child(12) img,
+.on .scroller li:nth-child(12) img { animation-delay: 1.24s; }
+
+@keyframes award-tile {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-rise-sm));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes award-emblem {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes awards-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .section::before,
   .pattern,
   .on .pattern,
+  .tile,
   .scroller li,
+  .on .tile,
   .on .scroller li,
+  .on .tile img,
+  .on .scroller li img,
+  .filter,
   .filters button,
+  .on .filter,
+  .on .filters button,
   .inner h2,
   .inner p,
-  .filters,
   .on .inner h2,
   .on .inner p,
-  .on .filters {
+  .on .track {
     animation: none !important;
     opacity: 1;
     transform: none;
     transition: none;
+    clip-path: none;
+  }
+
+  .scroller {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .section::before {
+    content: none;
   }
 
   .pattern {
     opacity: 0.8;
+  }
+
+  .on .tile:hover,
+  .on .scroller li:hover,
+  .filter:hover,
+  .filters button:hover {
+    transform: none;
+    filter: none;
   }
 }

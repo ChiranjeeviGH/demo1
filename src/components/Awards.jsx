@@ -14,7 +14,7 @@ export default function Awards() {
     'Education',
     'Sustainability',
   ]
-  const loop = [...awards, ...awards]
+  const loop = [...awards, ...awards, ...awards, ...awards]
 
   return (
     <section
@@ -40,7 +40,7 @@ export default function Awards() {
             <button
               key={filter}
               type="button"
-              className={activeFilter === filter ? styles.filterActive : ''}
+              className={`${styles.filter} ${activeFilter === filter ? styles.filterActive : ''}`}
               onClick={() => setActiveFilter(filter)}
               role="tab"
               aria-selected={activeFilter === filter}
@@ -50,10 +50,15 @@ export default function Awards() {
           ))}
         </div>
       </div>
-      <div className={styles.scroller} tabIndex={0}>
-        <ul>
+      <div className={styles.scroller} tabIndex={0} aria-label="Award highlights">
+        <ul className={styles.track}>
           {loop.map((award, i) => (
-            <li key={`${award.title}-${i}`} aria-label={`${award.org}: ${award.title}`}>
+            <li
+              key={`${award.title}-${i}`}
+              className={styles.tile}
+              aria-hidden={i >= awards.length}
+              aria-label={i >= awards.length ? undefined : `${award.org}: ${award.title}`}
+            >
               <img
                 src="/ChatGPT Image Jul 13, 2026, 03_07_40 PM 1.png"
                 alt=""
