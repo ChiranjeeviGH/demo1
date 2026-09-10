@@ -26,6 +26,11 @@ header h2 {
 
 header {
   position: relative;
+  opacity: 0;
+}
+
+.on header {
+  animation: fade-up 1.05s var(--ease) both;
 }
 
 header h2 em {
@@ -40,32 +45,19 @@ header p {
   line-height: 1.7;
 }
 
-@keyframes softFloat {
-  0% {
-    transform: translateY(-50%) translateY(0);
-  }
-
-  50% {
-    transform: translateY(-50%) translateY(-2px);
-  }
-
-  100% {
-    transform: translateY(-50%) translateY(-4px);
-  }
-}
-
 .programmesButton {
   position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), filter 0.3s var(--ease);
 }
 
 .programmesButton:hover,
 .programmesButton:focus-visible {
-  animation: softFloat 0.45s var(--ease) forwards;
-  box-shadow: 0 14px 22px rgba(101, 37, 14, 0.14);
+  transform: translateY(-50%) scale(1.015);
+  filter: brightness(1.04);
+  box-shadow: 0 12px 18px rgba(101, 37, 14, 0.12);
 }
 
 .masonry {
@@ -146,11 +138,7 @@ header p {
 }
 
 .card:hover img {
-  transform: scale(1.04);
-}
-
-.card:hover .meta {
-  transform: translateY(-4px);
+  transform: scale(1.025);
 }
 
 .card:hover .arrow {
@@ -231,12 +219,29 @@ header p {
     margin-top: 1.25rem;
     transform: none;
   }
+
+  .programmesButton:hover,
+  .programmesButton:focus-visible {
+    transform: scale(1.015);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .card img,
   .meta,
-  .arrow {
+  .arrow,
+  .programmesButton,
+  header,
+  .on header {
     transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .programmesButton:hover,
+  .programmesButton:focus-visible {
+    transform: translateY(-50%);
+    filter: none;
   }
 }

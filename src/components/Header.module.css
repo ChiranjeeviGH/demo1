@@ -76,6 +76,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
+  transition: color 0.3s var(--ease);
 }
 
 .nav a:hover {
@@ -167,7 +168,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .header {
+  .header,
+  .panel {
     animation: none;
+    transition: none;
   }
 }

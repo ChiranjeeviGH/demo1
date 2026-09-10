@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import './motion.css';
 
 :root {
   --cream: #ffeee2;
@@ -39,7 +40,7 @@ body {
   color: var(--ink);
   font-family: var(--font-ui);
   overflow-x: hidden;
-  animation: page-enter 0.7s var(--ease) both;
+  animation: page-enter 0.55s var(--ease) both;
 }
 
 h1,
@@ -76,31 +77,15 @@ a:focus-visible {
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(var(--motion-rise));
   transition:
-    opacity 0.8s var(--ease),
-    transform 0.8s var(--ease);
+    opacity var(--motion-reveal) var(--ease),
+    transform var(--motion-reveal) var(--ease);
 }
 
 .is-visible {
   opacity: 1;
   transform: none;
-}
-
-.is-visible > * {
-  animation: content-rise 0.75s var(--ease) both;
-}
-
-.is-visible > *:nth-child(2) {
-  animation-delay: 0.08s;
-}
-
-.is-visible > *:nth-child(3) {
-  animation-delay: 0.16s;
-}
-
-.is-visible > *:nth-child(4) {
-  animation-delay: 0.24s;
 }
 
 @keyframes page-enter {
@@ -130,14 +115,14 @@ a:focus-visible {
     scroll-behavior: auto;
   }
 
-  .reveal {
+  .reveal,
+  .is-visible {
     opacity: 1;
     transform: none;
     transition: none;
   }
 
-  body,
-  .is-visible > * {
+  body {
     animation: none;
   }
 }
