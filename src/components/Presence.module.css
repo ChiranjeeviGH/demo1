@@ -658,6 +658,16 @@
 
   .headingBlock {
     max-width: 790px;
+
+    position: relative;
+    left: 35px;
+  }
+
+  .inner > .headingBlock > h2 {
+    font-size: 46px;
+    line-height: 1;
+
+    white-space: nowrap;
   }
 
   .intro {
@@ -678,10 +688,14 @@
 
   .card {
     width: 700px;
+
+    transform: translateX(5%);
   }
 
   .mapCard {
     width: 500px;
+
+    transform: translateX(-5%);
 
     justify-self: end;
   }
@@ -708,7 +722,15 @@
   }
 
   .inner > .headingBlock > h2 {
-    font-size: 52px;
+    font-size: 36px;
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+  .headingBlock {
+    position: relative;
+    left: 0;
   }
 
   .intro {
@@ -739,6 +761,8 @@
 
   .mapCard {
     width: 100%;
+
+    transform: translateX(-5%);
 
     justify-self: end;
   }
@@ -773,6 +797,9 @@
 
   .headingBlock {
     width: 75%;
+
+    position: relative;
+    left: 0;
   }
 
   .inner > .headingBlock > h2 {

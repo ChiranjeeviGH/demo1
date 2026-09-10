@@ -120,11 +120,11 @@
 }
 
 .body {
-  max-width: 36rem;
+  max-width: 49.3rem;
   margin: 1.15rem 0 1.5rem;
   color: rgba(38, 38, 38, 0.78);
-  font-size: clamp(0.95rem, 1.05vw, 1.1rem);
-  line-height: 1.65;
+  font-size: 1.00rem;
+  line-height: 1.5;
 }
 
 .teamBlock {

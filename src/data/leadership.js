@@ -11,7 +11,8 @@ export const founderProfile = {
   role: 'President, SKDRDP',
   image: '/leader.png',
   nameplate: '/nameplate.png',
-  bio: 'Dharmadhikari of Shri Kshetra Dharmasthala. For more than four decades he has guided a model of rural development that organises families into self-help groups — credit, care, and community, rather than charity alone.',
+  // bio: 'Dharmadhikari of Shri Kshetra Dharmasthala. For more than four decades he has guided a model of rural development that organises families into self-help groups — credit, care, and community, rather than charity alone.',
+  bio: 'For over four decades, Dr. D. Veerendra Heggade has guided SKDRDP with a vision rooted in service, compassion, and sustainable rural development. His leadership has inspired an organization that empowers communities, strengthens livelihoods, and creates lasting impact across Karnataka through trust, transparency, and collective progress.'
 }
 
 export const leadershipMembers = [
