@@ -7,10 +7,14 @@ export default function Activities() {
   const { ref, visible } = useReveal()
 
   return (
-    <section id="activities" className={styles.section} ref={ref}>
+    <section
+      id="activities"
+      className={`${styles.section} ${visible ? `${styles.on} motion-on` : ''}`}
+      ref={ref}
+    >
       <div className={styles.pattern} aria-hidden="true" />
-      <div className={`${styles.inner} ${visible ? 'is-visible' : 'reveal'}`}>
-        <h2>
+      <div className={styles.inner}>
+        <h2 className="heading-reveal">
           <em>Activities</em> Across SKDRDP
         </h2>
         <div className={styles.intro}>
@@ -22,7 +26,7 @@ export default function Activities() {
             Explore All Activities
           </Button>
         </div>
-        <div className={styles.row}>
+        <div className={`${styles.row} stagger`}>
           {activities.map((item) => (
             <article key={item.id}>
               <img src={item.image} alt="" loading="lazy" />

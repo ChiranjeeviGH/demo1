@@ -1,8 +1,25 @@
+@import './heritage-motion.module.css';
+
 .section {
   position: relative;
   overflow: hidden;
   padding: 5.5rem 0 4rem;
   background: #fdf6ed;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    125deg,
+    transparent 30%,
+    rgba(232, 176, 137, 0.07) 50%,
+    transparent 70%
+  );
+  background-size: 220% 220%;
+  animation: lamp-sweep 12s ease-in-out infinite alternate;
 }
 
 .patternTop,
@@ -244,5 +261,120 @@
 
   .copy h2 {
     font-size: clamp(2.8rem, 3.4vw, 3.9rem);
+  }
+}
+
+.nameTag,
+.copy h2,
+.body,
+.copy > a,
+.teamHeading,
+.team li {
+  opacity: 0;
+}
+
+.on .portraitImage {
+  animation: image-develop 1.25s var(--ease) both;
+}
+
+.on .nameTag {
+  animation: fade-in 0.85s var(--ease) 0.28s both;
+}
+
+.on .copy h2 {
+  animation: fade-up 1.05s var(--ease) 0.16s both;
+}
+
+.on .body {
+  animation: fade-up-sm 0.95s var(--ease) 0.24s both;
+}
+
+.on .copy > a {
+  animation: fade-up-sm 0.9s var(--ease) 0.32s both;
+}
+
+.on .teamHeading {
+  animation: fade-in 0.8s var(--ease) 0.4s both;
+}
+
+.on .team li {
+  animation: fade-up-sm 0.8s var(--ease) both;
+}
+
+.on .team li:nth-child(1) { animation-delay: 0.48s; }
+.on .team li:nth-child(2) { animation-delay: 0.56s; }
+.on .team li:nth-child(3) { animation-delay: 0.64s; }
+.on .team li:nth-child(4) { animation-delay: 0.72s; }
+.on .team li:nth-child(5) { animation-delay: 0.8s; }
+.on .team li:nth-child(6) { animation-delay: 0.88s; }
+.on .team li:nth-child(7) { animation-delay: 0.96s; }
+
+.on .patternTop,
+.on .patternBottom {
+  animation: leadership-pattern 1.35s var(--ease) 0.4s both;
+}
+
+.on .patternCorner {
+  animation: leadership-corner 1.3s var(--ease) 0.55s both;
+}
+
+@keyframes leadership-pattern {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scaleX(0.92);
+  }
+
+  to {
+    opacity: 0.5;
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+@keyframes leadership-corner {
+  from {
+    opacity: 0;
+    transform: scaleX(0.92);
+  }
+
+  to {
+    opacity: 0.35;
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section::before,
+  .portraitImage,
+  .nameTag,
+  .copy h2,
+  .body,
+  .copy > a,
+  .teamHeading,
+  .team li,
+  .patternTop,
+  .patternBottom,
+  .patternCorner {
+    animation: none !important;
+    opacity: 1;
+    clip-path: none;
+  }
+
+  .nameTag,
+  .patternTop,
+  .patternBottom {
+    transform: translateX(-50%);
+  }
+
+  .patternTop,
+  .patternBottom {
+    opacity: 0.5;
+  }
+
+  .patternCorner {
+    opacity: 0.35;
+  }
+
+  .section::before {
+    content: none;
   }
 }

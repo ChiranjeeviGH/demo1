@@ -19,7 +19,7 @@ export function useReveal(options = {}) {
           observer.disconnect()
         }
       },
-      { threshold: 0.18, ...options },
+      { threshold: 0.14, rootMargin: '0px 0px -8% 0px', ...options },
     )
     observer.observe(node)
     return () => observer.disconnect()

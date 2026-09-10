@@ -12,12 +12,16 @@ export default function Stories() {
   const [open, setOpen] = useState(false)
 
   return (
-    <section id="stories" className={styles.section} ref={ref}>
+    <section
+      id="stories"
+      className={`${styles.section} ${visible ? `${styles.on} motion-on` : ''}`}
+      ref={ref}
+    >
       <div className={styles.patternRight} aria-hidden="true" />
-      <div className={`${styles.inner} ${visible ? 'is-visible' : 'reveal'}`}>
-        <h2>
-          <em>Stories</em> That Inspire Change
-        </h2>
+      <div className={styles.inner}>
+          <h2 className="heading-reveal">
+            <em>Stories</em> That Inspire Change
+          </h2>
         <div className={styles.intro}>
           <p>
             Behind every initiative is a story of resilience, opportunity and transformation.
@@ -29,7 +33,7 @@ export default function Stories() {
         </div>
         <div className={styles.layout}>
           <div className={styles.mediaCol}>
-            <div className={styles.media}>
+            <div className={`${styles.media} image-reveal`}>
               <img src={story.image} alt="" loading="lazy" />
               <button
                 type="button"

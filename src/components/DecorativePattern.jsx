@@ -5,13 +5,13 @@ export default function DecorativePattern({
 }) {
   return (
     <svg
-      className={className}
+      className={`decorative-pattern ${className}`.trim()}
       width={size}
       height={size}
       viewBox="0 0 200 200"
       fill="none"
       aria-hidden="true"
-      style={{ opacity }}
+      style={{ '--pattern-opacity': opacity }}
     >
       <g stroke="currentColor" strokeWidth="0.9">
         <circle cx="100" cy="100" r="22" />

@@ -11,7 +11,7 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <>
+    <div className="page-root">
       <Header />
       <main>
         <Hero />
@@ -24,6 +24,6 @@ export default function App() {
         <Activities />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

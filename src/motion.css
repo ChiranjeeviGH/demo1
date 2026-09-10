@@ -1,0 +1,236 @@
+/* Heritage motion language — transform & opacity only. Settles to Figma rest state. */
+
+:root {
+  --motion-ui: 0.32s;
+  --motion-reveal: 1.05s;
+  --motion-image: 1.2s;
+  --motion-pattern: 1.3s;
+  --motion-line: 0.85s;
+  --motion-rise: 14px;
+  --motion-rise-sm: 10px;
+  --motion-stagger: 0.08s;
+  --image-from: 1.022;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --motion-rise: 12px;
+    --motion-rise-sm: 8px;
+    --image-from: 1.018;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --motion-rise: 10px;
+    --motion-rise-sm: 6px;
+    --motion-stagger: 0.05s;
+    --image-from: 1.012;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-rise));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up-sm {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-rise-sm));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes image-develop {
+  from {
+    opacity: 0;
+    transform: scale(var(--image-from));
+    clip-path: inset(4% 0 4% 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    clip-path: inset(0);
+  }
+}
+
+@keyframes pattern-draw {
+  from {
+    opacity: 0;
+    transform: scaleX(0.92);
+  }
+
+  to {
+    opacity: var(--pattern-opacity, 0.18);
+    transform: scaleX(1);
+  }
+}
+
+@keyframes line-draw {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes lamp-sweep {
+  from {
+    background-position: 0% 40%;
+  }
+
+  to {
+    background-position: 100% 60%;
+  }
+}
+
+@keyframes marker-settle {
+  0% {
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+
+  55% {
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.page-root main {
+  animation: fade-in 1.1s var(--ease) 0.12s both;
+}
+
+.decorative-pattern {
+  transform-origin: center;
+  opacity: 0;
+  transform: scaleX(0.92);
+}
+
+.motion-on .decorative-pattern,
+.is-visible .decorative-pattern {
+  animation: pattern-draw var(--motion-pattern) var(--ease) both;
+}
+
+.stagger > * {
+  opacity: 0;
+}
+
+.is-visible.stagger > *,
+.is-visible .stagger > *,
+.motion-on .stagger > * {
+  animation: fade-up-sm 0.9s var(--ease) both;
+}
+
+.is-visible.stagger > *:nth-child(1),
+.is-visible .stagger > *:nth-child(1),
+.motion-on .stagger > *:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.is-visible.stagger > *:nth-child(2),
+.is-visible .stagger > *:nth-child(2),
+.motion-on .stagger > *:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.is-visible.stagger > *:nth-child(3),
+.is-visible .stagger > *:nth-child(3),
+.motion-on .stagger > *:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.is-visible.stagger > *:nth-child(4),
+.is-visible .stagger > *:nth-child(4),
+.motion-on .stagger > *:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.is-visible.stagger > *:nth-child(5),
+.is-visible .stagger > *:nth-child(5),
+.motion-on .stagger > *:nth-child(5) {
+  animation-delay: 0.32s;
+}
+
+.is-visible.stagger > *:nth-child(6),
+.is-visible .stagger > *:nth-child(6),
+.motion-on .stagger > *:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
+.is-visible.stagger > *:nth-child(7),
+.is-visible .stagger > *:nth-child(7),
+.motion-on .stagger > *:nth-child(7) {
+  animation-delay: 0.48s;
+}
+
+.heading-reveal em {
+  opacity: 0;
+}
+
+.is-visible .heading-reveal em,
+.motion-on .heading-reveal em {
+  animation: fade-in 0.9s var(--ease) 0.1s both;
+}
+
+.image-reveal img {
+  transform-origin: center;
+}
+
+.is-visible .image-reveal img,
+.motion-on .image-reveal img {
+  animation: image-develop var(--motion-image) var(--ease) both;
+}
+
+.line-reveal {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.is-visible .line-reveal,
+.motion-on .line-reveal {
+  animation: line-draw var(--motion-line) var(--ease) 0.2s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-root main,
+  .decorative-pattern,
+  .stagger > *,
+  .is-visible.stagger > *,
+  .is-visible .stagger > *,
+  .motion-on .stagger > *,
+  .heading-reveal em,
+  .image-reveal img,
+  .line-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}

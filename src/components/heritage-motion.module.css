@@ -1,0 +1,69 @@
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-rise));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up-sm {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-rise-sm));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes image-develop {
+  from {
+    opacity: 0;
+    transform: scale(var(--image-from));
+    clip-path: inset(4% 0 4% 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    clip-path: inset(0);
+  }
+}
+
+@keyframes pattern-draw {
+  from {
+    opacity: 0;
+    transform: scaleX(0.92);
+  }
+
+  to {
+    opacity: var(--pattern-opacity, 0.18);
+    transform: scaleX(1);
+  }
+}
+
+@keyframes lamp-sweep {
+  from {
+    background-position: 0% 40%;
+  }
+
+  to {
+    background-position: 100% 60%;
+  }
+}

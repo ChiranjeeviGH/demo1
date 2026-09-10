@@ -1,3 +1,5 @@
+@import './heritage-motion.module.css';
+
 .hero {
   position: relative;
   display: flex;
@@ -30,10 +32,29 @@
   animation: kenburns 18s var(--ease) forwards;
 }
 
+.mediaOn img {
+  animation: kenburns 18s var(--ease) forwards;
+}
+
 .overlay {
   background:
     linear-gradient(180deg, rgba(22, 16, 13, 0.45) 0%, rgba(42, 18, 8, 0.12) 38%, rgba(12, 8, 6, 0.86) 100%),
     linear-gradient(90deg, rgba(20, 10, 5, 0.7) 0%, rgba(42, 18, 8, 0.08) 75%);
+}
+
+.overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 28%,
+    rgba(246, 207, 176, 0.09) 48%,
+    transparent 68%
+  );
+  background-size: 220% 220%;
+  animation: lamp-sweep 11s ease-in-out infinite alternate;
 }
 
 .content {
@@ -83,8 +104,8 @@ h1 {
 .a3,
 .a4 {
   opacity: 0;
-  transform: translateY(22px);
-  animation: rise 0.9s var(--ease) forwards;
+  transform: translateY(var(--motion-rise));
+  animation: rise 1s var(--ease) forwards;
 }
 
 .a1 { animation-delay: 0.15s; }
@@ -124,6 +145,12 @@ h1 {
   background: transparent;
   color: inherit;
   cursor: pointer;
+  transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.controls button:hover {
+  transform: scale(1.04);
+  background: rgba(255, 249, 240, 0.08);
 }
 
 @keyframes rise {
@@ -141,6 +168,7 @@ h1 {
 
 @media (prefers-reduced-motion: reduce) {
   .media img,
+  .mediaOn img,
   .a1,
   .a2,
   .a3,
@@ -148,6 +176,12 @@ h1 {
     animation: none;
     opacity: 1;
     transform: none;
+    clip-path: none;
+  }
+
+  .overlay::after {
+    animation: none;
+    content: none;
   }
 }
 

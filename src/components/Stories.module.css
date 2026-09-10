@@ -1,3 +1,5 @@
+@import './heritage-motion.module.css';
+
 .section {
   position: relative;
   overflow: hidden;
@@ -37,6 +39,11 @@
   line-height: 1.2;
   font-weight: 500;
   color: var(--ink);
+  opacity: 0;
+}
+
+.on .inner > h2 {
+  animation: fade-up 1.1s var(--ease) both;
 }
 
 .inner > h2 em {
@@ -50,6 +57,11 @@
   justify-content: space-between;
   gap: 2rem;
   margin-top: 0.65rem;
+  opacity: 0;
+}
+
+.on .intro {
+  animation: fade-up-sm 0.95s var(--ease) 0.08s both;
 }
 
 .intro p {
@@ -228,5 +240,73 @@
 
   .pagination {
     margin-top: 2rem;
+  }
+}
+
+.patternRight,
+.pattern {
+  opacity: 0;
+}
+
+.on .patternRight,
+.on .pattern {
+  animation: pattern-draw 1.35s var(--ease) 0.24s both;
+  --pattern-opacity: 0.45;
+}
+
+.kicker,
+.layout h3,
+.body,
+.pagination {
+  opacity: 0;
+}
+
+.on .kicker {
+  animation: fade-up-sm 0.85s var(--ease) 0.16s both;
+}
+
+.on .layout h3 {
+  animation: fade-up 1.05s var(--ease) 0.22s both;
+}
+
+.on .body {
+  animation: fade-up-sm 0.95s var(--ease) 0.3s both;
+}
+
+.on .pagination {
+  animation: fade-in 0.8s var(--ease) 0.38s both;
+}
+
+.pageButton {
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.pageButton:not(:disabled):hover {
+  background: rgba(226, 109, 29, 0.08);
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .patternRight,
+  .pattern,
+  .kicker,
+  .layout h3,
+  .body,
+  .pagination,
+  .inner > h2,
+  .intro {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  .patternRight,
+  .pattern {
+    opacity: 0.45;
+  }
+
+  .play:hover,
+  .play:focus-visible {
+    transform: translate(-50%, -50%) scale(1.04);
   }
 }

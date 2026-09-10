@@ -8,10 +8,14 @@ export default function ImpactAreas() {
   const { ref, visible } = useReveal()
 
   return (
-    <section id="impact" className={styles.section} ref={ref}>
-      <div className={`${styles.inner} ${visible ? 'is-visible' : 'reveal'}`}>
+    <section
+      id="impact"
+      className={`${styles.section} ${visible ? `${styles.on} motion-on` : ''}`}
+      ref={ref}
+    >
+      <div className={styles.inner}>
         <header>
-          <h2>
+          <h2 className="heading-reveal">
             Driving Change Across Every
             <br className={styles.headingBreak} />
             Stage of <em>Rural Development</em>
@@ -25,7 +29,7 @@ export default function ImpactAreas() {
             View All Programmes
           </Button>
         </header>
-        <div className={styles.masonry}>
+        <div className={`${styles.masonry} stagger`}>
           {impactAreas.map((area) => (
             <article
               key={area.id}

@@ -9,12 +9,16 @@ export default function Presence() {
   const selectedDistrict = districtList.find((district) => district.id === 'mysuru') ?? districtList[0]
 
   return (
-    <section id="presence" className={styles.section} ref={ref}>
+    <section
+      id="presence"
+      className={`${styles.section} ${visible ? `${styles.on} motion-on` : ''}`}
+      ref={ref}
+    >
       <DecorativePattern className={styles.pattern} size={280} opacity={0.12} />
 
-      <div className={`${styles.inner} ${visible ? 'is-visible' : 'reveal'}`}>
+      <div className={styles.inner}>
         <div className={styles.headingBlock}>
-          <h2>
+          <h2 className="heading-reveal">
             Our <em>Presence</em> Across Karnataka
           </h2>
           <p className={styles.intro}>

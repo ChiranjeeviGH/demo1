@@ -7,8 +7,12 @@ export default function Leadership() {
   const { ref, visible } = useReveal()
 
   return (
-    <section id="about" className={styles.section} ref={ref}>
-      <div className={`${styles.grid} ${visible ? 'is-visible' : 'reveal'}`}>
+    <section
+      id="about"
+      className={`${styles.section} ${visible ? `${styles.on} motion-on` : ''}`}
+      ref={ref}
+    >
+      <div className={styles.grid}>
         <figure className={styles.portrait}>
           <div className={styles.patternTop} aria-hidden="true" />
           <img src={founderProfile.image} alt={founderProfile.name} className={styles.portraitImage} />
@@ -18,7 +22,7 @@ export default function Leadership() {
           </figcaption>
         </figure>
         <div className={styles.copy}>
-          <h2>
+          <h2 className="heading-reveal">
             <em>Leadership</em> Built on Trust and Service
           </h2>
           <p className={styles.body}>{founderProfile.bio}</p>

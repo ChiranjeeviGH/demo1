@@ -1,3 +1,4 @@
+import { useReveal } from '../hooks/useReveal'
 import {
   AtSign,
   Camera,
@@ -10,8 +11,14 @@ import {
 import styles from './Footer.module.css'
 
 export default function Footer() {
+  const { ref, visible } = useReveal({ threshold: 0.12 })
+
   return (
-    <footer className={styles.footer} id="cta">
+    <footer
+      className={`${styles.footer} ${visible ? `${styles.on} motion-on` : ''}`}
+      id="cta"
+      ref={ref}
+    >
       <div className={styles.band} aria-hidden="true" />
       <img
         className={styles.patternSide}

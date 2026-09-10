@@ -17,14 +17,19 @@ export default function Awards() {
   const loop = [...awards, ...awards]
 
   return (
-    <section id="awards" className={styles.section} ref={ref} aria-label="Awards and recognition">
+    <section
+      id="awards"
+      className={`${styles.section} ${visible ? `${styles.on} motion-on` : ''}`}
+      ref={ref}
+      aria-label="Awards and recognition"
+    >
       <div className={`${styles.pattern} ${styles.patternLeft}`} aria-hidden="true" />
       <div className={`${styles.pattern} ${styles.patternRight}`} aria-hidden="true" />
       <div className={`${styles.pattern} ${styles.patternBottom}`} aria-hidden="true" />
-      <div className={`${styles.inner} ${visible ? 'is-visible' : 'reveal'}`}>
-        <h2>
-          <em>Recognized</em> for Excellence and Impact
-        </h2>
+      <div className={styles.inner}>
+          <h2 className="heading-reveal">
+            <em>Recognized</em> for Excellence and Impact
+          </h2>
         <p>
           Our work has been acknowledged through national and international awards,
           certifications, and partnerships that reinforce our commitment to
