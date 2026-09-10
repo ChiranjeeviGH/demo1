@@ -5,8 +5,8 @@ export default function DistrictImage({ district }) {
     <div className={styles.photo}>
       <img
         key={district.id}
-        src={district.image}
-        alt={`${district.name} district`} 
+        src={district.masterAsset ?? district.image}
+        alt={`${district.name} district`}
       />
     </div>
   )

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Play } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import { stories } from '../data/stories'
 import { useReveal } from '../hooks/useReveal'
 import Button from './Button'
@@ -13,21 +13,34 @@ export default function Stories() {
 
   return (
     <section id="stories" className={styles.section} ref={ref}>
+      <div className={styles.patternRight} aria-hidden="true" />
       <div className={`${styles.inner} ${visible ? 'is-visible' : 'reveal'}`}>
         <h2>
           <em>Stories</em> That Inspire Change
         </h2>
+        <div className={styles.intro}>
+          <p>
+            Behind every initiative is a story of resilience, opportunity and transformation.
+            Discover how SKDRDP programmes are creating lasting change across rural communities.
+          </p>
+          <Button className={styles.allStories} variant="solid" href="#stories">
+            View All Testimonials
+          </Button>
+        </div>
         <div className={styles.layout}>
-          <div className={styles.media}>
-            <img src={story.image} alt="" loading="lazy" />
-            <button
-              type="button"
-              className={styles.play}
-              aria-label="Play featured story"
-              onClick={() => setOpen(true)}
-            >
-              <Play size={28} fill="currentColor" />
-            </button>
+          <div className={styles.mediaCol}>
+            <div className={styles.media}>
+              <img src={story.image} alt="" loading="lazy" />
+              <button
+                type="button"
+                className={styles.play}
+                aria-label="Play featured story"
+                onClick={() => setOpen(true)}
+              >
+                <Play size={28} fill="currentColor" />
+              </button>
+            </div>
+            <div className={styles.pattern} aria-hidden="true" />
           </div>
           <div>
             <p className={styles.kicker}>{story.label}</p>
@@ -36,9 +49,15 @@ export default function Stories() {
               <em>for a Farming Family</em>
             </h3>
             <p className={styles.body}>{story.body}</p>
-            <Button href="#" variant="outline" onClick={() => setOpen(true)}>
-              Read Their Story
-            </Button>
+            <div className={styles.pagination} aria-label="Story navigation">
+              <button type="button" className={styles.pageButton} aria-label="Previous story" disabled>
+                <ChevronLeft size={18} />
+              </button>
+              <span>01/03</span>
+              <button type="button" className={styles.pageButton} aria-label="Next story">
+                <ChevronRight size={18} />
+              </button>
+            </div>
           </div>
         </div>
       </div>

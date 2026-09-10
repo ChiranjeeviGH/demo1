@@ -4,7 +4,7 @@ export const impactAreas = [
     title: 'Agriculture & Environment',
     description:
       'Pragathi Bandhu farmer groups, soil and water practice, and credit that keeps small holdings viable.',
-    image: '/Frame 54.png',
+    image: '/image 10.png',
     size: 'tall',
   },
   {
@@ -12,7 +12,7 @@ export const impactAreas = [
     title: 'Women Empowerment',
     description:
       'Sangha savings, Jnanavikasa classes, and women-led enterprise from the kitchen to the market.',
-    image: '/Frame 60.png',
+    image: '/image 11.png',
     size: 'wide',
   },
   {
@@ -20,7 +20,7 @@ export const impactAreas = [
     title: 'Healthcare & Insurance',
     description:
       'Village camps, de-addiction, and insurance so a hospital bill does not undo a lifetime of savings.',
-    image: '/Frame 68.png',
+    image: '/image 2928 (1).png',
     size: 'regular',
   },
   {
@@ -28,15 +28,15 @@ export const impactAreas = [
     title: 'Social Welfare',
     description:
       'Housing, sanitation, and village infrastructure that make everyday life dignified.',
-    image: '/Frame 63.png',
+    image: '/image 10 (2).png',
     size: 'regular',
   },
   {
     id: '05',
     title: 'Healthcare & Insurance',
     description:
-      'Village camps, de-addiction, and insurance so a hospital bill does not undo a lifetime of savings.',
-    image: '/Frame 68 (1).png',
+      'Housing, sanitation, and village infrastructure that make everyday life dignified.',
+    image: '/image 10 (1).png',
     size: 'regular',
   },
   {
@@ -44,7 +44,7 @@ export const impactAreas = [
     title: 'Social Welfare',
     description:
       'Housing, sanitation, and village infrastructure that make everyday life dignified.',
-    image: '/Frame 58.png',
+    image: '/image 14.png',
     size: 'wide',
   },
 ]

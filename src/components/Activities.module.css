@@ -1,11 +1,37 @@
 .section {
-  padding: 2rem 0 6.5rem;
+  position: relative;
+  overflow: hidden;
+  padding: 4.5rem 0 7.5rem;
+  background: var(--cream);
+}
+
+.pattern {
+  position: absolute;
+  top: 3rem;
+  right: max(0px, calc((100% - var(--content-width)) / 2));
+  z-index: 0;
+  width: min(280px, 36vw);
+  height: 36px;
+  pointer-events: none;
+  background-color: #e8b089;
+  opacity: 0.45;
+  -webkit-mask-image: url('/section-leadership/pattern-top.png');
+  mask-image: url('/section-leadership/pattern-top.png');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: right center;
+  mask-position: right center;
 }
 
 .inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 0 var(--page-gutter);
+  padding: 0;
+  padding-inline: var(--page-gutter);
 }
 
 .inner h2 {
@@ -22,12 +48,40 @@
   font-style: italic;
 }
 
+.intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.intro p {
+  max-width: 35rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.explore {
+  flex-shrink: 0;
+  min-height: 2.5rem;
+  padding: 0.25rem 0.3rem 0.25rem 1rem;
+  font-size: 0.72rem;
+}
+
+.explore .icon {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
 .row {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 78%;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 2.25rem;
   overflow-x: auto;
   padding-bottom: 0.6rem;
   scroll-snap-type: x mandatory;
@@ -35,7 +89,7 @@
 
 .row article {
   position: relative;
-  min-height: 420px;
+  min-height: 438px;
   overflow: hidden;
   border-radius: var(--radius);
   scroll-snap-align: start;
@@ -69,11 +123,14 @@
   z-index: 1;
   padding: 0.28rem 0.7rem;
   border-radius: 999px;
-  background: var(--orange);
+  background: rgba(255, 249, 240, 0.9);
+  color: var(--ink);
   font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+}
+
+.row .date {
+  text-transform: none;
 }
 
 .copy {
@@ -91,6 +148,15 @@
   font-weight: 500;
 }
 
+.copy small {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--orange);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
 .copy p {
   margin: 0.4rem 0 0;
   color: rgba(255, 249, 240, 0.8);
@@ -104,5 +170,13 @@
     grid-auto-columns: unset;
     grid-template-columns: repeat(4, 1fr);
     overflow: visible;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro {
+    align-items: start;
+    flex-direction: column;
+    gap: 1rem;
   }
 }

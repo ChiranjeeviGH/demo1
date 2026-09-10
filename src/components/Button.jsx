@@ -7,8 +7,9 @@ export default function Button({
   variant = 'solid',
   onClick,
   type = 'button',
+  className = '',
 }) {
-  const className = `${styles.btn} ${styles[variant]}`
+  const buttonClassName = `${styles.btn} ${styles[variant]} ${className}`.trim()
   const inner = (
     <>
       <span>{children}</span>
@@ -20,14 +21,14 @@ export default function Button({
 
   if (onClick && href === '#') {
     return (
-      <button type={type} className={className} onClick={onClick}>
+      <button type={type} className={buttonClassName} onClick={onClick}>
         {inner}
       </button>
     )
   }
 
   return (
-    <a href={href} className={className} onClick={onClick}>
+    <a href={href} className={buttonClassName} onClick={onClick}>
       {inner}
     </a>
   )

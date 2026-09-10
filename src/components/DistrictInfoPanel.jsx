@@ -3,17 +3,6 @@ import DistrictStats from './DistrictStats'
 import styles from './Presence.module.css'
 
 export default function DistrictInfoPanel({ district }) {
-  if (district.masterAsset) {
-    return (
-      <img
-        key={district.id}
-        className={styles.cardAsset}
-        src={district.masterAsset}
-        alt={`${district.name} district impact summary`}
-      />
-    )
-  }
-
   return (
     <div className={styles.cardDynamicInner}>
       <div className={styles.details}>

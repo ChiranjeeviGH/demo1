@@ -1,6 +1,5 @@
 import { useReveal } from '../hooks/useReveal'
 import DecorativePattern from './DecorativePattern'
-import DistrictInfoPanel from './DistrictInfoPanel'
 import DistrictMap from './DistrictMap'
 import { districtList } from '../data/districts'
 import styles from './Presence.module.css'
@@ -24,14 +23,18 @@ export default function Presence() {
         </div>
 
         <div className={styles.layout}>
-          <article
-            className={`${styles.card} ${styles.assetCardWrapper}`}
-            aria-live="polite"
-          >
-            <DistrictInfoPanel district={selectedDistrict} />
+          <article className={styles.card} aria-live="polite">
+            <img
+              className={styles.cardImage}
+              src="/mysuru_card.png"
+              alt="Mysuru district impact card"
+            />
           </article>
 
-          <DistrictMap />
+          <DistrictMap
+            districts={districtList}
+            selectedId={selectedDistrict.id}
+          />
         </div>
       </div>
     </section>

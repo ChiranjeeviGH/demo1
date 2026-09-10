@@ -42,7 +42,8 @@
   max-width: var(--content-width);
   width: 100%;
   margin: 0 auto;
-  padding: 11rem var(--page-gutter) 7.25rem;
+  padding: 11rem 0 7.25rem;
+  padding-inline: var(--page-gutter);
 }
 
 .pills {
@@ -97,7 +98,7 @@ h1 {
 
 .controls {
   position: absolute;
-  right: max(1.5rem, calc((100% - 1280px) / 2 + 1.5rem));
+  right: max(var(--page-gutter), calc((100% - var(--content-width)) / 2 + var(--page-gutter)));
   bottom: 6.2rem;
   z-index: 1;
   display: flex;

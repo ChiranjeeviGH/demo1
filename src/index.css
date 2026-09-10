@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
 :root {
   --cream: #ffeee2;
   --light-cream: #fff6ef;
@@ -9,6 +11,7 @@
   --muted: #000000cc;
   --ink: #262626;
   --content-width: 1600px;
+  /* Single source for left/right page padding — change only here */
   --page-gutter: clamp(24px, 8.333vw, 160px);
   --radius: 24px;
   --font-display: 'Playfair Display', Georgia, serif;
@@ -36,6 +39,7 @@ body {
   color: var(--ink);
   font-family: var(--font-ui);
   overflow-x: hidden;
+  animation: page-enter 0.7s var(--ease) both;
 }
 
 h1,
@@ -49,6 +53,14 @@ h6 {
 
 img {
   max-width: 100%;
+}
+
+/* Shared content shell: max width + uniform side gutters */
+.page-inner {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
 }
 
 button,
@@ -75,6 +87,44 @@ a:focus-visible {
   transform: none;
 }
 
+.is-visible > * {
+  animation: content-rise 0.75s var(--ease) both;
+}
+
+.is-visible > *:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.is-visible > *:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.is-visible > *:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes content-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -84,5 +134,10 @@ a:focus-visible {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  body,
+  .is-visible > * {
+    animation: none;
   }
 }

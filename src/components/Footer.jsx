@@ -1,20 +1,24 @@
 import {
-  Facebook,
-  Instagram,
+  AtSign,
+  Camera,
+  Globe,
   Mail,
   MapPin,
   Phone,
-  Twitter,
-  Youtube,
+  Play,
 } from 'lucide-react'
-import DecorativePattern from './DecorativePattern'
 import styles from './Footer.module.css'
 
 export default function Footer() {
   return (
     <footer className={styles.footer} id="cta">
       <div className={styles.band} aria-hidden="true" />
-      <DecorativePattern className={styles.pattern} size={560} opacity={0.16} />
+      <img
+        className={styles.patternSide}
+        src="/Vector_footer.png"
+        alt=""
+        aria-hidden="true"
+      />
 
       <div className={styles.inner}>
         <p className={styles.statement}>
@@ -85,7 +89,7 @@ export default function Footer() {
                 rel="noreferrer"
                 target="_blank"
               >
-                <Instagram size={15} strokeWidth={1.5} />
+                <Camera size={15} strokeWidth={1.5} />
               </a>
               <a
                 href="https://www.facebook.com/skdrdpOfficial"
@@ -93,7 +97,7 @@ export default function Footer() {
                 rel="noreferrer"
                 target="_blank"
               >
-                <Facebook size={15} strokeWidth={1.5} />
+                <Globe size={15} strokeWidth={1.5} />
               </a>
               <a
                 href="https://twitter.com/skdrdpofficial"
@@ -101,7 +105,7 @@ export default function Footer() {
                 rel="noreferrer"
                 target="_blank"
               >
-                <Twitter size={15} strokeWidth={1.5} />
+                <AtSign size={15} strokeWidth={1.5} />
               </a>
               <a
                 href="https://www.youtube.com/channel/UCnYVxnsAAAkeedYVTMHm82g"
@@ -109,7 +113,7 @@ export default function Footer() {
                 rel="noreferrer"
                 target="_blank"
               >
-                <Youtube size={15} strokeWidth={1.5} />
+                <Play size={15} strokeWidth={1.5} />
               </a>
             </div>
           </div>

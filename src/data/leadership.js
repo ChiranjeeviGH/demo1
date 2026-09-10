@@ -1,4 +1,3 @@
-import founder from '../assets/founder.jpg'
 import leader1 from '../assets/leader-1.jpg'
 import leader2 from '../assets/leader-2.jpg'
 import leader3 from '../assets/leader-3.jpg'
@@ -10,7 +9,8 @@ import leader7 from '../assets/leader-7.jpg'
 export const founderProfile = {
   name: 'Dr. D. Veerendra Heggade',
   role: 'President, SKDRDP',
-  image: founder,
+  image: '/leader.png',
+  nameplate: '/nameplate.png',
   bio: 'Dharmadhikari of Shri Kshetra Dharmasthala. For more than four decades he has guided a model of rural development that organises families into self-help groups — credit, care, and community, rather than charity alone.',
 }
 

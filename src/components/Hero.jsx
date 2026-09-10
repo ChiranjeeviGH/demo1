@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-const hero = '/image 4 (1).png'
-import farm from '../assets/activity-1.jpg'
-import women from '../assets/women.jpg'
+const hero = '/section-hero/hero-bg.png'
 import Button from './Button'
 import styles from './Hero.module.css'
 
@@ -14,13 +12,13 @@ const slides = [
     body: 'Inspiring communities, strengthening livelihoods, and creating opportunities for a better tomorrow.',
   },
   {
-    image: women,
+    image: '/image 11.png',
     alt: 'Women in a community gathering',
     title: 'Women at the centre of every sangha.',
     body: 'Self-help groups that put savings, credit, and livelihood in the hands of rural families.',
   },
   {
-    image: farm,
+    image: '/image 10 (1).png',
     alt: 'Farmland at sunrise',
     title: 'Livelihoods that last beyond a single season.',
     body: 'Farmer groups, insurance, and last-mile banking so a village does not have to leave itself to be heard.',

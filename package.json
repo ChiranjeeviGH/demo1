@@ -1,24 +1,20 @@
 {
   "name": "skdrdp",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0 --port 43221",
+    "dev": "vite",
     "build": "vite build",
-    "lint": "oxlint",
-    "preview": "vite preview --host 0.0.0.0 --port 43221"
+    "preview": "vite preview --port 4173 --host"
   },
   "dependencies": {
-    "lucide-react": "^0.544.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "lucide-react": "^1.43.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
-    "@vitejs/plugin-react": "^6.1.0",
-    "oxlint": "^1.79.0",
+    "@vitejs/plugin-react": "^6.1.1",
     "vite": "^8.2.2"
   }
 }

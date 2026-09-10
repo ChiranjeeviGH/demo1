@@ -2,44 +2,44 @@
   --footer-accent: #e86c2d;
   position: relative;
   overflow: hidden;
-  padding: 0;
-  background:
-    radial-gradient(90% 80% at 48% 45%, #8c3b1a 0%, #6a2a12 55%, #4a1e0b 100%);
+  padding: 1.89rem 0;
+  background: var(--dark-brown);
   color: #f5f5f5;
-}
-
-.footer::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 80px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent);
-  pointer-events: none;
-  z-index: 2;
 }
 
 .band {
   position: relative;
-  z-index: 2;
-  height: 28px;
-  background-image: url('../assets/footer-band.svg');
-  background-repeat: repeat-x;
-  background-position: center;
-  background-size: 56px 28px;
-  opacity: 0.55;
+  z-index: 3;
+  width: 100%;
+  height: 32px;
+  background-color: #c9a48a;
+  opacity: 0.45;
+  -webkit-mask-image: url('/section-footer/pattern-band.png');
+  mask-image: url('/section-footer/pattern-band.png');
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-size: auto 100%;
+  mask-size: auto 100%;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 .bandBottom {
   transform: scaleY(-1);
 }
 
-.pattern {
+.patternSide {
   position: absolute;
-  right: -7.5rem;
-  top: 52%;
-  color: #d08958;
+  top: 50%;
+  right: -5%;
+  z-index: 0;
+  width: min(280px, 34vw);
+  height: min(280px, 34vw);
   transform: translateY(-50%);
   pointer-events: none;
+  opacity: 0.54;
+  object-fit: contain;
+  object-position: center;
 }
 
 .inner {
@@ -48,7 +48,7 @@
   display: grid;
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 3.75rem var(--page-gutter) 3.5rem;
+  padding: 3.375rem var(--page-gutter) 3.15rem;
   align-items: start;
 }
 
@@ -183,7 +183,7 @@
     position: relative;
     width: 1px;
     height: 100%;
-    min-height: 16.5rem;
+    min-height: 14.85rem;
     justify-self: center;
     background: linear-gradient(
       180deg,
@@ -195,8 +195,8 @@
   }
 
   .columns {
-    grid-template-columns: minmax(11.5rem, 1.35fr) minmax(7.5rem, 1fr) minmax(8.5rem, 1.1fr) minmax(7rem, 0.95fr) 3.2rem;
-    column-gap: 1.75rem;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 0.95fr) 2.5rem;
+    column-gap: 1.25rem;
     row-gap: 0;
   }
 

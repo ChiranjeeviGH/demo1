@@ -1,39 +1,38 @@
-import activity1 from '../assets/activity-1.jpg'
-import activity2 from '../assets/activity-2.jpg'
-import activity3 from '../assets/activity-3.jpg'
-import activity4 from '../assets/activity-4.jpg'
-
 export const activities = [
   {
     id: '01',
-    tag: 'Agriculture',
-    title: 'Sustainable Farming',
+    date: '12 July 2026',
+    tag: 'Community',
+    title: 'Cleanliness Drive at Dharmasthala Temple',
     description:
-      'Monsoon planting, shared labour, and crop planning through Pragathi Bandhu groups.',
-    image: activity1,
+      'Over 300 volunteers participated in a cleanliness initiative across temple premises, promoting environmental responsibility and community participation.',
+    image: '/section-activties/card-1.png',
   },
   {
     id: '02',
-    tag: 'Community',
-    title: 'Community Agriculture',
+    date: '12 July 2026',
+    tag: 'Environment',
+    title: 'Environmental Awareness & Tree Plantation',
     description:
-      'Village demonstration plots and farmer meetings that spread soil and water practice.',
-    image: activity2,
+      'Students, volunteers and local communities joined hands to plant over 5,000 saplings across multiple districts.',
+    image: '/section-activties/card-2.png',
   },
   {
     id: '03',
-    tag: 'Healthcare',
-    title: 'Healthcare Services',
+    date: '12 July 2026',
+    tag: 'Health',
+    title: 'Swasthya Sankalpa De-addiction Awareness Camp',
     description:
-      'Camps, counselling, and insurance outreach from project offices across Karnataka.',
-    image: activity3,
+      'A state-wide awareness programme helping individuals and families understand the importance of healthy addiction-free living.',
+    image: '/section-activties/card-3.png',
   },
   {
     id: '04',
+    date: '12 July 2026',
     tag: 'Livelihood',
-    title: 'Rural Livelihood Training',
+    title: 'Rural Livelihood Training Programme',
     description:
-      'Skills, savings discipline, and working capital for women-led village enterprise.',
-    image: activity4,
+      'Skill development workshops empowering women and youth through entrepreneurship and sustainable livelihood opportunities.',
+    image: '/section-activties/card-4.png',
   },
 ]
